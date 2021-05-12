@@ -1,0 +1,64 @@
+
+数据库索引底层实现：
+B+树结构描述
+
+B+树 与 B树区别： 觉得如何？
+
+B+ 如何遍历？ 
+聚簇索引  非聚簇索引
+
+Redis的了解
+
+NoSQL 缓存
+有哪些数据结构：int, string, set, zset（zscore） 
+底层数据结构是什么？
+map dictnary 
+
+redis如果数据量太大的话，怎么办？ 
+cache清理机制 
+有TTL，放两种方式：定期scan、懒删除
+
+redis cluster是否了解？
+完全不了解
+
+语言
+
+java python C++ C#
+java treemap hashmap tree_set
+
+sql script 语句优化
+
+刷题
+
+oj
+
+x ^ 2x ^ 3x = 0, 0~1024之间，满足上述条件的x的个数。
+
+不进位加法
+x + 2x =  (2 ^ 2x) ^ (2 & 2x) << 1 
+
+x + 2x => x ^ 2x + 
+x^2x 等于多少 10000
+
+x & 2x 等于0  
+
+x不能有两个连续的1
+
+dp[i]表示第i位放0的个数
+dp[i][0] = dp[i - 1][1] + dp[i - 1][0]
+dp[i][1] = dp[i - 1][0]
+
+dp[9][1] + dp[9][0]
+
+for (int i = 0; i < 10; ++i) {
+    dp[i][0] = dp[i - 1][1] + dp[i - 1][0]
+    dp[i][1] = dp[i - 1][0]
+}
+
+ 10100
+101000
+000000
+
+11000
+
+x ^2x ^ (x^2x) ^ (x & 2x)
