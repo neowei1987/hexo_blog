@@ -33,10 +33,12 @@ tags:
 ## 中二叉树的序列化与反序列化-总体思路
 
 重点考虑反序列化，我们需要考虑一种很容易找到root节点的遍历方式。
-如果我无法找到root节点，是无法通过递归来完成反序列化的。
-在前中后三种遍历中，我们可以选择先序遍历。
 
-## 中序遍历序列的下一个节点-代码实现
+如果我无法找到root节点，是无法通过递归来完成反序列化的。
+
+在前中后三种遍历中，我们可以选择先序遍历。 先序遍历，最容易找到root节点
+
+## 中二叉树的序列化与反序列化-代码实现
 
 ```cpp
 /**
@@ -70,11 +72,13 @@ public:
             return NULL;
         }
         
+        //如果是nullptr
         if (s[u] == 'n') {
             u += 5;
             return nullptr;
         }
         
+        //如果是有意义的内容
         int val = 0;
         int flag = 1;
         if (s[u] == '-') {flag = -1; u++;}
@@ -84,8 +88,10 @@ public:
         val *= flag;
         u++;
         
+        //上面都是处理当前节点
+        
         auto r = new TreeNode(val);
-        auto left = dfs_us(u);
+        auto left = dfs_us(u); //处理左边
         auto right = dfs_us(u);
         r->left =left, r->right = right;
         return r;

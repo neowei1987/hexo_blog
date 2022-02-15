@@ -32,7 +32,9 @@ tags:
 ## 中序遍历序列的下一个节点-总体思路
 
 需要我们明确中序遍历的定义
+
 模拟题
+
 其实模拟题就是分情况讨论。
 
 ## 中序遍历序列的下一个节点-代码实现
@@ -51,11 +53,16 @@ tags:
 class Solution {
 public:
     TreeNode* inorderSuccessor(TreeNode* p) {
+        //如果有右孩子，则一直遍历找到其左左左..
         if (p->right) {
             p = p->right;
             while (p->left) p = p->left;
             return p;
         }
+        
+        //判断他自己是左孩子，还是右孩子。
+        //如果是左孩子，则直接访问其父亲
+        //如果是右孩子，则一直访问，直到不是右孩子。
         
         while (p->father && p->father->left != p) p = p->father;
         return p->father;

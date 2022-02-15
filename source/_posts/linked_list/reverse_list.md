@@ -54,11 +54,39 @@ public:
             r.push_back(head->val);
             head = head->next;
         }
-        return vector<int>(r.rbegin(), r.rend());
+        return vector<int>(r.rbegin(), r.rend()); 
     }
 };
 
 ```
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> res;
+
+    void reverse(ListNode* head) {
+        if (!head) return;
+        reverse(head->next);
+        res.push_back(head->val);
+    }
+
+    vector<int> reversePrint(ListNode* head) {
+        reverse(head);
+        return res;
+    }
+};
+```
+
+逆序第m～n个元素
 
 ```cpp
 /**
@@ -96,11 +124,13 @@ public:
 
         auto x = reverseBetween(head->next, m - 1, n - 1);
         head->next = x;
-        return head;
+        return head; //返回的是头
     }
 };
 
 ```
+
+每K个反转一次，剩余不到k个，不用反转。
 
 ```cpp
 /**
@@ -142,75 +172,6 @@ public:
         auto x = reverseKGroup(p, k);
         head->next = x;
         return pre;
-    }
-};
-```
-
-移除链表元素
-
-删除链表中等于给定值 val 的所有节点
-
-```cpp
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
-class Solution {
-public:
-    vector<int> res;
-
-    void reverse(ListNode* head) {
-        if (!head) return;
-        reverse(head->next);
-        res.push_back(head->val);
-    }
-
-    vector<int> reversePrint(ListNode* head) {
-        reverse(head);
-        return res;
-    }
-};
-```
-
-移除重复节点
-
-编写代码，移除未排序链表中的重复节点。保留最开始出现的节点。
-
-```cpp
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
-class Solution {
-public:
-    ListNode* removeDuplicateNodes(ListNode* head) {
-        //hash + 链表
-        unordered_map<int, bool> map;
-
-        auto dummy = new ListNode(-1);
-        dummy->next = head;
-
-        auto p = head, pre = dummy;
-        while (p) {
-            if (map[p->val]) { //出现过
-                pre->next = p->next;
-            }
-            else {
-                pre = p;
-            }
-            map[p->val] = true;
-            p = p->next;
-        }
-
-        return dummy->next;
     }
 };
 ```

@@ -86,8 +86,10 @@ public:
 ## 从上往下打印出二叉树，同层从左到右，分行打印-总体思路
 
 相对上题，难点在于如何识别分行，一般而言我们有以下几种办法：
-（1）使用nullptr作为分隔符，每次遇到nullptr进行分行处理，并压入新的nullptr
-（2）借助size, 每次遍历size个元素，size为上一次压入的元素个数
+
+（1）使用nullptr作为分隔符，每次遇到nullptr进行分行处理，并压入新的nullptr。nullptr是当前层的终止符。
+
+（2）借助size, 每次遍历size个元素，size为上一次压入的元素个数。通过size来代表该层有多少元素。
 
 ## 从上往下打印出二叉树，同层从左到右，分行打印-代码实现
 
@@ -140,7 +142,7 @@ public:
         if (!root) return res;
         q.push(root);
         while (q.size()) {
-            int qs = q.size();
+            int qs = q.size();  //必须赋值到局部变量
             for (int i = 0; i < qs; ++i) {
                 auto t = q.front();
                 q.pop();

@@ -30,6 +30,10 @@ tags:
 
 首先最容易想到的解法是递归，但是我们注意到有很多重复计算，所以更优的做法应该是DP
 
+dp[i]表示0到s[i]这个字符串能够包含的翻译方法.
+
+d[i] = dp[i - 1] + dp[i - 2] when as a ALHPA OR  dp[i - 1] when other 
+
 ## 获取不同的翻译方法次数-代码实现
 
 ```cpp
@@ -43,11 +47,11 @@ public:
             return 1;
         }
         
-        res += (1 * dfs(u + 1));
+        res += (1 * dfs(u + 1)); //长度为1的结果数量
         if (u + 1 < s.size()) {
            int val = 10 * (s[u] - '0') + s[u + 1] - '0';
-           if (10 <= val && val <= 25) {
-               res += (1 * dfs(u + 2));
+           if (10 <= val && val <= 25) { 
+               res += (1 * dfs(u + 2)); //长度为2的结果数
            }
         }
         

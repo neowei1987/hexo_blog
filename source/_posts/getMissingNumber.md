@@ -26,6 +26,8 @@ tags:
 
 根据题目描述容易得到：如果把miss的数字补齐，那么我们可以得到序列：$1,2,3,...n$
 
+递增，数组，容易想到是否可以用2分查找。
+
 ## 代码实现
 
 ```cpp
@@ -40,4 +42,23 @@ public:
         return (n * (n + 1) >> 1) - sum;
     }
 };
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int j = nums.size();
+        int i = 0;
+        while (i < j) {
+            int  m = (i + j) >> 1;
+            if (m < nums.size() && nums[m] == m) { //如果是合法的，说明需要往后find.
+                i = m + 1;
+            } else {
+                j = m;
+            }
+        }
+        
+        return i;
+    }
+};
+
 ```

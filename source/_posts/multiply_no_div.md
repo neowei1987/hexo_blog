@@ -15,6 +15,7 @@ tags:
 ## 暴力做法
 
 时间复杂度：$O(n^2)$
+
 空间复杂度：除结果数组外，$O(1)$
 
 ```cpp
@@ -50,6 +51,7 @@ public:
 ## 时间优化版代码
 
 时间复杂度：$O(n)$
+
 空间复杂度：除结果数组外，$O(n)$
 
 ```cpp
@@ -87,6 +89,7 @@ public:
 ## 空间优化版代码
 
 时间复杂度：$O(n)$
+
 空间复杂度：除结果数组外，$O(1)$
 
 ```cpp
@@ -95,16 +98,14 @@ public:
     vector<int> multiply(const vector<int>& A) {
         vector<int> res(A.size(), 1);
         
-        vector<int> pre_part(A.size(), 1); //前半部分的累乘结果
+        //先将前半部分的计算结果存起来
         for (int i = 1; i < A.size(); ++i) {
-            pre_part[i] = pre_part[i - 1] * A[i - 1];
+            res[i] = res[i - 1] * A[i - 1];
         }
 
-        vector<int> post_part(A.size(), 1); //后半部分的累乘结果
+        //逆序遍历，只用一个变量multi来存储后半部分的计算结果。
         for (int i = A.size() - 2; i >= 0; --i) {
-            //post_part[i] = post_part[i + 1] * A[i + 1];
             multi = multi * A[i + 1];
-            //res[i] = pre_part[i - 1] * post_part[i + 1];
             res[i] = res[i - 1] * multi;
         }
  

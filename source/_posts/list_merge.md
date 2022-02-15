@@ -40,12 +40,13 @@ tags:
 class Solution {
 public:
     ListNode* merge(ListNode* l1, ListNode* l2) {
+        //dummy是一个哨兵节点，用来简化后续的判定是否为空逻辑
         auto dummy = new ListNode(-1);
         auto tail = dummy;
         while (l1 && l2){
             if (l1->val <= l2->val) {
-                tail = tail->next = new ListNode(l1->val);
-                l1 = l1->next;
+                tail = tail->next = new ListNode(l1->val); //追加一个新的node
+                l1 = l1->next; //往后移动一个元素
             }
             else {
                 tail = tail->next = new ListNode(l2->val);
@@ -53,6 +54,7 @@ public:
             }
         }
         
+        //遍历剩下
         while (l1) {
             tail = tail->next = new ListNode(l1->val);
             l1 = l1->next;

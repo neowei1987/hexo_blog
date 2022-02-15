@@ -51,8 +51,8 @@ public:
         
         auto fast = head, slow = head;
         while (fast && fast->next && slow) {
-            slow = slow->next;
-            fast = fast->next->next; 
+            slow = slow->next; /慢的走一步
+            fast = fast->next->next;  //快的走两步
             if (slow == fast) {
                 break;
             }
@@ -62,6 +62,7 @@ public:
             return NULL;
         }
         
+        //再重新走一遍
         slow = head;
         while (fast != slow) {
             fast = fast->next;

@@ -31,6 +31,8 @@ minStack.getMin();   --> Returns -1.
 
 ## 支持min操作的栈-总体思路
 
+空间换时间，用另外一个stack去储存最小值。
+
 ## 支持min操作的栈-代码实现
 
 ```cpp

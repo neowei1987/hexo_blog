@@ -37,7 +37,7 @@ public:
             s ^= x;
         }
 
-        int u = s & -s;
+        int u = s & -s; //找到lowbit
         vector<int> g0, g1;
 
         for (auto x: nums) {
@@ -75,6 +75,10 @@ public:
 输出：3
 
 ## 实现思路-基于Bit位
+
+如果可以用hash，存下每一个数字出现次数就可以了。
+
+但是如果要求O(1)的时间复杂度呢？考虑用位运算。
 
 ## 代码实现-基于Bit位
 

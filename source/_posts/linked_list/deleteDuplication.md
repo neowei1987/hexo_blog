@@ -42,3 +42,43 @@ public:
     }
 };
 ```
+
+
+移除重复节点，无排序版本
+
+编写代码，移除未排序链表中的重复节点。保留最开始出现的节点。
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* removeDuplicateNodes(ListNode* head) {
+        //hash + 链表
+        unordered_map<int, bool> map;
+
+        auto dummy = new ListNode(-1);
+        dummy->next = head;
+
+        auto p = head, pre = dummy;
+        while (p) {
+            if (map[p->val]) { //出现过
+                pre->next = p->next;
+            }
+            else {
+                pre = p;
+            }
+            map[p->val] = true;
+            p = p->next;
+        }
+
+        return dummy->next;
+    }
+};
+```
