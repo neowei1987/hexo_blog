@@ -14,4 +14,4 @@ tags:
 
 |  题目分类 | 题目名称 |考察点   |其他说明|
 |  ----  | ---- |----  |----  |
-| | [第K大问题](../problem/linear_selection/kth.html)  ||
+| | [第K大问题](../structure_algorithm/problem/linear_selection/kth.html)  ||

@@ -116,6 +116,6 @@ https://www.jianshu.com/p/23737ee122bf
 
 |  题目分类 | 题目名称 |考察点   |其他说明|
 |  ----  | ---- |----  |----  |
-|| [机器人移动次数](../back_tracking/moving_cnt.html)  ||
-|| [是否有字符串路径](../back_tracking/has_str_path.html)  ||
+|| [机器人移动次数](../structure_algorithm/algorithm/back_tracking/moving_cnt.html)  ||
+|| [是否有字符串路径](../structure_algorithm/algorithm/back_tracking/has_str_path.html)  ||
 |排列组合| [回溯系列-组合排列](../classic_mutant/combination_permutation.html)  ||
