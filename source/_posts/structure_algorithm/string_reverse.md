@@ -39,14 +39,16 @@ public:
     
     string reverseWords(string s) {
         int i = 0, j = 0;
-        while (s[j] != 0) {
+        while (s[j] != '\0') {
             if (s[j] == ' ') {
-                reverse(s, i, j - 1);
+                reverse(s, i, j - 1); //反转每一个
                 i = j + 1;
             }
             j++;
         }
-        reverse(s, i, j - 1);
+        reverse(s, i, j - 1); //处理上面的最后一次循环
+
+        //整体反转一次
         reverse(s, 0, j - 1);
         return s;
     }
@@ -75,6 +77,7 @@ public:
 class Solution {
 public:
     void reverse(string& s, int i, int j ) {
+        //对撞指针，往中间凑
         while (i < j) {
             swap(s[i++], s[j--]);
         }

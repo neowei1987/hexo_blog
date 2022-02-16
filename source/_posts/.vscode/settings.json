@@ -1,2 +1,14 @@
 {
+    "pasteImageToQiniu.access_key": "brVVSCdzrMqmShxpw_lZgZD9TEOaKzcsxRH8lzbB",
+    "pasteImageToQiniu.secret_key": "iC8vqbQAt5vwp4_95IPtPm0CoDFXtOnM-qIusU4o",
+    "pasteImageToQiniu.bucket": "b5mang",
+    "pasteImageToQiniu.domain": "http://cdn.b5mang.com",
+    "pasteImageToQiniu.localPath": "/Users/neowei/Pictures/paste",
+    "pasteImageToQiniu.remotePath": "${dateTime}",
+    "picgo.picBed.qiniu.accessKey": "brVVSCdzrMqmShxpw_lZgZD9TEOaKzcsxRH8lzbB",
+    "picgo.picBed.qiniu.secretKey": "iC8vqbQAt5vwp4_95IPtPm0CoDFXtOnM-qIusU4o",
+    "picgo.picBed.qiniu.bucket": "b5mang",
+    "picgo.picBed.qiniu.url": "http://cdn.b5mang.com",
+    "picgo.picBed.current": "qiniu",
+    "picgo.picBed.uploader": "qiniu"
 }

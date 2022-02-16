@@ -26,7 +26,7 @@ tags:
 
 ## 链表反转-总体思路
 
-## 链表反转-代码实现
+## 链表反转-非递归版代码实现
 
 ```cpp
 /**
@@ -52,6 +52,34 @@ public:
        }
        
        return pre;
+    }
+};
+
+```
+
+## 链表反转-递归版代码实现
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+
+    ListNode* reverseList(ListNode* head) {
+        _reverseList(head);
+    }
+
+    ListNode* _reverseList(ListNode* head) {
+        if (!head || !head->next) return head;
+        auto t = head->hext;
+        _reverseList(t)
+        t->next = head;
     }
 };
 ```

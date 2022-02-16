@@ -28,7 +28,9 @@ tags:
 ## 二叉搜索树转有序双向链表-总体思路
 
 两种思路：
+
 第一种思路，dfs的主要任务是返回子树对应链表的头尾节点；按照这种思路的话，我们的遍历方式是后序遍历。
+
 第二种思路，dfs的主要任务就是按照顺序访问到每一个node，同时记录一个全局的pre，然后将pre与node建立双向关联即可。
 
 ## 二叉搜索树转有序双向链表-代码实现
@@ -50,17 +52,20 @@ pair<Node*, Node*> dfs(Node* root) {
         return {root, root};
     }
     
+    //访问左边
     pair<Node*, Node*>  left = {root, root};
     if (root->left) {
         left = dfs(root->left);
     }
 
+    //访问右边
     pair<Node*, Node*>  right = {root, root};
     
     if (root->right) {
         right = dfs(root->right);
     }
 
+    //访问中间节点
     if (left.first != root) {
         left.second->right = root;
         root->left = left.second;
@@ -79,8 +84,10 @@ pair<Node*, Node*> dfs(Node* root) {
  void  dfs(Node* root) {
         if (!root) return;
         
+        //访问左边
         dfs(root->left);
 
+        //中序遍历
         if (!pre) {
             head = root;
         }
@@ -90,6 +97,7 @@ pair<Node*, Node*> dfs(Node* root) {
         }
         pre = root;
 
+        //访问右边
         dfs(root->right);
     }
 ```
