@@ -24,10 +24,8 @@ tags:
 | | [删除节点](delete_node.html)  |原地操作，该题并无普遍性|
 | | [排序链表删除重复节点](./deleteDuplication.html)  |哨兵、双指针|
 | | [链表反转](reverse_list.html)  |链表反转类型的问题|
-| | [复杂链表的复制](../copyRandomList.html)  |启发式思考，该题并无普遍性|
+| | [复杂链表的复制](./copyRandomList.html)  |启发式思考，该题并无普遍性|
 | | [链表中环的入口](../entryNodeOfLoop.html)  |双指针之快慢指针|
 | | [链表倒数第K个节点](../findKthToTail.html)  |双指针之快慢指针|
 | | [链表归并](../list_merge.html)  |归并排序|
 | | [两个链表的公共节点](findFirstCommonNode.html)  |双指针之快慢指针|
-
-
