@@ -28,4 +28,6 @@ tags:
 | | [链表中环的入口](../entryNodeOfLoop.html)  |双指针之快慢指针|
 | | [链表倒数第K个节点](../findKthToTail.html)  |双指针之快慢指针|
 | | [链表归并](../list_merge.html)  |归并排序|
+| | [两个链表的公共节点](findFirstCommonNode.html)  |双指针之快慢指针|
+
 

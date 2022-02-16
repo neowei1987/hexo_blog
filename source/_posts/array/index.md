@@ -26,12 +26,16 @@ tags:
 
 修改方法：取反，总之需要有办法来识别打了标记的元素
 
-对元素打标记时，打的标记需尽量保存信息，不可影响问题的求解。
+对元素打标记时，打的标记需尽量保存信息(对相反数取绝对值，就能够还原原始内容），不可影响问题的求解。
 
 还有另外一种技巧，我们称之为原地交换，其基本要求在于：
+
 每一个元素都需要有对应的坑位，如果我们在他对应的坑位上的话，就进行swap；如此往复
+
 1）检查某一个元素是否在他期望出现的位置上
+
 2）如果在了，就啥也不做
+
 3）如果不在，就与目标位置上的元素进行替换（替换之后，新的元素又不满足了，那我们就继续）
 
 ## 数组相关的经典题目
@@ -54,80 +58,14 @@ tags:
 
 假设 nums 只有 一个重复的整数 ，找出 这个重复的数 。
 
-- 缺失的第一个正数
-
-给你一个未排序的整数数组 nums ，请你找出其中没有出现的最小的正整数。
 
 |  题目分类 | 题目名称 |考察点   |其他说明|
 |  ----  | ---- |----  |----  |
-| | [缺失的第一个正数](local_swap.html)  |[原地交换]()|
-| | [数组中重复的数据](local_swap.html)  |[原地交换]()|
+| | [缺失的第一个正数](firstMissingPositive.html)  |[原地交换]()|
+| | [数组中重复的数据](duplicateInArray.html)  |[原地交换]()|
+| | [数组中重复的数据-无额外空间](duplicateInArrayNoSpace.html)  |[二分查找]()|
 | | [数组中消失的数字](local_swap.html)  |[原地交换]()|
 | | [从外向里以顺时针的顺序打印矩阵](../printMatrix.html)  |方向数组|
 | | [奇偶重排](../reOrderArray.html)  |快速排序|
 | | [N数之和问题](../sum_234.html)  |双指针、hash|
 
-给定一个长度为 n 的整数数组 nums，数组中所有的数字都在 0∼n−1 的范围内。
-
-数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。
-
-请找出数组中任意一个重复的数字。
-
-注意：如果某些数字不在 0∼n−1 的范围内，或数组中不包含重复数字，则返回 -1；
-
-样例
-给定 nums = [2, 3, 5, 4, 3, 2, 6, 7]。
-
-返回 2 或 3。
-
-```cpp
-#include <iostream>
-#include <algorithm>
-
-class Solution {
-public:
-    int duplicateInArray(vector<int>& nums) {
-        int n = nums.size();
-        for (int i = 0; i < n; ++i) 
-            if (nums[i] < 0 || nums[i] > n - 1) return -1;
-        
-        for (int i = 0; i < n; ++i) {
-            while (i != nums[i]) {
-                int x = nums[i];
-                if (nums[x] == x) return x;
-                else swap(nums[x], nums[i]);
-            }
-        }
-        x
-        return -1;
-    }
-};
-```
-
-给定一个长度为 n+1 的数组nums，数组中所有的数均在 1∼n 的范围内，其中 n≥1。
-
-请找出数组中任意一个重复的数，但不能修改输入的数组。
-
-样例
-给定 nums = [2, 3, 5, 4, 3, 2, 6, 7]。
-
-返回 2 或 3。
-思考题：如果只能使用 O(1) 的额外空间，该怎么做呢？
-
-```cpp
-class Solution {
-public:
-    int duplicateInArray(vector<int>& nums) {
-        int l = 1, r = nums.size() - 1;
-        while (l < r) {
-            int mid = (l + r) >> 1;  //[l, mid], [mid + 1, r]
-            int s = 0;
-            for (int i = 0; i < nums.size(); ++i) s += (nums[i] >= l && nums[i] <= mid);
-            if (s > (mid - l + 1)) r = mid;
-            else l = mid + 1;
-        }
-        
-        return r;
-    }
-};
-```

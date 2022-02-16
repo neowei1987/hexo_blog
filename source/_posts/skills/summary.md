@@ -4,20 +4,82 @@ date: 2020-12-30 13:34:03
 mathjax: true
 categories:
 - 思想技巧
-tags: 
-- 二分
+tags:
 ---
 
-http://jm.taobao.org/2011/12/07/1347/
+1. 基于局部性原理的缓存
+
+浏览器本地缓存、web服务器缓存、应用程序的localcache、redis，mc这种集中式缓存、文件系统缓存page cache、 CPU内的缓存（L1,L2,L3)、TLB地址转换缓存
+
+2. 分层
+
+   1. 操作系统：硬件 --> 操作系统（系统调用）--> 应用程序（标准库）--> 应用程序的通信、调用
+   2. 计算机网络：ISO七层
+   3. MVC：Model层--> View层--> Control层
+
+3. 懒加载（延迟变更）
+
+   lazy tlb
+
+   延迟更新TLB
+
+4. 双buffer
+5. WAL
+
+    借助WAL，把性能较差的随即磁盘写入转化为磁盘的顺序写入 + 内存写入
+
+6. CheckPoint
+    
+    通过"全量 + 增量"管理数据，实现数据的快速加载。
+
+索引思想
+稠密索引
+稀疏索引
+多重表
+倒排索引
+
+spring设计思想
+
+OS内存页表
+路由表
+
+二分
+
+分治
+
+局部性原理
+
+池
+
+
+缓冲
+
+Redo/Undo
+
+Bitmap
+
+MVCC
+
+一致性Hash
+
+多态
+
+设计模式
+
+IoC依赖反转
+
 
 https://blog.csdn.net/heiyeshuwu/article/details/9722443
 
 https://www.cnblogs.com/jing99/p/11984966.html
 
 https://www.cnblogs.com/yeahwell/p/multiple-thinking-model.html
+
 供原子性和持久性（ACID属性中的两个）的一系列技术。
 
     Source URL: http://zh.wikipedia.org/wiki/%E9%A2%84%E5%86%99%E5%BC%8F%E6%97%A5%E5%BF%97
+
+
 在计算机科学中，预写式日志（Write-ahead logging，缩写 WAL）是关系数据库系统中用于提供原子性和持久性（ACID属性中的两个）的一系列技术。在使用WAL的系统中，所有的修改在提交之前都要先写入log文件中。
 log文件中通常包括redo和undo信息。这样做的目的可以通过一个例子来说明。假设一个程序在执行某些操作的过程中机器掉电了。在重新启动时，程序可能需要知道当时执行的操作是成功了还是部分成功或者是失败了。如果使用了WAL，程序就可以检查log文件，并对突然掉电时计划执行的操作内容跟实际上执行的操作内容进行比较。在这个比较的基础上，程序就可以决定是撤销已做的操作还是继续完成已做的操作，或者是保持原样。
 WAL允许用in-place方式更新数据库。另一种用来实现原子更新的方法是shadow paging，它并不是in-place方式。用in-place方式做更新的主要优点是减少索引和块列表的修改。ARIES是WAL系列技术常用的算法。在文件系统中，WAL通常称为journaling。PostgreSQL也是用WAL来提供point-in-time恢复和数据库复制特性。
@@ -29,18 +91,15 @@ WAL允许用in-place方式更新数据库。另一种用来实现原子更新的
 
 CPU,RAM速度不匹配，基于局部性原理，引入硬件高速缓存内存
 
-高速缓存的写策略：通写（write-through），写回（write-back）；读策略：预取
-
 转换后援缓冲区 TLB：将线性地址映射为物理地址，加速线性地址转换
 
-分页模型：多级索引
+高速缓存的写策略：通写（write-through），写回（write-back）；读策略：预取
 
+分页模型：多级索引
 
 高速缓存命中率达到最优化：
 一个数据结构中最常使用的字段放在该数据结构内的低偏移部分
 
-lazy tlb
-延迟更新TLB
 
 
 pid分配管理：bitmap pidmap_array
@@ -108,23 +167,12 @@ page
 动态内存分配与释放：管理区分配器 + 【伙伴系统 + 每CPU页框高速缓存】 * N
 
 
-进程与线程
-
-进程地址空间
-
-
 进程与线程的联系与区别：
 区别：进程切换与线程切换的一个最主要区别就在于进程切换涉及到虚拟地址空间的切换而线程切换则不会
 
 锁的实现：
 单核：test and set
 多核：锁总线的状态下，test  and set
-
-MESI 缓存一致性协议
-Modified
-Exclusive 
-Shared
-Invalid
 
 https://www.qbitai.com/2019/12/9895.html
 https://www.jianshu.com/p/d585b3938dea
@@ -153,32 +201,6 @@ final关键字的新含义
 一些基本的硬件知识
 一些处理同步问题的技术
 
-一个基本的CPU执行计算的过程如下：
-1. 程序以及数据被加载到主内存
-2. 指令和数据被加载到CPU的高速缓存
-3. CPU执行指令，把结果写到高速缓存
-4. 高速缓存中的数据写回主内存
-
-
-
-
-数据库事务
-ACID
-脏读
-幻读
-不可重复度
-
-并发控制：乐观并发控制、悲观并发控制
-悲观锁(Pessimistic Lock)
-每次操作之前都枷锁
-悲观锁(Pessimistic Lock)
-每次操作之前都枷锁
-
-分层
-具体应用：
-1. 操作系统：硬件 --> 操作系统--> 应用程序--> 应用程序的通信、调用
-2. 计算机网络：ISO七层
-3. MVC：Model层--> View层--> Control层
 
 Trade-Off
 说明：没有对错、只有是否适合场景
@@ -194,7 +216,6 @@ Trade-Off
 数据冗余
 
 正交：各个概念之间可以独立变化
-
 
 数据分块
 
@@ -213,49 +234,3 @@ Map Reduce 将数据用KV对来表示
 CPU cache
 Kafka多分区多消费组
 https://blog.csdn.net/dog250/article/details/79588437
-
-索引思想
-稠密索引
-稀疏索引
-多重表
-倒排索引
-
-spring设计思想
-
-
-OS内存页表
-路由表
-
-二分
-
-分治
-
-局部性原理
-
-池
-
-懒加载
-
-缓冲
-
-双Buffer
-
-顺序读写性能远大于随机读写性能
-
-WAL
-
-CheckPoint
-
-Redo/Undo
-
-Bitmap
-
-MVCC
-
-一致性Hash
-
-多态
-
-设计模式
-
-IoC依赖反转

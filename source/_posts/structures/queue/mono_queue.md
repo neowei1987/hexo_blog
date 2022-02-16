@@ -16,6 +16,7 @@ tags:
 若队列为空，pop_front 和 max_value 需要返回 -1
 
 1 <= push_back,pop_front,max_value的总操作数 <= 10000
+
 1 <= value <= 10^5
 
 ## 支持最大值的队列-实现思路
