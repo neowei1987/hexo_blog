@@ -31,5 +31,4 @@ tags:
 
 ![Mysql_InnoDB引擎各隔离级别会出现的问题](https://img-blog.csdnimg.cn/20210126002636194.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0OTA4ODM4,size_16,color_FFFFFF,t_70)
 
-
-虽说希望你了解，但是友情提示一波：线上高并发应用，尽量不要用事务！
+虽说希望你了解，但是友情提示一波：线上高并发应用，尽量**不要用事务**！
