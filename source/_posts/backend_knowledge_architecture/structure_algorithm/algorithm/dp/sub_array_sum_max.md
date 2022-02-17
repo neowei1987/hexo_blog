@@ -35,7 +35,9 @@ tags:
 如何判断呢？ 这个是一个判定问题。
 
 对这个题目而言，我们的解决步骤如下：
-从start到end累加得到一个数，跟着钱
+从start到end累加得到一个数，累加的时间复杂度是$O(N)$
+
+最终的时间复杂度是$O(n^3)$
 
 ## 子数组最大和--代码
 
@@ -44,8 +46,12 @@ class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
         /*
-        dp[i] = num[i] if dp[i - 1] < 0;
+        dp[i] = num[i] if dp[i - 1] < 0; 
         dp[i] = dp[i - 1] + num[i]; if dp[i - 1] >= 0
+        表示以A[i]结尾的子数组的子数组最大和。
+        最终的结果，一定是dp[i]中选择一个最大的。
+
+    
         */
         
         int sum = 0;
