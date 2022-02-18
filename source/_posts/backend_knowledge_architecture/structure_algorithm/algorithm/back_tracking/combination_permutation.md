@@ -6,7 +6,20 @@ categories:
 tags: 
 ---
 
+
 给定两个整数 n 和 k，返回 1 ... n 中所有可能的 k 个数的组合。
+
+### N选K组合解题思路
+
+状态：第i个
+
+选择: n-i个选择
+
+路径：path选择
+
+结果集：列表
+
+结束条件： 找到所有的组合； path路径到了k
 
 ```cpp
 
@@ -38,6 +51,18 @@ dfs(0, 0);
 
 找出所有相加之和为 n 的 k 个数的组合。组合中只允许含有 1 - 9 的正整数，并且每种组合中不存在重复的数字。
 
+### N选K组合的和解题思路
+
+状态：第i个
+
+选择: 9-i个选择
+
+路径：path选择
+
+结果集：列表
+
+结束条件： 找到所有的组合； path路径到了k，sum ok
+
 ```cpp
 
 vector<int> path;
@@ -60,11 +85,25 @@ void dfs(int u, int sum, int start) {
 dfs(0, n, 0);
 ```
 
-给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
-candidates 中的数字可以无限制重复被选取。
+给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。candidates 中的数字可以无限制重复被选取。
+
 说明：
+
 所有数字（包括 target）都是正整数。
+
 解集不能包含重复的组合。
+
+### candidates找和为target解题思路
+
+状态：第i个
+
+选择: 每次都有N个选择
+
+路径：path选择
+
+结果集：列表
+
+结束条件： 找到所有的组合； path路径到了k，sum ok
 
 ```cpp
     //如果是一个集合来求组合的话，就需要startIndex
@@ -82,7 +121,7 @@ candidates 中的数字可以无限制重复被选取。
         }
     }
 
-    //剪枝优化： 排序， 提前终止，判定条件
+    //剪枝优化： 排序(从大到小排序），提前终止，判定条件
     void dfs(vector<int>& d, int u, int sum, int start) {
         if (sum > target) {return;}
         if (sum == target) {
@@ -90,7 +129,7 @@ candidates 中的数字可以无限制重复被选取。
             return;
         }
 
-        //排序后，可以剪枝，提前终止本层
+        //排序后，可以剪枝，提前终止本层（因为后面的更小了，只要i不可以，后面的更不可以，可以提前终止）
         for (int i = start; i < n && sum+d[i] <= target; ++i) {
             path.push_back(d[i]);
             dfs(d, u + 1, sum + d[i], i); //可以重复使用
@@ -100,10 +139,12 @@ candidates 中的数字可以无限制重复被选取。
 ```
 
 给定一个数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
-candidates 中的每个数字在每个组合中只能使用一次。
+candidates 中的每个数字在每个组合中只能使用一次。 
 说明：
 所有数字（包括目标数）都是正整数。
 解集不能包含重复的组合。
+
+//需要进行排序预处理，从大到小
 
 ```cpp
 void dfs(vector<int>& d, int u, int sum, int start_index) {
@@ -127,6 +168,8 @@ void dfs(vector<int>& d, int u, int sum, int start_index) {
 
 给定一个 没有重复 数字的序列，返回其所有可能的全排列。
 
+//给坑选元素。
+
 ```cpp
     void dfs(vector<int>& d, int u) {
         if (u == n) {
@@ -144,6 +187,9 @@ void dfs(vector<int>& d, int u, int sum, int start_index) {
         }
     }
 ```
+
+//给元素选坑，后面可以选择的坑原来越少了。
+//u代表哪一个元素。
 
 ```cpp
     void dfs(vector<int>& d, int u) {
@@ -211,7 +257,7 @@ public:
 };
 ```
 
-为坑选择合适的元素
+为坑选择合适的元素，排个序先。
 
 ```cpp
     void dfs(int u) {

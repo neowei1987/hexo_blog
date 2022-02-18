@@ -20,6 +20,20 @@ str="BCCE" , return "true"
 
 str="ASAE" , return "false"
 
+## 解题思路
+
+状态：<i, j> + 访问位图
+
+选择: 四个方向
+
+路径：该问题不需要
+
+结果集：不需奥
+
+结束条件： 找到任何一个解就可以推出。
+
+## 示例代码
+
 ```cpp
 class Solution {
 public:

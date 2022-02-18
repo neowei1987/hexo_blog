@@ -12,6 +12,7 @@ public:
     int getNumberOfK(vector<int>& nums , int k) {
     if (nums.empty())  return 0;
     int l = 0, r = nums.size() - 1;
+    // 左边界
     while (l < r) {
         int mid = l + r >> 1;
         if (nums[mid] < k) {
@@ -24,6 +25,7 @@ public:
     if (nums[r] != k) return 0;
     int left = r;
 
+    // 右边界
     l = 0, r = nums.size() - 1;
     while (l < r) {
         int mid = l + r  + 1 >> 1;

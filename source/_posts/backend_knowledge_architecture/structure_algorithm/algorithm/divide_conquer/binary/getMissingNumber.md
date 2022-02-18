@@ -1,5 +1,5 @@
 ---
-title: 推公式系列-获取丢失的数字
+title: 获取丢失的数字
 date: 2021-01-03 19:47:03
 updated:
 copyright: true

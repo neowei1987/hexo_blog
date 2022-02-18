@@ -39,6 +39,6 @@ tags:
 |  题目分类 | 题目名称 |考察点   |其他说明|
 |  ----  | ---- |----  |----  |
 | | [比特位计数](bit_dp.html)  ||
-| | [找到序列中仅出现一次的数字](../findNumsAppearOnce.html)  |位操作-XOR操作|
+| | [找到序列中仅出现一次的数字](findNumsAppearOnce.html)  |位操作-XOR操作|
 | | [该数二进制表示中1的个数](NumberOf1.html)  |位操作-找1|
 | | [通过位运算来实现加法](../bit_add.html)  |XOR技巧|

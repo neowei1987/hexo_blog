@@ -20,7 +20,7 @@ public:
             if (nums[mid] >= mid) {
                 r = mid;
             }
-            else {
+            else { //[mid + 1, r] 都不可能满足满足；因为递增
                 l = mid + 1;
             }
         }

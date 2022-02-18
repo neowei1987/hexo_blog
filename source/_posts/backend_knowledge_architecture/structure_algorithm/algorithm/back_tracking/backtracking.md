@@ -118,6 +118,4 @@ https://www.jianshu.com/p/23737ee122bf
 |  ----  | ---- |----  |----  |
 || [机器人移动次数](moving_cnt.html)  ||
 || [是否有字符串路径](has_str_path.html)  ||
-|排列组合| [回溯系列-组合排列](../classic_mutant/combination_permutation.html)  ||
-
-按照字典序打印1～N的排序
+|排列组合| [回溯系列-组合排列](combination_permutation.html)  ||
