@@ -48,7 +48,11 @@ tags:
 
 优点：简单、性能好、趋势递增
 
-不足：依赖机器的时钟，如果服务器时钟回拨，会导致重复ID生成
+不足：依赖机器的时钟，如果服务器时钟回拨，会导致重复ID生成。
+
+#### 时钟回拨
+
+可以考虑通过历史时间（当自增ID发生回环时，进行+1）、扩展位（当检测到本次时间相比之前变小，则扩展位++）
 
 ### 借助Zookeeper
 
@@ -72,7 +76,9 @@ https://www.infoq.cn/article/wechat-serial-number-generator-architecture
 
 逻辑服务层：负责加载max_seq=>cur_seq，每次分配新的时，cur_seq++;如果超出，则持久化max_seq
     从而减少了对store的读写
+
 store层：负责存储每一个用户的max_seq，但是如果每一个用户都存储一个max_seq的话，使用的量有点大，可以考虑一个uid范围内的公用一个max_seqno
+
 store的持久化：NRW策略（W +R > N)
 
 set化部署，号段隔离

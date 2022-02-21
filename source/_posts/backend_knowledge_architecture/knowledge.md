@@ -1312,12 +1312,19 @@ APM：端到端的监控体系
 ### 0x34 常见系统设计
 
 系统设计一般会经过几步：
-第一，了解业务要实现的功能以及DAU状况
+
+第一，了解业务要实现的功能以及DAU状况（除了需求功能，还要考虑高性能、高扩展性、高可用性）
+
 第二，根据第一步了解的信息，进行初略估计：
+
 （1）估计系统的QPS
+
 （2）估计系统对数据库的QPS以及是否需要缓存
+
 （3）估计系统每天产生的数据量以及累计总量，决定是否需要额外存储
+
 （4）根据以上3点去估计需要几种类型的机器以及每种类型的机器数量。
+
 以上第（4）点提到的估计需要我们对系统的吞吐率比较了解，我们可以看下面的例子：
 
 > 服务器配置
@@ -1330,31 +1337,95 @@ CPU：Intel(R) Xeon(R) CPU 1.60GHz
 第三，输出系统整体架构以及每个模块的单独设计
 
 首先，我们要罗列出系统中应该要有哪些模块，每一个模块需要哪些数据，存储的数据访问以及存储特点。不同的特点对应着不同的存储：关系型数据库、KV数据库、KV缓存、分布式数据库、ClickHouse、HBase等（这里我们需要知道尽可能多的存储类型以及各自的优缺点）
-第二，这些模块对外提供哪些功能，这些功能提供给谁。搞清楚各模块之间的调用关系，注意不要出现环形依赖。如果有必要的话，是否可以借助消息队列来解除耦合。
-第三，模块提供的接口QPS是多少？这些QPS是读还是写？支撑读的话是否需要缓存？支撑写的话是否需要队列？
+
+其次，这些模块对外提供哪些功能，这些功能提供给谁。搞清楚各模块之间的调用关系，注意不要出现环形依赖。如果有必要的话，是否可以借助消息队列来解除耦合。
+
+最后，模块提供的接口QPS是多少？这些QPS是读还是写？支撑读的话是否需要缓存？支撑写的话是否需要队列？
 
 第四，对架构进行进一步优化
+
 （1）业务逻辑上的优化：是不是可以调整业务逻辑来让系统支撑更高的吞吐？
+
 （2）架构优化：性能瓶颈、单点故障、是否可扩展、监控是否到位
-https://www.codercto.com/a/72987.html
+
+以上内容可以参考： https://www.codercto.com/a/72987.html
 
 下面的表格汇总了一些我遇到的常见系统设计题目，供参考。
 
 | 题目       | 核心考察点 |
 | :--------- | :-- |
-| [唯一ID生成器](http://www.b5mang.com/../system_design/uniq_id.html) | 先号段后ID  |
-| [短网址](http://www.b5mang.com/../system_design/tiny_url.html) | 基于自增ID来生成url |
-| [秒杀系统](http://www.b5mang.com/../system_design/second_kill.html)  |  防止超卖、异步扣库存  ｜
-| [抽奖系统](http://www.b5mang.com/../system_design/lottery.html) |  概率、蓄水池采样  ｜
-| [PUSH系统](http://www.b5mang.com/../system_design/push.html)  | 长链接、队列  |
-| [消息系统](http://www.b5mang.com/../system_design/im.html) | TimeLine ｜
-| [微博系统](http://www.b5mang.com/../system_design/feed.html)  |  TimeLine  ｜
-| [定时任务调度系统](http://www.b5mang.com/../system_design/task_scheduler.html) |  定时器  ｜
-| [分布式日志系统](http://www.b5mang.com/../system_design/distributed_log.html)|  倒排  ｜
-| [网站用户在线统计](http://www.b5mang.com/../system_design/online_stat.html)|  hash  ｜
-| [用户积分排名系统](http://www.b5mang.com/../system_design/val_rank.html)|  树形分区、排名数组  ｜
+| [唯一ID生成器](system_design/uniq_id.html) | 先号段后ID、雪花算法  |
+| [短网址](system_design/tiny_url.html) | 基于自增ID来生成url |
+| [秒杀系统](system_design/second_kill.html)  | 防止超卖、异步扣库存  ｜
+| [抽奖系统](system_design/lottery.html) |  概率、蓄水池采样  ｜
+| [PUSH系统](system_design/push.html)  | 长链接、队列  |
+| [消息系统](system_design/im.html) | TimeLine ｜
+| [微博系统](system_design/feed.html)  |  TimeLine  ｜
+| [定时任务调度系统](system_design/task_scheduler.html) |  定时器  ｜
+| [分布式日志系统](system_design/distributed_log.html)|  倒排  ｜
+| [网站用户在线统计](system_design/online_stat.html)|  hash  ｜
+| [用户积分排名系统](system_design/val_rank.html)|  树形分区、排名数组  ｜
+
 
 ## 0x40 计算机方法论
+
+### 批量处理
+
+在处理网络、磁盘等高耗时请求时，通过合并一些频繁请求的小资源可以获得更快的加载速度。
+
+### 预处理
+
+当某一次计算特别慢时，可以提前算吗？ 算好了之后把它存起来，下次访问就快了。
+
+checkpoint
+
+### 懒惰思想
+
+延后计算，最终一致。
+
+#### 池化
+
+例如：内存池、线程池、连接池。池化实际上是预处理和延后处理的一种应用场景，通过池子将各类资源的创建提前和销毁延后。
+
+#### Copy On Write
+
+零拷贝（mmap、sendfile)
+
+关于Trade Off
+
+### 致性换性能
+
+#### buffer 写入
+
+并不是每次都把请求打到底层的慢速存储，
+
+#### 同步访问变异步访问
+
+同步变异步，追求更好的性能。
+
+### 空间换时间
+
+#### 双缓冲
+
+#### 索引
+
+bitmap、readix数、红黑树
+
+#### 多级索引
+
+#### 线程局部存储
+
+### 提升复杂度，提升性能
+
+#### 随机读写转顺序读写
+
+WAL
+
+### 局部性原理
+
+#### 缓存
+
+
 
 异地多活
 延迟高：60ms+
@@ -1369,25 +1440,14 @@ https://www.codercto.com/a/72987.html
 
 https://www.sohu.com/a/211248633_472869
 
-缓存
-
-预先延后～
-预先计算，缓存起来。延后计算，最终一致。
-
-池化～
-例如：内存池、线程池、连接池。池化实际上是预处理和延后处理的一种应用场景，通过池子将各类资源的创建提前和销毁延后。
-
-异步～
-同步变异步，追求更好的性能
 
 消息队列～
 解除耦合、削峰填谷、非核心逻辑异步化
 
-批量处理～
-在处理网络、磁盘等高耗时请求时，通过合并一些频繁请求的小资源可以获得更快的加载速度。
+
 
 具体技法
-零拷贝（mmap、sendfile)
+
 无锁化（CAS操作）
 
 https://blog.csdn.net/m0_37947204/article/details/80103151

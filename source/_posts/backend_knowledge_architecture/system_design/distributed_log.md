@@ -7,3 +7,15 @@ categories:
 - [系统设计]
 tags: 
 ---
+
+ELK
+
+elastic search
+
+对日志进行分词索引
+
+log stash
+
+日志采集
+
+Kibana
