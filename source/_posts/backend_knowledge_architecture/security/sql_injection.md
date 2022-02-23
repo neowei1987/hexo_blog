@@ -10,6 +10,8 @@ mathjax: true
 categories:
 ---
 
+where a = 'input' or 1=1;
+
 XSS（Cross-site request forgery）跨站请求伪造
 
 一种允许攻击者在另一个用户的浏览器中执行恶意脚本的脚本注入式攻击。

@@ -756,6 +756,8 @@ Redo Log与binlog的两阶段提交
 
 垂直拆分、水平拆分
 
+{UID%100}
+
 策略1: range:  主键id / 单库单表限制（例如2000w)
 
     优点：简单，容易扩展
@@ -984,8 +986,6 @@ Leader, Follwer, ISR (in-sync replicas)
 组件本身：
 （1）选择高性能的数据存储方式（磁盘+pageCache)
 （2）配合zero拷贝技术
-
-
 
 ### 0x32 常见分布式系统
 
@@ -1229,6 +1229,9 @@ trace_id + span_id来标识链路的调用关系
 
 #### 0x335 配置中心
 
+long_polling 
+双缓冲 + Tthread lo store
+
 不同的配置类型：节点类型 》机房类型 》 全局配置
 
 配置项的读取-变更推送如何实现：
@@ -1366,20 +1369,21 @@ CPU：Intel(R) Xeon(R) CPU 1.60GHz
 | [网站用户在线统计](system_design/online_stat.html)|  hash  ｜
 | [用户积分排名系统](system_design/val_rank.html)|  树形分区、排名数组  ｜
 
-
 ## 0x40 计算机方法论
 
-### 批量处理
+### 批量处理 Batch
 
 在处理网络、磁盘等高耗时请求时，通过合并一些频繁请求的小资源可以获得更快的加载速度。
 
-### 预处理
+### 预处理 (Pre process)
 
 当某一次计算特别慢时，可以提前算吗？ 算好了之后把它存起来，下次访问就快了。
 
-checkpoint
+checkpoint 检查点
 
-### 懒惰思想
+快速恢复存储系统 + log
+
+### 懒惰思想 
 
 延后计算，最终一致。
 
@@ -1393,11 +1397,13 @@ checkpoint
 
 关于Trade Off
 
-### 致性换性能
+### 一致性换性能
 
 #### buffer 写入
 
 并不是每次都把请求打到底层的慢速存储，
+
+PageCache
 
 #### 同步访问变异步访问
 
@@ -1407,25 +1413,58 @@ checkpoint
 
 #### 双缓冲
 
+double buffer
+
 #### 索引
 
-bitmap、readix数、红黑树
+地址
+0x11111
+0x11112
+
+Trie => radix tree
+
+物理内存、page cache管理
+
+bitmap(磁盘文件管理)、radix tree、红黑树
+
+superblock 
+
+bitmap area
+
+bitmap area
+
+inode blocks
+
+data blocks
 
 #### 多级索引
 
+page table 
+
 #### 线程局部存储
 
-### 提升复杂度，提升性能
+线程局部分析
+
+thread local
+
+### 提升复杂度，提高性能
 
 #### 随机读写转顺序读写
 
-WAL
+binlog
+LSM tree 
+
+WAL （write ahead log）
 
 ### 局部性原理
 
 #### 缓存
 
+local\redis\cpu cache L1/L2
 
+cache line 64k
+
+伪共享
 
 异地多活
 延迟高：60ms+
@@ -1443,7 +1482,6 @@ https://www.sohu.com/a/211248633_472869
 
 消息队列～
 解除耦合、削峰填谷、非核心逻辑异步化
-
 
 
 具体技法

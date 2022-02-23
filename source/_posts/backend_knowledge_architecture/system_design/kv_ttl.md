@@ -2,6 +2,8 @@
 
 首先是KV存储，可以使用LogStructuredTree
 
+levelDB
+
 把TTL当作value
 
 党进行compaction时，过期的数据会被忽略。

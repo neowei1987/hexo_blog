@@ -4,4 +4,4 @@ randomized
 
 consistent-hashing
 
-locality-aware
+brpc 框架中 locality-aware
