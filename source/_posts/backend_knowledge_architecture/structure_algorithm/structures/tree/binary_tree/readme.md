@@ -329,13 +329,9 @@ public:
 |二叉树构建 | [根据前序序列与中序序列重建二叉树](pre_in_build.html)  ||
 |二叉树层次遍历 | [从上往下打印出二叉树的每个结点](../printFromTopToBottom.html)  ||
 |二叉搜索树遍历| [二叉搜索树转有序双向链表](../tree2list.html)  ||
-|二叉搜索树遍历 | [获取第k个节点](../kthNode.html)  ||
+|二叉搜索树遍历 | [获取第k个节点](../kthNode.html)  |全局变量技巧|
 |二叉搜索树遍历 | [判断该数组是不是某二叉搜索树的后序遍历的结果](../verifySequenceOfBST.html)  ||
 |二叉搜索树遍历 | [中序遍历序列的下一个节点](../inorderSuccessor.html)  ||
 |二叉树遍历系列 | [二叉树中结点值的和为输入整数的所有路径](../findPathInTree.html)  ||
+|二叉树遍历系列 | [求二叉树中节点的最大距离](GetMaxDistance.html)  |全局变量技巧|
 
-
-
-算法题：二叉树最小公共祖先
-
-一棵树里最远的两个节点间的距离
