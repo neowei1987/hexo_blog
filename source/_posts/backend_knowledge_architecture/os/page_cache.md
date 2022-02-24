@@ -11,9 +11,8 @@ Page Cache 与 buffer cache 的共同目的都是加速数据 I/O：写数据时
 
 下图近似地示出 32-bit Linux 系统中可能的一种 Page Cache 结构，其中 block size 大小为 1KB，page size 大小为 4KB。
 
-
 ![page_cache_and_buffer_cache](https://img-blog.csdnimg.cn/img_convert/38d0c14994613a0342e0158ec82d04eb.png)
 
-Page Cache 中的每个文件都是一棵基数树（radix tree，本质上是多叉搜索树），树的每个节点都是一个页。根据文件内的偏移量就可以快速定位到所在的页，如下图所示。关于基数树的原理可以参见英文维基，这里就不细说了。
+Page Cache 中的每个文件都是一棵**基数树**（radix tree，本质上是Trie、多叉搜索树），树的每个节点都是一个页。根据文件内的偏移量就可以快速定位到所在的页，如下图所示。关于基数树的原理可以参见英文维基，这里就不细说了。
 
 ![page_cache_radix_tree](https://img-blog.csdnimg.cn/img_convert/a4763bd4d3d093dc7fee3da90247ba5d.png)
