@@ -9,7 +9,7 @@ description:
 mathjax: true
 categories:
 - [数据结构与算法]
-  tags:
+tags:
 - 本地交换法
 ---
 

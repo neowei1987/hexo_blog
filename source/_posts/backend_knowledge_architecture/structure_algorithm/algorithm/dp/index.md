@@ -192,3 +192,4 @@ f(n)=f(n−1)+f(n−2)(n≥3)
 | 二维DP | [骰子点数](num_of_slices.html)  ||
 | | [股票买卖系列](./stock_common.html)  ||
 | | [子数组最大和](../pt_offer/sub_array_sum_max.html)  |子数组最大和问题|
+    

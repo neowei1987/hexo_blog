@@ -2,8 +2,6 @@
 title: 内存池系列｜MC内存分配
 ---
 
-memcache如何管理内存
-
 slab allcator的机制
 
 ![memcache内存分配示意图](http://cdn.b5mang.com/2021320115717.png)
