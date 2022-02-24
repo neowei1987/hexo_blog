@@ -132,3 +132,72 @@ public:
 };
 
 ```
+
+5. Pattern: Cyclic Sort，循环排序
+经典题目：
+Cyclic Sort (easy)
+Find the Missing Number (easy)
+Find all Missing Numbers (easy)
+Find the Duplicate Number (easy)
+Find all Duplicate Numbers (easy)
+
+
+
+
+
+
+
+10. Pattern: Subsets，子集类型，一般都是使用多重DFS
+经典题目：
+Subsets (easy)
+Subsets With Duplicates (easy)
+Permutations (medium)
+String Permutations by changing case (medium)
+Balanced Parentheses (hard)
+Unique Generalized Abbreviations (hard)
+
+11. Pattern: Modified Binary Search，改造过的二分
+经典题目：
+Order-agnostic Binary Search (easy)
+Ceiling of a Number (medium)
+Next Letter (medium)
+Number Range (medium)
+Search in a Sorted Infinite Array (medium)
+Minimum Difference Element (medium)
+Bitonic Array Maximum (easy)
+
+12. Pattern: Top ‘K’ Elements，前K个系列
+经典题目：
+Top ‘K’ Numbers (easy)
+Kth Smallest Number (easy)
+‘K’ Closest Points to the Origin (easy)
+Connect Ropes (easy)
+Top ‘K’ Frequent Numbers (medium)
+Frequency Sort (medium)
+Kth Largest Number in a Stream (medium)
+‘K’ Closest Numbers (medium)
+Maximum Distinct Elements (medium)
+Sum of Elements (medium)
+Rearrange String (hard)
+
+13. Pattern: K-way merge，多路归并
+经典题目：
+Merge K Sorted Lists (medium)
+Kth Smallest Number in M Sorted Lists (Medium)
+Kth Smallest Number in a Sorted Matrix (Hard)
+Smallest Number Range (Hard)
+
+14. Pattern: 0/1 Knapsack (Dynamic Programming)，0/1背包类型
+经典题目：
+0/1 Knapsack (medium)
+Equal Subset Sum Partition (medium)
+Subset Sum (medium)
+Minimum Subset Sum Difference (hard)
+
+15. Pattern: Topological Sort (Graph)，拓扑排序类型
+经典题目：
+Topological Sort (medium)
+Tasks Scheduling (medium)
+Tasks Scheduling Order (medium)
+All Tasks Scheduling Orders (hard)
+Alien Dictionary (hard)

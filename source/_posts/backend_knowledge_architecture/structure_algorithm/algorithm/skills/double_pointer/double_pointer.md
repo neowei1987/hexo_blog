@@ -43,3 +43,15 @@ https://www.jianshu.com/p/b5f9ac6de184
 
 有字符串,将所有连续的ac跟单独的b去掉后的字符串：如acccccb->ccc; aacceacdb->ed
     时间复杂度O(n) 空间复杂度O(n) --> 时间复杂度O(n) 空间复杂度O(1)
+
+    2. Pattern: two points, 双指针类型
+经典题目：
+Pair with Target Sum (easy)
+Remove Duplicates (easy)
+Squaring a Sorted Array (easy)
+Triplet Sum to Zero (medium)
+Triplet Sum Close to Target (medium)
+Triplets with Smaller Sum (medium)
+Subarrays with Product Less than a Target (medium)
+Dutch National Flag Problem (medium)
+≈

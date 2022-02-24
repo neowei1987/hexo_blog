@@ -27,3 +27,10 @@ a==b 等价于：  a>=b, b <= a
 可以小范围搜索+多重限制贪心乱搞，说不定就骗到了100pts呢，考试的时候要勇于乱搞，敢于乱搞
 一般一个错误的贪心，都能提炼出一些在某些限制条件下的正确性质。
 出题人是傻的，数据是水的，贪心+暴力是能过的，是能$Au$的。
+
+4. Pattern: Merge Intervals，区间合并类型
+经典题目：
+Merge Intervals (medium)
+Insert Interval (medium)
+Intervals Intersection (medium)
+Conflicting Appointments (medium)

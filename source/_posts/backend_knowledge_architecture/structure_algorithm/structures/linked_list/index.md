@@ -29,3 +29,17 @@ tags:
 | | [链表倒数第K个节点](../findKthToTail.html)  |双指针之快慢指针|
 | | [链表归并](../list_merge.html)  |归并排序|
 | | [两个链表的公共节点](findFirstCommonNode.html)  |双指针之快慢指针|
+
+
+6. Pattern: In-place Reversal of a LinkedList，链表翻转
+经典题目：
+Reverse a LinkedList (easy)
+Reverse a Sub-list (medium)
+Reverse every K-element Sub-list (medium)
+
+    跳表
+    双向链表
+    XOR  Linked List
+    Self Organizing List
+    环形链表
+    Unrolled Linked List

@@ -68,9 +68,29 @@ littile's raw定律：并发 = rt * qps
 
 为什么要用 CPU\IOPS 作为启发值呢？因为自适应限流与 TCP 拥塞控制还存在不同之处，TCP 中客户端可以控制发送率，从而探测到 maxPass，但是 RPC **线上无法控制流量的速率**，所以必须以 CPU 作为标准，当 CPU 快满载的时候再开启，这时我们认为之前探测到的 maxPass 已经接近了系统的瓶颈，乘以 minRtt 就可以得到 InFlight
 
+peek_qps 峰值qps
+nodelay_latency 系统无负载或者低负载的响应时间，理论值无法计算
+Min_latency 用来替代nodelay_latency
+
+max_cocurrent  = max_qps * ((2+alpha) * min_latency - latency) 
+max_qps
+
+降低max_cocurrent
+
+服务的noload_latency并非是一成不变的，自适应限流必须能够正确的探测noload_latency的变化。当noload_latency下降时，是很容感知到的，因为这个时候latency也会下降。难点在于当latency上涨时，需要能够正确的辨别到底是服务过载了，还是noload_latency上涨了。
+
+
+一个请求在系统中的停留时间，1s; 一秒钟平均过来100个请求（当然一秒钟也会离开100个请求） 
+那么系统同时处理的请求数是多少？ 
+N = X * R
+
+一个用户在系统中的停留时间，30分钟；晚高峰5～7点，有500在线；问系统的并发用户是多少？
+C = L * n / T;
+
 参考：
 
 [BRPC开发手册](http://www.mianshigee.com/tutorial/incubator-brpc/1778a50865eb3518.md)
 
 [B站在微服务治理中如何探索与实践](https://xueqiu.com/9217191040/139169952)
+
 

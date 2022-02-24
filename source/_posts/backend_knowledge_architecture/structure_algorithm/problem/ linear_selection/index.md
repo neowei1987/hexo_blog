@@ -17,6 +17,33 @@
 
 上面已经说明了，找出最值最少的比较次数n-1，所以上面寻找的方法也是n-1次，不信可以累计求和，不过这样求最值的过程中最值上来的时候有一条路径被记录，这条路径的长度为lgn，找出次大值或者次小值直接在这个路径上寻找就只需要lgn-1的比较次数。
 
+
+Maximum and minimum of an array using minimum number of comparisons
+Write a C function to return minimum and maximum in an array. You program should make minimum number of comparisons.
+
+解答思路：
+
+法1: Pair Compare
+目标：尽可能的减少比较，如何确定a[i]是不是最小值或者最大值呢？
+
+基于比较，消除不确定性
+a[i]跟a[i+1] 比较之后？
+a[i] 如果比 a[i+1] 则a[i]才有可能跟max比较；a[i+1] 才有可能跟min比较；
+
+结论：3次比较消除了2个元素的的不确定性；
+
+a[i]跟min, max比较；
+a[i+1]跟min, max比较；
+结论：4次比较，完成了2个元素的确定性；
+
+法2: Divide and Conquer
+如果有两个元素？ 怎么选择最大值最小值？
+如果有一个元素，怎么选择最大值最小值？
+左半部分已经有了最大值，最小值；右半部分已经有了最小值最大值： 如何确定merge之后的最小值最大值？
+
+
 2、线性时间选择
 
 数组：找第k大的数 （无序数组） O(N) -> 数组无法修改，额外空间O(1) 时间O(N)
+
+

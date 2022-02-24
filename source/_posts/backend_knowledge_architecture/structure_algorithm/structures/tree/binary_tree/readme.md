@@ -334,4 +334,24 @@ public:
 |二叉搜索树遍历 | [中序遍历序列的下一个节点](../inorderSuccessor.html)  ||
 |二叉树遍历系列 | [二叉树中结点值的和为输入整数的所有路径](../findPathInTree.html)  ||
 |二叉树遍历系列 | [求二叉树中节点的最大距离](GetMaxDistance.html)  |全局变量技巧|
+|二叉树遍历系列 | [二叉树的路径打印](node_path.html)  ||
 
+
+
+7. Pattern: Tree Breadth First Search，树上的BFS
+经典题目：
+Binary Tree Level Order Traversal (easy)
+Reverse Level Order Traversal (easy)
+Zigzag Traversal (medium)
+Level Averages in a Binary Tree (easy)
+Minimum Depth of a Binary Tree (easy)
+Level Order Successor (easy)
+Connect Level Order Siblings (medium)
+
+8. Pattern: Tree Depth First Search，树上的DFS
+经典题目：
+Binary Tree Path Sum (easy)
+All Paths for a Sum (medium)
+Sum of Path Numbers (medium)
+Path With Given Sequence (medium)
+Count Paths for a Sum (medium)

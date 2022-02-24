@@ -24,3 +24,22 @@
 2. 如何知道调用哪个服务？服务注册中心
 3. 服务治理体系：熔断、限流、降级、超时控制等
 4. 问题排查困难（分布式链路追踪）
+
+
+---
+
+微服务涉及哪些组件：
+
+服务注册与发现 （zookeeper, consul, euraker) 
+
+熔断、限流
+
+负载均衡（RoundRobin, Hash, Weight) 
+
+配置实时下发 (长轮询 + 版本号 + DoubleBufferedData + TLS）
+
+对接监控 (普罗米修斯) moni Kibana
+
+对接调用链追踪 （Jager) 
+
+日志平台（ELK）
