@@ -1,14 +1,6 @@
-STL内存分配
+---
+title: 内存池系列｜STL内存分配
+---
 
-memcache 管理内存
-
-nginx 管理内存
-
-操作系统管理内存：
-
-物理内存：slab、buddy伙伴
-
-N个链表
-
-虚拟内存：红黑树，TLB
-
+1. 基于hash的freelist
+2. 由于STL知道分配出去的内存对象大小，所以他技巧性地用了union来减少内碎片。
