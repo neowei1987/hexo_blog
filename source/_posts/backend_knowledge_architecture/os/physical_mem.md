@@ -1,6 +1,10 @@
-
 ---
-title: 操作系统系列｜物理内存管理
+title: 操作系统 - 物理内存管理
+date: 2022-02-25 10:43:03
+updated:
+mathjax: true
+categories:
+tags: 
 ---
 
 ![内存访问](https://pics3.baidu.com/feed/838ba61ea8d3fd1f0c5a12495ab0521794ca5f7c.jpeg?token=dd0db40934355dcfa5bc35bec53f8b4d)
@@ -23,13 +27,8 @@ Caches：cpu和内存之间的缓存机制，用于提高访问速率，armv8架
 
 ![物理内存管理](https://pics7.baidu.com/feed/6609c93d70cf3bc7b0d84842bbfecda9cf112a4e.png?token=4f2dc6e2a73bddf5becd6dd924ebbded)
 
-
 ![Buddy系统](https://pics4.baidu.com/feed/962bd40735fae6cd484f59cc7d4d782c40a70fae.png?token=4296ed176d75fde417a7b04612fe8246)
 
-对于Page级别的内存分配，通过Buddy系统来管理；
+对于Page级别的内存分配，通过Buddy系统来管理；TCMalloc 也是通过这种方式来管理span。
 
-TCMalloc 也是通过 这种方式来管理span。
-
-对于小对象（例如task_struct、mm_struct等）通过SlabAllcator来进行管理分配。
-
-这种思路，Memcache会借鉴。
+对于小对象（例如task_struct、mm_struct等）通过SlabAllcator来进行管理分配。这种思路，Memcache会借鉴。

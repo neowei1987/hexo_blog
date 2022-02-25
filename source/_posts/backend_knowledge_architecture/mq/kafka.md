@@ -10,7 +10,6 @@ tags:
 
 ![设计思想](https://img-blog.csdn.net/20180317011215184?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2RvZzI1MA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
-
 #### cosume group
 
 通过cosume group，巧妙的解决了广播问题。
