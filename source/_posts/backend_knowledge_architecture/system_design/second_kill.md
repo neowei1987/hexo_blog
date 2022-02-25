@@ -181,6 +181,3 @@ https://www.yuque.com/chenboxue/kb/gmy24m
 目的：防止被黑产盯上之后通过脚本来请求服务端
 
 解决方案：动态获取秒杀地址
-
-
-

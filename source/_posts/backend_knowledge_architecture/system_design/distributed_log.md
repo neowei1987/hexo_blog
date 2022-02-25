@@ -8,14 +8,14 @@ categories:
 tags: 
 ---
 
-ELK
+ELK方案
 
-elastic search
+- elastic search
 
-对日志进行分词索引
+对日志进行分词，并建立倒排索引
 
-log stash
+- log stash
 
 日志采集
 
-Kibana
+- Kibana
