@@ -22,19 +22,33 @@ tags:
 2. 无法均衡后端负载
 3. 无法降低总体延迟
 
+nginx的WRR算法原理如下：
+
+每个服务器都有两个权重变量：
+
+a：weight，配置文件中指定的该服务器的权重，这个值是固定不变的；
+
+b：current_weight，服务器目前的权重。一开始为0，之后会动态调整。
+
+每次当请求到来，选取服务器时，会遍历数组中所有服务器。对于每个服务器，让它的current_weight增加它的weight；同时累加所有服务器的weight，并保存为total。
+
+遍历完所有服务器之后，如果该服务器的current_weight是最大的，就选择这个服务器处理本次请求。最后把该服务器的current_weight减去total。
+
+![nginx_WRR](https://img-blog.csdn.net/20160731092902416?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+
 ### 动态感知版的Weighted Round Robin
 
 动态感知的WRR
 peer.score = success_rate /(lantency * cpuUsage)
 
 具体做法：
+
 1. 利用每次RPC请求返回的Response夹带CPU使用率
 2. 每隔一段时间整体调整一次节点的权重分数
 
 不足：
 
 自动刷新权重值，但是在刷新时无法做到完全的实时，再快也不可能超过一个 RTT，都会存在一些信息延迟差。当后台资源比较稀缺时，遇到网络抖动时，就可能会把该节点炸掉，但是在监控上面是感觉不到的，因为 CPU 已经被平均掉了。
-信息滞后和分布式带来的羊群效应
 
 ### randomized
 

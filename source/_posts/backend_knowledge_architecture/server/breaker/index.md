@@ -1,6 +1,6 @@
 ---
 title: 高性能服务器设计-熔断模型
-date: 2022-02-18 10:01:03
+date: 2022-02-25 11:56:03
 mathjax: true
 categories:
 - 
@@ -20,41 +20,37 @@ tags:
 
 ## 常见熔断策略
 
-google SRE 自适应熔断
+### google SRE 自适应熔断
 
 基于失败率
 
-drop_ratio = max(0, （requests - K * accepts） / (requests + 1))
+drop_ratio = $max(0, （requests - K * accepts） / (requests + 1))$
 
 算法参数：
 
-requests：窗口时间内的请求总数
-
-accepts：正常请求数量
-
-K：敏感度，K 越小越容易丢请求，一般推荐 1.5-2 之间
+- requests：窗口时间内的请求总数
+- accepts：正常请求数量
+- K：敏感度，K 越小越容易丢请求，一般推荐 1.5-2 之间
 
 算法解释：
 
-正常情况下 requests=accepts，所以概率是 0。
-
-随着正常请求数量减少，当达到 requests == K* accepts 继续请求时，概率 P 会逐渐比 0 大开始按照概率逐渐丢弃一些请求，如果故障严重则丢包会越来越多，假如窗口时间内 accepts==0 则完全熔断。
-
-当应用逐渐恢复正常时，accepts、requests 同时都在增加，但是 K*accepts 会比 requests 增加的更快，所以概率很快就会归 0，关闭熔断。
+- 正常情况下 requests=accepts，所以概率是 0。
+- 随着正常请求数量减少，当达到 requests == K* accepts 继续请求时，概率 P 会逐渐比 0 大开始按照概率逐渐丢弃一些请求，如果故障严重则丢包会越来越多，假如窗口时间内 accepts==0 则完全熔断。
+- 当应用逐渐恢复正常时，accepts、requests 同时都在增加，但是 K*accepts 会比 requests 增加的更快，所以概率很快就会归 0，关闭熔断。
 
 ### brpc熔断策略
 
-可选的熔断由[CircuitBreaker](https://github.com/apache/incubator-brpc/blob/master/docs/cn/circuit_breaker.md)实现
-
 在开启了熔断之后，CircuitBreaker会记录每一个请求的处理结果，并维护一个累计出错时长，记为acc_error_cost，当acc_error_cost > max_error_cost时，熔断该节点。
 
-利用EMA（移动平均值）策略计算接口的平均响应时间；
+两个小技巧：
 
-利用双时间窗口统计来平衡短期抖动与长期错误率过高。
+1. 利用EMA（移动平均值）策略计算接口的平均响应时间
+2. 利用双时间窗口统计来平衡短期抖动与长期错误率过高；
 
 具体见：
+[CircuitBreaker](https://github.com/apache/incubator-brpc/blob/master/docs/cn/circuit_breaker.md)
 
-### netflix 断路器 
+### netflix 断路器
 
 ![熔断器策略](https://img-blog.csdnimg.cn/20201201181047280.png)
 
@@ -67,4 +63,3 @@ K：敏感度，K 越小越容易丢请求，一般推荐 1.5-2 之间
 错误率超过多少，则进入打开状态，持续一段时间。
 
 持续一段时间后，进入半开状态，允许定量的请求通过，如果成功的比例足够大，则进入关闭状态，否则重新加入打开状态。
-
