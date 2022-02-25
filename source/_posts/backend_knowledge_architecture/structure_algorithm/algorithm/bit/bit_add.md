@@ -1,5 +1,5 @@
 ---
-title:  位运算系列-不使用四则运算符的加法
+title: 位运算系列-不使用四则运算符的加法
 date: 2021-01-03 20:47:03
 updated:
 copyright: true

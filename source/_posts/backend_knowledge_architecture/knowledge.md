@@ -41,25 +41,28 @@ top: 1
 
 我这边尽量罗列一些跟我们平常工作相关的硬件知识，供各位参考。
 
-1. 计算机如何表示一个数，包括正整数、负数、浮点数等；
-   负数：通过补码来表示，反码 + 1（~N + 1）
-   浮点数：对于双精度浮点：符号位（1位） + 阶码（11位） + 尾数（52位）
-2. CPU的组成以及了解各个寄存器如何协作完成一次完整的函数调用；
+- 计算机如何表示一个数，包括正整数、负数、浮点数等；
+  
+  负数：通过补码来表示，反码 + 1（~N + 1）
 
-    下面这篇文章很详细的介绍了CPU的寄存器
-    https://blog.csdn.net/zhangdaisylove/article/details/47804165
+  浮点数：对于双精度浮点：符号位（1位） + 阶码（11位） + 尾数（52位）
 
-    下面这篇文章很好的介绍了函数调用
-    https://blog.csdn.net/it_10/article/details/52986350
+- CPU的组成以及了解各个寄存器如何协作完成一次完整的函数调用；
 
-    ![2020121203937](http://cdn.b5mang.com/2020121203937.png)
+  下面这篇文章很详细的介绍了CPU的寄存器
+  https://blog.csdn.net/zhangdaisylove/article/details/47804165
 
-    如何实现协程切换？
+  下面这篇文章很好的介绍了函数调用
+  https://blog.csdn.net/it_10/article/details/52986350
 
-3. CPU L1/L2缓存作用以及缓存一致性协议MESI；
-4. 计算机访问时间金字塔；
-5. 中断：包括常见的硬件中断、软中断；
-6. CPU是如何访问主存（By总线），外存（DMA）的；
+  ![2020121203937](http://cdn.b5mang.com/2020121203937.png)
+
+  如何实现协程切换？
+
+- CPU L1/L2缓存作用以及缓存一致性协议MESI；
+- 计算机访问时间金字塔；
+- 中断：包括常见的硬件中断、软中断；
+- CPU是如何访问主存（By总线），外存（DMA）的；
 
 | 设备   | 访问延迟 | 每秒钟吞吐量 |
 |  ----  | ----  | ---- |
@@ -80,24 +83,28 @@ top: 1
 
 参考：
 
-    https://blog.csdn.net/aijia7039/article/details/101261797?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control
-    
-    https://colin-scott.github.io/personal_website/research/interactive_latency.html 
+  https://blog.csdn.net/aijia7039/article/details/101261797?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control
+  
+  https://colin-scott.github.io/personal_website/research/interactive_latency.html 
 
-    http://norvig.com/21-days.html#answers
+  http://norvig.com/21-days.html#answers
 
 ### 0x02 操作系统相关
 
 操作系统是计算机学科必学科目，其重要性不言自明，不再赘述。同样罗列下比较实用的操作系统相关知识点：
 
 1. 进程与线程的本质，进程调度的原理；
+
    进程：一个静态程序的执行过程；线程：操作系统调度的基本单位；
+
    进程调度：多级反馈队列调度算法，既能使高优先级的作业得到响应又能使短作业（进程）迅速完成。具体原理我们可以了解一下：
+
    1、进程在进入待调度的队列等待时，首先进入优先级最高的Q1等待。
    2、首先调度优先级高的队列中的进程。若高优先级中队列中已没有调度的进程，则调度次优先级队列中的进程。例如：Q1,Q2,Q3三个队列，当且仅当在Q1中没有进程等待时才去调度Q2，同理，只有Q1,Q2都为空时才会去调度Q3。
    3、对于同一个队列中的各个进程，按照FCFS分配时间片调度。比如Q1队列的时间片为N，那么Q1中的作业在经历了N个时间片后若还没有完成，则进入Q2队列等待，若Q2的时间片用完后作业还不能完成，一直进入下一级队列末尾，直至完成。
    4、在最后一个队列QN中的各个进程，按照时间片轮转分配时间片调度。
    5、在低优先级的队列中的进程在运行时，又有新到达的作业，此时须立即把正在运行的进程放回当前队列的队尾，然后把处理机分给高优先级进程。换而言之，任何时刻，只有当第1~i-1队列全部为空时，才会去执行第i队列的进程（抢占式）。特别说明，当再度运行到当前队列的该进程时，仅分配上次还未完成的时间片，不再分配该队列对应的完整时间片。
+
 2. OS如何管理物理内存、虚拟内存，OS是如何跟硬件配合完成虚拟内存到物理内存的转换的；
    TLB: 虚拟地址到物理地址的查询结果的高速缓存；
 https://www.cnblogs.com/east1203/p/11572500.html
@@ -157,7 +164,7 @@ TCP协议在平常工作中非常重要，如果熟悉tcp协议，那么一个�
    multipart/form-data 可上传FILE
 4. 了解http2.0的设计原理，并在平常工作中借鉴使用。https://www.cnblogs.com/barrywxx/p/8570006.html
 
-  双向流、消息头压缩、单 TCP 的多路复用、服务端推送等特性，这些特性使得 gRPC 在移动端设备上更加省电和节省网络流量；
+  双向流、消息头压缩、单TCP的多路复用、服务端推送等特性，这些特性使得 gRPC 在移动端设备上更加省电和节省网络流量；
 
 ### 0x04 数据结构与算法
 
@@ -201,12 +208,6 @@ TCP协议在平常工作中非常重要，如果熟悉tcp协议，那么一个�
 （1）二分下标：在一个有序数组（该条件可以适当放宽）中查找目标元素的下标。
 （2）二分答案：我们找的是一个整数，并且这个整数我们知道它可能的最小值和最大值。此时，我们可以考虑使用二分查找算法找到这个目标值
 （3）借助二分将最优化问题转判定问题
-
-https://zhuanlan.zhihu.com/p/157779732
-https://www.dazhuanlan.com/2019/12/16/5df6e82127d88/
-https://blog.csdn.net/weixin_34355715/article/details/94465888
-https://blog.csdn.net/weixin_43626741/article/details/104364387
-数组
 
 第四，双指针（对撞、快慢、滑动窗口）
 
@@ -282,7 +283,7 @@ Hash如何解决冲突：拉链法、开放定址法
 队列的基本特性：新进新出。
 这里同样也讲一下技巧性很强的单调队列。通常我们利用单调队列来解决滑动窗口求最值问题。其核心思想在于每来一个新的窗口元素，我们需要从队列中依次取元素出来，并与之比较，如果队列中的元素更小，就直接出队。（为什么呢？ 新进来的元素比老元素更大，并且生命周期更长，显然老元素应该被淘汰掉）最后，再把新的元素放入队列。
 
-初次，队列最主要的用途就是辅助完成图或者树的BFS，比较经典的问题包括：拓扑排序、分层打印等。
+除此，队列最主要的用途就是辅助完成图或者树的BFS，比较经典的问题包括：拓扑排序、分层打印等。
 
 第七、堆与优先队列
 
@@ -341,11 +342,13 @@ Hash如何解决冲突：拉链法、开放定址法
 算法模版：
 
 回溯函数模板返回值以及参数, 返回值一般为void,参数要看具体的问题, 签名如下：
+
   ``` cpp
   void backtracking(参数) 
   ```
 
 回溯函数终止条件： 什么时候达到了终止条件，树中就可以看出，一般来说搜到叶子节点了，也就找到了满足条件的一条答案，把这个答案存放起来，并结束本层递归。 代码入下：
+
   ```cpp
   if (终止条件) {
     存放结果;
@@ -354,6 +357,7 @@ Hash如何解决冲突：拉链法、开放定址法
   ```
 
 回溯搜索的遍历过程
+
 ```cpp
     void backtracking(参数) {
       if (终止条件) {
@@ -413,15 +417,17 @@ Hash如何解决冲突：拉链法、开放定址法
 
 最后，了解一些经典算法题目，尤其是一题多解的那种。
 
-
 序列分割问题（两部分、三部分）
-    考察点：快排思想
+  考察点：快排思想
+
 第K大问题
     n*Lgnz => 考察点：分治、快排 / 小顶堆
     线性 => 考察点：分组中位数
+  
 中位数相关
   动态维护序列中位数
   经典均分纸牌问题
+
 归并排序
 逆序对问题
     考察点：归并排序、平衡树、*树状数组、*线段树
@@ -445,7 +451,7 @@ Longest Consecutive Sequence 求最长连续序列
 （1）hash来记录是否使用过，以某个元素为中心，向两侧扩展
 （2）带size的并查集
 
-two sum / three sum / three sum closest / four sum 
+two sum / three sum / three sum closest / four sum
 算法思路：hash / 排序 + 双指针 / 排序 + 双指针/ hash map
 
 remove elments
@@ -458,6 +464,7 @@ next permutation
 
 均分纸牌问题
     考察点：前缀和
+
 环形均分纸牌
     考察点：前缀和、中位数、减去平均值的技巧
 
@@ -521,7 +528,7 @@ BIO 线程模型主要存在如下三个问题：
 
 ![在这里插入图片描述](https://images.gitbook.cn/64cd3430-a0eb-11ea-925f-c3d0464abd84)
 
-第二、如何对资源进行管理？ 
+第二、如何对资源进行管理？
 
 服务运行过程中，会利用到很多的资源，包括但不限于：内存、连接、线程、协程；其实，答案蛮简单，就是**“池子”的思想**，具体到特定的资源，也就变成了我们经常听到的“内存池”、“连接池”、“对象池”等。
 
@@ -564,7 +571,7 @@ BIO 线程模型主要存在如下三个问题：
 第一、了解数据库索引相关知识，包括但不限于：
 
 1. Mysql 数据库有哪些索引以及他们各自的特点？InnoDB为什么选择用B+树作为索引，而不用B树？  
-   
+
 |  索引   | 特点 | 使用场景 |
 |  ----  | ----  | ---- |
 | hash索引  | 散列表实现，等值查询效率高，不能排序,不能进行范围查询 | 不需要范围查询，仅需等值查询时，可以考虑使用|
@@ -573,12 +580,14 @@ BIO 线程模型主要存在如下三个问题：
 | FullText索引  | 分词加倒排索引实现 |有类似like的全文检索类型的查询|
 
 2. 索引匹配原则：左前缀匹配原则
+
 3. 聚簇索引、非聚簇索引是怎么回事？
-   
+
 |  索引   | 特点 | 使用场景 |
 |  ----  | ----  | ---- |
 | 聚簇索引  | 数据按照索引顺序存储，叶子节点存储真实的数据 | InnoDB索引|
 | 非聚簇索引  | 叶子节点存储指向真正数据行的指针 |MyISAM|
+
 4. 数据库回表是怎么回事？如何避免？
    在查询辅助索引时，如果要查询的字段已经全部在索引中了，那么就不需要额外再查询主索引了；反之，如果要查询的字段当前索引无法覆盖，那么Mysql需要额外查询主索引去获取要查询的字段，访问索引的次数多了一次，我们称刚才的过程为回表。我们通过增加全覆盖索引可以避免回表。
 5. 出现慢查询时会用explain来定位解决
@@ -621,9 +630,8 @@ BIO 线程模型主要存在如下三个问题：
 |  ----  | ----  | ---- |
 | 行级共享锁  | 兼容 | 兼容|
 |  行级互斥锁 | 兼容|兼容|
- 3. 共享锁、拍他锁、意向共享锁、意向拍他锁
- 4. 行锁 VS 表锁
- 5. Record lock、gap lock、next-key lock
+
+ 3. Record lock、gap lock、next-key lock
     record lock, 行锁， 锁直接加在索引记录上面，锁住的是key。
     gap lock, 间隙锁，用来解决幻读问题
     next-key lock， gap lock + reocrd lock
@@ -634,7 +642,7 @@ BIO 线程模型主要存在如下三个问题：
     优化2: 索引上的等值查询，向右遍历时且最后一个值不满足等值条件时，next-key lock退化为gap lock
     bug: 唯一索引的范围查找会访问到不满足条件的第一个值为止。
 
-    https://blog.csdn.net/zwx900102/article/details/106544634?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&dist_request_id=&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control
+    https://blog.csdn.net/zwx900102/article/details/106544634
 
 ![数据库锁](https://images.gitbook.cn/c347e4d0-a1b6-11ea-97df-0d0e3bd6b465)
 
@@ -643,7 +651,7 @@ BIO 线程模型主要存在如下三个问题：
   事务的特性：
 
   A 原子性，要么执行要么不执行
-  C 一致性，事务前后，数据总额一致 
+  C 一致性，事务前后，数据总额一致
   I 隔离型，所有操作全部执行完以前其它会话不能看到过程
   D 持久性，一旦事务提交，对数据的改变就是永久的
 
@@ -723,11 +731,14 @@ Redo Log与binlog的两阶段提交
 （2）仅保留数据，而清理存储格式，例如redis
 
 ![在这里插入图片描述](https://images.gitbook.cn/0bc2bef0-a343-11ea-a506-f32f5295a5a9)
+
 3. redis是如何实现可靠存储的：真的可靠吗？ AOF、RDB有啥区别？ 分别适用于什么场景？
 
-    借助AOF、RDB可以一定程度上减少数据的损失，但是都无法做到数据的100%。
-    RDB，定期fork一个子进程，通过copy on write技术，来进行内存的dump，成本相对AOF较高，所以不可能很短时间内就dump一次，所以如果内存中的数据还没有来得及dump到RDB，那么会丢失比较多的数据，好处是借助RDB恢复数据比较快。
-    AOF，定期（通常是s级别）append 写操作命令到文件中，只是简单的写一次磁盘，所以性能较好，如果新的命令append到aof之间发生宕机，丢失的数据也比较少。缺点是每次基于AOF恢复数据会比较慢。
+  借助AOF、RDB可以一定程度上减少数据的损失，但是都无法做到数据的100%。
+
+  RDB，定期fork一个子进程，通过copy on write技术，来进行内存的dump，成本相对AOF较高，所以不可能很短时间内就dump一次，所以如果内存中的数据还没有来得及dump到RDB，那么会丢失比较多的数据，好处是借助RDB恢复数据比较快。
+
+  AOF，定期（通常是s级别）append 写操作命令到文件中，只是简单的写一次磁盘，所以性能较好，如果新的命令append到aof之间发生宕机，丢失的数据也比较少。缺点是每次基于AOF恢复数据会比较慢。
 
 4. redis tw代理模式与cluster集群模式分别是如何工作的？ 哪一种模式使用了一致性Hash?
 
@@ -760,21 +771,23 @@ Redo Log与binlog的两阶段提交
 
 策略1: range:  主键id / 单库单表限制（例如2000w)
 
-    优点：简单，容易扩展
-    缺点：各库压力不均（新号段更活跃）
+  优点：简单，容易扩展
+
+  缺点：各库压力不均（新号段更活跃）
 
 策略2: Hash:  主键id % N （分库分表数）
 
-    优点：简单，数据均衡，负载均匀
-    缺点：迁移麻烦（2库扩3库数据要迁移）
-策略3: Router-config-server ：将路由规则通过配置server统一管理，每次访问db前额外请求一次
+  优点：简单，数据均衡，负载均匀
+  缺点：迁移麻烦（2库扩3库数据要迁移）
 
-    优点：灵活性强，业务与路由算法解耦
-    缺点：每次访问数据库前多一次查询
+策略3: Router-config-server ：将路由规则通过配置server统一管理，每次访问db前额外请求一次
+  
+  优点：灵活性强，业务与路由算法解耦
+  缺点：每次访问数据库前多一次查询
 
 分库分表后，业务ID不唯一了，如何解决？[ID生成器](system_design/uniq_id.html)
 
-2. replication
+1. replication
 
 主从同步，在使用主从同步策略来提升性能时，需要提前考虑主从同步延迟对系统一致性可能带来的影响。
 
@@ -862,7 +875,7 @@ Write/Read Through模式
 
 两种应对write miss的办法：
 
-  （1）write-allocate   写cache，再由cache更新db
+  （1）write-allocate 写cache，再由cache更新db
   （2）no write allocate 直接更新db
 
 write back模式
@@ -942,12 +955,9 @@ CDN  DNS + 本地缓存
 
 #### 消息队列
 
-线程池中的worker一般是从队列中获取新的task
-rpc框架中，worker一般使用队列中获取io线程从网络上拿到的数据包
-
 消息队列：削峰填谷、异步化、解除耦合
 
-放入队列中，尽快让用户看到结果（在秒杀中）
+放入队列中，尽快让用户看到结果（用在秒杀中）
 
 异步处理，来简化请求中的业务逻辑
 
@@ -968,7 +978,9 @@ Leader, Follwer, ISR (in-sync replicas)
 一定要确保正确的处理消息后，才可以更新进度；如此可以保证不丢，但是会造成重复消息。
 
 生产幂等性：kafka维护一个生产者ID+消息ID的映射
+
 消费幂等性：
+
 消费之前，根据消息ID是否处理过，如果处理过了，则直接忽略。
 如果没消费过，则进行消费处理，消费完之后，（注意此处有一个GAP）将消费这个事实，存储到DB中，然后提交进度。
 
@@ -1002,14 +1014,15 @@ Leader, Follwer, ISR (in-sync replicas)
   通过tw访问的redis集群、redis cluster等，最主要的技术点还是如何做shard
 - 分布式数据库
   现在比较流行的是tidb,我们需要了解的是这些系统的核心技术点。
-  先说存储TiKV。tidb使用rocksdb来存储kv数据，使用raft协议来做数据复制，借助region来进行数据的分散管理。关于数据数据分散，一般有两种方案。第一种是按照key进行hash, redis cluster就是这么做的。第二种就是按照key range, 将连续的key分在一组中。使用MVCC来进行数据的并发访问控制，也就是说把key-value变为key-version-value。最后是事务，总体是通过乐观锁来保证事务，具体不表。
+  先说存储TiKV。tidb使用rocksdb来存储kv数据，使用raft协议来做数据复制，借助region来进行数据的分散管理。
+  关于数据分散，一般有两种方案。第一种是按照key进行hash, redis cluster就是这么做的。第二种就是按照key range, 将连续的key分在一组中。
+  使用MVCC来进行数据的并发访问控制，也就是说把key-value变为key-version-value。
+  最后是事务，总体是通过乐观锁来保证事务，具体不表。
   再说计算。关于计算有两块，第一主要涉及关系型模型到KV模型的转换，第二主要主要设计SQL语句的分布式执行，以及计算下推到存储层。
 - 分布式消息队列
   消息队列的实现思路大同小异，这里以kafka为例，从高性能、高可用两个角度来看：
   先说高性能：借助sendfile直接实现从磁盘到网卡的zero-copy快速传输、磁盘的顺序写入、每一个partition分为多个segment，并为segment建立稀疏索引、**批量发送**
   再说高可用：ISR(in-sync replications) leader维护的一个follower列表，在这个列表中的集合同步进度拉后不会太多。
-
-  https://blog.csdn.net/qq_28900249/article/details/90346599
 
 - 分布式文件系统
   以HDFS为例，通常分为namenode与datanode, 将一个大文件切分为block来存储，而一个文件由哪些block来组成以及这些block存放在哪台dtanode中是由namenode来维护的。
@@ -1023,19 +1036,24 @@ Leader, Follwer, ISR (in-sync replicas)
   
 - 分布式KV存储
   一般而言，RocksDB + Raft一致性协议 + 分区（Range, Hash) + PlaceDriver Node(全局管理节点)
+
   https://blog.csdn.net/weixin_34080951/article/details/87948196
+
   https://github.com/youzan/ZanRedisDB
 
   https://blog.csdn.net/u010454030/article/details/90414063
 
   redis、mc kv缓存
+
   hbase, cassandra 列式存储，适用于离线统计
+
   mongodb 文档数据库 schema free
 
   noSQL的写入性能：
   Log-Structured Merge Tree 基于LSM树的存储：hbase、cassandra、levelDB
 
   加速：memtable 有序的容器--底层是skiplist
+  
   持久化：write ahead log
 
   但是内存有限，所以需要定期将memtable dump到磁盘上 sstable(sorted string table)
@@ -1050,7 +1068,8 @@ Leader, Follwer, ISR (in-sync replicas)
 
   一致性hash
   （1）缓存节点在圆环上分布不均匀（虚拟节点）
-  （2）脏数据（节点不可用之后，又再次恢复，会造成数据是历史数据）---可以考虑设置TTL，确保缓存被动过期
+  （2）脏数据（节点不可用之后，又再次恢复，会造成数据是历史数据）
+  可以考虑设置TTL，确保缓存被动过期
 
 - 分布式计算框架（MapReduce思想）
   MapReduce框架，主要是利用分而治之的思想，将要处理的数据抽象为键值对，将数据的处理过程抽象为Map映射、Reduce简化两个操作。不可分拆的计算任务或相互间有依赖关系的数据无法进行并行计算！
@@ -1149,22 +1168,18 @@ Leader, Follwer, ISR (in-sync replicas)
 
 第五，BBR限流
 
-https://xueqiu.com/9217191040/139169952
-
 http://www.mianshigee.com/tutorial/incubator-brpc/1778a50865eb3518.md
 
 cpu > 800 && inflight >  rt * max_qps 则启用限流
-
-https://www.zhihu.com/question/36738189/answer/908664455
-https://www.educative.io/courses/grokking-dynamic-programming-patterns-for-coding-interviews?aff=K7qB
-https://www.educative.io/courses/grokking-the-coding-interview?aff=K7qB
 
 littile's raw定律：并发 = rt * qps
 
 再说熔断，
 
 hystrix中的熔断器模式：半开、全开、关闭（基于错误数到基于超时率）
+
 google sre
+
 正常时，accepts = requests
 当 requests >= K * accepts 开始熔断，丢弃部分请求，按照概率，具体的概率为：
 
@@ -1228,9 +1243,6 @@ trace_id + span_id来标识链路的调用关系
 对trace_id采样，而不要随机采样。
 
 #### 0x335 配置中心
-
-long_polling 
-双缓冲 + Tthread lo store
 
 不同的配置类型：节点类型 》机房类型 》 全局配置
 
@@ -1383,13 +1395,13 @@ checkpoint 检查点
 
 快速恢复存储系统 + log
 
-### 懒惰思想 
+### 懒惰思想
 
 延后计算，最终一致。
 
 #### 乐观锁
 
-MVCC 
+MVCC
 
 #### 池化
 
@@ -1423,29 +1435,11 @@ double buffer
 
 #### 索引
 
-地址
-0x11111
-0x11112
-
-Trie => radix tree
-
-物理内存、page cache管理
-
 bitmap(磁盘文件管理)、radix tree、红黑树、倒排索引
-
-superblock 
-
-bitmap area
-
-bitmap area
-
-inode blocks
-
-data blocks
 
 #### 多级索引
 
-page table 
+page table
 
 #### 线程局部存储
 
@@ -1461,7 +1455,7 @@ thread local
 
 binlog
 
-LSM tree 
+LSM tree
 
 ### 局部性原理
 
@@ -1476,47 +1470,3 @@ LSM tree
 操作系统：硬件 --> 操作系统--> 应用程序--> 应用程序的通信、调用
 计算机网络：ISO七层
 MVC：Model层--> View层--> Control
-
-懒人哲学：越简单、越傻瓜、用户使用的学习成本越低越好
-
-让困于人：当我们遇到困难时，搞不定的或者我们自己搞成本很大的，交给别人来搞(一般让操作系统来搞，其实操作系统也是别人完成的软件系统)
-
-留有余地: 可扩展性，让系统有可扩展性
-
-足够智能：一个系统最好能解决所有的问题，跟人的感觉是一个万能的解决方案，也就是操作系统的魔术师的角色
-
-时空转换：在一个纬度遇到的瓶颈，那就改变方案把瓶颈移到另外一个纬度 【内存页表太大，占用内存资源；那就页表分级，不活跃的放到磁盘】
-
-策机分离和权利分离：一个系统或者平台在主要指定规则、提供通用化的插件即可
-
-简单与美：苛求于简，归于永恒
-
-local\redis\cpu cache L1/L2
-
-cache line 64k
-
-伪共享
-
-异地多活
-延迟高：60ms+
-一般而言，需要对请求进行hash, 让用户的请求可以在一个机房内完成
-根据业务需要，选择满足：
-1）一致性（如果选择了一致性，那么可用性便得不到100%保障）
-2）可用性（如果选择了可用性，那么一致性需要事后做补偿）
-
-数据同步组件
-1）数据库（主键id冲突，自增id分步长）
-2）redis / zk等
-
-https://www.sohu.com/a/211248633_472869
-
-
-消息队列～
-解除耦合、削峰填谷、非核心逻辑异步化
-
-
-具体技法
-
-无锁化（CAS操作）
-
-https://blog.csdn.net/m0_37947204/article/details/80103151

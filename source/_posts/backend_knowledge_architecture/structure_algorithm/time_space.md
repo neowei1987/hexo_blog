@@ -49,3 +49,6 @@ n≤$10^{100000}$  => $O(logk×loglogk)$，k表示位数，  高精度加减、F
 一些常见的操作可以看看有没有现成的类或方法可以直接拿来用（例如java大数、排序、字符串反转、拼接等常见操作）;
 一些数字的操作可以看看是否涉及到二进制，可以尝试下异或、&这些操作;
 动态规划的题目看一看这一次的状态和上一步的状态是否离得很近，如果离得很近可以考虑状态压缩，降低空间复杂度（例如斐波那契，每一次的状态只和前面两步状态有关）;
+
+https://www.educative.io/courses/grokking-dynamic-programming-patterns-for-coding-interviews?aff=K7qB
+https://www.educative.io/courses/grokking-the-coding-interview?aff=K7qB

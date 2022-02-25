@@ -1,3 +1,16 @@
+---
+title: 二分系列-找数值等于下标的元素
+date: 2021-01-03 20:47:03
+updated:
+copyright: true
+password:
+keywords: 
+description: 
+mathjax: true
+categories:
+tags: 
+---
+
 假设一个单调递增的数组里的每个元素都是整数并且是唯一的。
 
 请编程实现一个函数找出数组中任意一个数值等于其下标的元素。

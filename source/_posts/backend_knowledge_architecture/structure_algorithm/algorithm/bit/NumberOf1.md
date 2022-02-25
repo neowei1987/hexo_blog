@@ -1,3 +1,16 @@
+---
+title: 二进制表示中1的个数
+date: 2021-02-024 21:16:03
+updated:
+copyright: true
+password:
+keywords: []
+description: 
+mathjax: true
+categories:
+tags: 
+---
+
 输入一个32位整数，输出该数二进制表示中1的个数。
 
 注意：
