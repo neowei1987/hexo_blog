@@ -1,7 +1,7 @@
 ---
 title: 网站安全系列-SQL注入
-date: 2021-03-09 14:49:03
-updated:
+date: 2021-02-15 11:31:03
+updated: 2021-02-15 11:44:03
 copyright: true
 password:
 keywords: []
@@ -10,13 +10,13 @@ mathjax: true
 categories:
 ---
 
-where a = 'input' or 1=1;
-
 ## 核心原理
 
 where a = '$input'
 
-input 被攻击者蓄意构造，从而导致攻击者获取到了更多的的数据。
+input 被攻击者蓄意构造，系统服务器执行了不符合预期的SQL语句，从而导致攻击者获取到了更多的的数据。
+
+where a = 'input' or 1=1;
 
 ## 防范实践
 

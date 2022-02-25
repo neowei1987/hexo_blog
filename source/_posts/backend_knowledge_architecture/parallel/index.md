@@ -1,5 +1,12 @@
+---
+title: 并行算法 - 概览
+date: 2022-02-25 11:31:03
+updated:
+mathjax: true
+categories:
+tags: 
+---
 
-并行算法
 
 并行排序（并行归并排序、并行快速排序）
 

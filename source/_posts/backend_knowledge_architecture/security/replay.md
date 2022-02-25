@@ -1,7 +1,7 @@
 ---
 title: 网站安全系列-防重放攻击&防篡改
-date: 2021-01-15 14:49:03
-updated:
+date: 2021-02-15 11:31:03
+updated: 2021-02-15 11:43:03
 copyright: true
 password:
 keywords: []
@@ -19,9 +19,10 @@ categories:
 
 客户端使用利用AES对称加密算法对要传输的内容（计作123456, OriginContent），得到Encrypt_Content = AES_Encrypt(AES_Key, OriginContent) ---由于黑客很难知道我们的AES_Key，所以他不可能知晓原始内容
 
-那黑客可以篡改请求吗？
-例如把前面的12345，转换为54321？
+那黑客可以篡改请求吗？例如把前面的12345，转换为54321？
 
-如果黑客知道私钥(硬编码)
+如果黑客知道私钥(硬编码)确实可以。但是这就涉及到客户端加壳反编译等问题了。
+
+参考：
 
 https://cloud.tencent.com/developer/article/1175758
