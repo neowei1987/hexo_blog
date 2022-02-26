@@ -1,3 +1,15 @@
+---
+title: 动态规划系列-切绳子问题
+date: 2022-02-26 19:42:03
+updated:
+copyright: true
+password:
+keywords: []
+description: 
+mathjax: true
+categories:
+tags: 
+---
 
 给你一根长度为 n 绳子，请把绳子剪成 m 段（m、n 都是整数，2≤n≤58 并且 m≥2）。
 
@@ -9,6 +21,8 @@
 输入：8
 
 输出：18
+
+自上而下 + 备忘录解法
 
 ```cpp
 class Solution {
