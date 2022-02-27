@@ -1,9 +1,16 @@
-1. Pattern: Sliding window，滑动窗口类型
-经典题目：
-Maximum Sum Subarray of Size K (easy)
-Smallest Subarray with a given sum (easy)
-Longest Substring with K Distinct Characters (medium)
-Fruits into Baskets (medium)
-No-repeat Substring (hard)
-Longest Substring with Same Letters after Replacement (hard)
-Longest Subarray with Ones after Replacement (hard)
+---
+title: 滑动窗口系列-概览
+date: 2021-01-05 15:44:03
+updated:
+copyright: true
+mathjax: true
+categories:
+- [数据结构与算法]
+tags: 
+- 滑动窗口
+- 剑指Offer
+---
+
+|  题目分类 | 题目名称 |考察点   |其他说明|
+|  ----  | ---- |----  |----  |
+| | [最长无重复字串](../longestSubstringWithoutDuplication.html)  |滑动窗口、字符串类|

@@ -28,6 +28,30 @@ tags:
 
 2. 枚举区间，选择区间的右端点作为候选集（显然最右边是局部最优解）
 
+```cpp
+
+int main()
+{
+    scanf("%d", &n);
+    for (int i = 0; i < n; i ++ ) scanf("%d%d", &range[i].l, &range[i].r);
+
+    sort(range, range + n);
+
+    int res = 0, ed = -2e9;
+    for (int i = 0; i < n; i ++ )
+        if (ed < range[i].l)
+        {
+            res ++ ;
+            ed = range[i].r;
+        }
+
+    printf("%d\n", res);
+
+    return 0;
+}
+
+```
+
 ### 最大不相交区间数量
 
 类似于选课，课程有交集，我们需要选择最多的课程，使得课程之间没有时间冲突。
@@ -38,11 +62,33 @@ tags:
 
 如果我多选择一个区间，就会出现相交；
 
+```cpp
+int main(){
+    cin>>n;
+    for(int i=0;i<n;i++){
+        cin>>eg[i].l>>eg[i].r;
+
+    }
+    sort(eg, eg+n);
+    int res=0, ed=-2e9;
+    for(int i=0;i<n;i++){
+        if(ed<eg[i].l) {
+            res++, ed=eg[i].r;
+        }else{
+
+        }
+    }
+    cout<<res;
+}
+```
+
 ### 区间分组
 
 给定N个闭区间，请你将这些区间分成若干组，使得每组内部的区间两两之间（包括端点）没有交集，并使得组数尽可能小。 输出最小组数。
 
 排序 + 利用**小根堆**来动态维护最大值（max_r)
+
+top()返回最小的最大值，既然最小的都有交集，更大的就更不用说啦。
 
 1. 按照左边排序
 2. 枚举区间，能否将该区间加入到当前分组中
@@ -50,8 +96,6 @@ tags:
    2. 加入到当前组中，更新max_r
 
 ![20201229213954](http://cdn.b5mang.com/20201229213954.png)
-
-
 
 ```cpp
 bool cmd(const PII& a, const PII& b) {
@@ -66,7 +110,7 @@ q.push(a[0].second);
 for (int i = 1; i < n; ++i) {
     int ed = q.top();
     if (a[i].first > ed) {
-        q.pop();
+        q.pop(); //先pop，再push，相当于更新了该分组的max_r
     }
     q.push(a[i].second);
 }
@@ -76,6 +120,10 @@ return q.size();
 ```
 
 ### 区间覆盖
+
+给定 N 个闭区间 [ai,bi] 以及一个线段区间 [s,t]，请你选择尽量少的区间，将指定线段区间完全覆盖。
+
+输出最少区间数，如果无法完全覆盖则输出 −1。
 
 1. 左端点从小到大排序
 2. 从前往后依次枚举每个区间，在所有能覆盖start的区间中，选择右端点最大的区间，然后将start更新为右端点的最大值。
@@ -129,6 +177,9 @@ int main() {
 
 ### 合并区间
 
+1. 首先对区间按照起始端点（左断点）进行升序排序，
+2. 然后逐个判断当前区间是否与前一个区间重叠，如果不重叠的话将当前区间直接加入结果集，反之如果重叠的话，就将当前区间与前一个区间进行合并。
+
 ```cpp
 typedef pair<int, int> PII;
 const int inf = 0x3f3f3f3f;
@@ -150,6 +201,7 @@ public:
                     vector<int> t = {st, ed};
                     res.push_back(t);
                 } 
+                //把当前区间扩充一下
                 st = d[i].first, ed = d[i].second;
             }
             else {

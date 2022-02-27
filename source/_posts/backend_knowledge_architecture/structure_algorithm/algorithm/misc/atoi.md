@@ -1,5 +1,5 @@
 ---
-title: 系列-字符串转换成整数
+title: 杂题系列-字符串转换成整数
 date: 2020-12-27 23:34:03
 mathjax: true
 categories:
