@@ -1,3 +1,13 @@
+---
+title: 队列系列之利用栈实现队列
+date: 2022-02-28 21:53:03
+updated:
+mathjax: true
+categories:
+- [数据结构与算法]
+tags: 
+---
+
 请用栈实现一个队列，支持如下四种操作：
 
 push(x) – 将元素x插到队尾；

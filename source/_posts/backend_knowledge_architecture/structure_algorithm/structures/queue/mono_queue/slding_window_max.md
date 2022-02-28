@@ -1,5 +1,5 @@
 ---
-title: 滑动窗口的最大值
+title: 单调队列系列-滑动窗口的最大值
 date: 2020-12-27 22:53:03
 mathjax: true
 categories:

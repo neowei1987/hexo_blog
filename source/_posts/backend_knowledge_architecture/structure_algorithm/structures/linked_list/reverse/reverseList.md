@@ -60,26 +60,18 @@ public:
 ## 链表反转-递归版代码实现
 
 ```cpp
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
 class Solution {
 public:
-
     ListNode* reverseList(ListNode* head) {
-        _reverseList(head);
-    }
+        if (!head) return NULL;
+        //base
+         if (!head->next) return head;
 
-    ListNode* _reverseList(ListNode* head) {
-        if (!head || !head->next) return head;
-        auto t = head->hext;
-        _reverseList(t)
-        t->next = head;
+        //对子问题进行递归-当前节点的下一个
+        auto nh = reverseList(head->next);
+        head->next->next = head;
+        head->next = NULL;
+        return nh;
     }
 };
 ```
