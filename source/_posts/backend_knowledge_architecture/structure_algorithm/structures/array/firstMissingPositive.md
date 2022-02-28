@@ -1,5 +1,5 @@
 ---
-title: 数组系列-缺失的第一个正数
+title: 本地交换系列-缺失的第一个正数
 date: 2021-01-10 10:47:03
 updated:
 copyright: true
@@ -10,7 +10,7 @@ mathjax: true
 categories:
 - [数据结构与算法]
 tags:
-- 本地交换法
+- 本地交换
 ---
 
 ## 缺失的第一个正数 - 题目描述

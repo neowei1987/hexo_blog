@@ -1,3 +1,14 @@
+---
+title: 哈希系列-概览
+date: 2021-01-11 22:25:03
+updated:
+mathjax: true
+categories:
+- [数据结构与算法]
+tags: 
+---
+
+
 bloom Filter布隆过滤器【空查问题】
 K个hash函数，当写入一个key的时候，设置H1(key), H2(key)...Hk(key)为1。当需要check key是否存在的时候，依次检测H1(key)...Hk(key)是否均为1，如果其中一个不为1，则表示key不存在；否则认为key存在。
 有错误判断的可能性～

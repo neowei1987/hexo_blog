@@ -62,3 +62,51 @@ public:
 };
 
 ```
+
+相关题目
+
+### 寻找重复
+
+给定一个包含 n + 1 个整数的数组 nums ，其数字都在 1 到 n 之间（包括 1 和 n），可知至少存在一个重复的整数。
+
+假设 nums 只有 一个重复的整数 ，找出 这个重复的数 。
+
+1.不能更改原数组（假设数组是只读的）。
+2.只能使用额外的 O(1) 的空间。
+3.时间复杂度小于 O(n2) 。
+4.数组中只有一个重复的数字，但它可能不止重复出现一次
+
+思路：
+
+该题目约束比较多，不能更改原数组，意味着不可以使用数组自hash或者原地交换；
+
+限制了空间，意味着不可以使用某些排序算法或者使用hash map。
+
+可以选择的时间复杂度: $O(n)$、$O(n * lgn)$
+
+可以考虑二分，二分的话有两种：二分数组、二分答案
+
+显然我们的数组并没有排序，所以更有可以是二分答案。
+
+```cpp
+class Solution
+public: 
+    int findDuplicate(vectorzint>&nums){
+    int n=nums.size();
+    int l=1,r=n-1,ans=-1;
+    while(l<=r)
+    {
+            int mid=(l+r)/2;int cnt=0;
+            for(int i=0;i<n;i++){
+                cnt=cnt+(nums [i]<=mid)
+            }
+            if(cnt<=mid)
+                l=mid+1;
+            else {
+                r=mid-1;
+                ans=mid
+            }
+    }
+    return ans
+}
+```
