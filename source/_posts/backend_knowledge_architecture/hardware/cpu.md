@@ -67,20 +67,22 @@ tags:
 
 ## co 实现
 
+```cpp
 co_ctx{
 void* regs[14]; //用于保存或者设定特定寄存器
 size_t ss_size; //栈帧区域大小
 char* ss_sp; // 协程栈帧内存区域，这个区域一般在堆上分配
 }
- 
+
 co_make (co_ctx* co, func* p, p1, p2)
-使用p, p1, p2把co填充起来
-co.ss_sp都是分配在堆上
-co的EIP与ESP需要被单独赋值
+    使用p, p1, p2把co填充起来
+    co.ss_sp都是分配在堆上
+    co的EIP与ESP需要被单独赋值
 }
 co_swap（）{
-主要要保存当前寄存器到要swap_out的co_ctx中
-将要swap_in的co_ctx设置到寄存器中
+    主要要保存当前寄存器到要swap_out的co_ctx中
+    将要swap_in的co_ctx设置到寄存器中
 }
- 
+```
+
 具体参考：https://vinsflyfish.github.io/posts/thinking-in-libco/
