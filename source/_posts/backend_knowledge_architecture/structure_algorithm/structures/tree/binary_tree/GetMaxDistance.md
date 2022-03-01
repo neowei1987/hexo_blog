@@ -1,3 +1,16 @@
+---
+title: 二叉树遍历系列-二叉树最远距离
+date: 2021-01-04 11:42:03
+updated:
+copyright: true
+password:
+keywords: []
+description: 
+mathjax: true
+categories:
+tags: 
+---
+
 如果我们把二叉树视为一个图，父子节点之间的连线视为双向的，我们姑且定义为“举例”为两节点之间边的个数。写一个程序求一颗二叉树中相距最远的两个节点之间的距离（《编程之美》3.8）
 
 ### 解题思路
