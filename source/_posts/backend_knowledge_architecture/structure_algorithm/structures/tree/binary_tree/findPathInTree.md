@@ -8,7 +8,9 @@ keywords: []
 description: 
 mathjax: true
 categories:
+- [数据结构与算法]
 tags: 
+- 二叉树
 ---
 
 ## 二叉树中结点值的和为输入整数的所有路径-题目描述

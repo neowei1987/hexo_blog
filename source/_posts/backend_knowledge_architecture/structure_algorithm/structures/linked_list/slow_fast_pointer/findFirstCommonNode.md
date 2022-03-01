@@ -1,11 +1,13 @@
 ---
-title: 剑指offer-链表相关题目
+title: 链表第一个公共节点
 date: 2020-12-29 23:34:03
 mathjax: true
 categories:
 - 剑指Offer
+- 数据结构与算法
 tags: 
 - 链表
+- 快慢指针
 ---
 
 输入两个链表，找出它们的第一个公共结点。

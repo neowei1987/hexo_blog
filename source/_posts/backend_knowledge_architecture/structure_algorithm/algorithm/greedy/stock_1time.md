@@ -8,9 +8,9 @@ keywords: [股票买卖,贪心算法]
 description: 
 mathjax: true
 categories:
-- [数据结构与算法]
+- 数据结构与算法
 tags: 
-- 剑指Offer
+- 贪心
 ---
 
 ## 题目描述

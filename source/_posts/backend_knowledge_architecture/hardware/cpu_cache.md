@@ -5,7 +5,7 @@ mathjax: true
 categories:
 - 
 tags: 
-- 
+- 计算机硬件
 ---
 #### 高速缓存
 

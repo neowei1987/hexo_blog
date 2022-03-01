@@ -6,6 +6,7 @@ mathjax: true
 categories:
 - [系统设计]
 tags: 
+- 概率
 ---
 
 ## 不得不说的随机

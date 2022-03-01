@@ -5,6 +5,7 @@ updated:
 mathjax: true
 categories:
 tags: 
+-计算机网络
 ---
 
 ![HTTP对比](https://pic.rmb.bdstatic.com/bjh/news/6722dbdf63eabaa62b59486f2c51df6e.png)
@@ -15,7 +16,6 @@ tags:
 302: 临时重定向
 
 ### HTTPS
-
 
 可以参考：https://blog.csdn.net/xiaoming100001/article/details/81109617
 

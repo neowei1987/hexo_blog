@@ -8,9 +8,10 @@ keywords: []
 description: 
 mathjax: true
 categories:
-- [数据结构与算法]
-tags: 
+- 数据结构与算法
 - 剑指Offer
+tags: 
+- 字符串
 ---
 
 ## 反转单词-题目描述

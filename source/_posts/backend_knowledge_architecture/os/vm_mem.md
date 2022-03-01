@@ -5,6 +5,7 @@ updated:
 mathjax: true
 categories:
 tags: 
+- 操作系统
 ---
 
 ![虚拟地址转换为物理地址的本质](https://pics7.baidu.com/feed/95eef01f3a292df5ed263835cecf2b6835a8732b.png?token=d3599f2975744c1d572bd6e62b2daf04)

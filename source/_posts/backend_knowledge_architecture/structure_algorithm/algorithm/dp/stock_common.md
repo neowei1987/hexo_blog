@@ -6,8 +6,9 @@ copyright: true
 password:
 mathjax: true
 categories:
-- [数据结构与算法]
+- 数据结构与算法
 tags: 
+- 动态规划
 ---
 
 给定一个数组，它的第 i 个元素是一支给定的股票在第 i 天的价格。

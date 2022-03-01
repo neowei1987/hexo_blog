@@ -7,7 +7,6 @@ categories:
 - [数据结构与算法]
 tags: 
 - 数组
-- 剑指Offer
 - 方向数组
 ---
 

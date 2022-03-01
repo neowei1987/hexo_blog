@@ -8,7 +8,9 @@ keywords:
 description: 
 mathjax: true
 categories:
+- 数据结构与算法
 tags: 
+- 归并
 ---
 
 归并排序，是一种特别有用的排序算法；

@@ -1,5 +1,7 @@
 ---
 title: 高性能服务器系列-libsvrkit RPC框架
+tags: 
+- 高性能服务器
 ---
 
 1. 同时只有一个worker来accept接受新的连接请求。一个连接上的所有请求都是由同一个worker来处理。

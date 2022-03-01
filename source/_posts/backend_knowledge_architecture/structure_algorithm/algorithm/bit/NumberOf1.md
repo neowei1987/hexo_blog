@@ -8,7 +8,9 @@ keywords: []
 description: 
 mathjax: true
 categories:
+- 数据结构与算法
 tags: 
+- 位运算
 ---
 
 输入一个32位整数，输出该数二进制表示中1的个数。

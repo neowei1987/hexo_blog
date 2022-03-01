@@ -8,7 +8,9 @@ keywords: []
 description: 
 mathjax: true
 categories:
+- 数据结构与算法
 tags: 
+- 动态规划
 ---
 
 给你一根长度为 n 绳子，请把绳子剪成 m 段（m、n 都是整数，2≤n≤58 并且 m≥2）。

@@ -6,7 +6,9 @@ copyright: true
 description: 
 mathjax: true
 categories:
+- 数据结构与算法
 tags: 
+- 动态规划
 ---
 
 在一个m×n的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值（价值大于0）。

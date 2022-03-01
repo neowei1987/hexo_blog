@@ -5,7 +5,7 @@ mathjax: true
 categories:
 - 
 tags: 
-- 
+-设计模式
 ---
 
 软件设计模式的几种分类

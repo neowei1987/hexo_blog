@@ -4,10 +4,10 @@ date: 2022-02-26 21:42:03
 updated:
 mathjax: true
 categories:
-- [数据结构与算法]
+- 数据结构与算法
+- 剑指Offer
 tags: 
 - 摩尔投票法
-- 剑指Offer
 ---
 
 输入n个整数，输出出现次数大于等于数组长度一半的数。

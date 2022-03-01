@@ -5,6 +5,7 @@ updated:
 mathjax: true
 categories:
 tags: 
+-缓存
 ---
 
 高速缓存服务器(Cache Server)是软硬件高度集成的专业功能服务器，主要做高速缓存加速服务，一般部署在网络边缘。

@@ -3,6 +3,7 @@ title: 动态规划系列-丑数
 date: 2022-02-26 20:34:03
 mathjax: true
 categories:
+- 数据结构与算法
 - 剑指Offer
 tags: 
 - 动态规划

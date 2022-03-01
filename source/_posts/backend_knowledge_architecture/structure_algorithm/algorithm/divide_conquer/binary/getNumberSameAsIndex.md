@@ -8,7 +8,9 @@ keywords:
 description: 
 mathjax: true
 categories:
+- 数据结构与算法
 tags: 
+- 二分
 ---
 
 假设一个单调递增的数组里的每个元素都是整数并且是唯一的。

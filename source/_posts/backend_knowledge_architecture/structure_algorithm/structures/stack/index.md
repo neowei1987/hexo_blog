@@ -3,7 +3,9 @@ title: stack相关的题目
 date: 2021-03-14 23:34:03
 mathjax: true
 categories:
+- [数据结构与算法]
 tags: 
+- 栈
 ---
 
 ```cpp

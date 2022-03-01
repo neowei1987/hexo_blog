@@ -8,10 +8,10 @@ keywords: []
 description: 
 mathjax: true
 categories:
+- 剑指Offer
 - [数据结构与算法]
 tags: 
 - 二叉树
-- 剑指Offer
 ---
 
 ## 判断该数组是不是某二叉搜索树的后序遍历的结果-题目描述

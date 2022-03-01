@@ -3,10 +3,10 @@ title: 骰子的点数
 date: 2020-12-27 23:22:03
 mathjax: true
 categories:
+- 数据结构与算法
 - 剑指Offer
 tags: 
-- DFS
-- 线性DP
+- 动态规划
 ---
 
 ## 题目描述

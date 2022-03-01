@@ -3,7 +3,9 @@ title: 回溯系列-组合排列
 date: 2021-1-2 16:29:03
 mathjax: true
 categories:
+- 数据结构与算法
 tags: 
+- 回溯
 ---
 
 给定两个整数 n 和 k，返回 1 ... n 中所有可能的 k 个数的组合。

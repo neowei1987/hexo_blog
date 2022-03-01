@@ -5,10 +5,9 @@ updated:
 copyright: true
 mathjax: true
 categories:
-- [数据结构与算法]
+- 数据结构与算法
 tags: 
 - 前缀和
-- 剑指Offer
 ---
 
 前缀和和差分，通过空间来换时间，一般用来优化时间复杂度，从$O(n^2)$到$O(n)$

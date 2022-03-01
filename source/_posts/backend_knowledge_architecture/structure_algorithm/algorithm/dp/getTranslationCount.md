@@ -8,7 +8,9 @@ keywords: []
 description: 
 mathjax: true
 categories:
+- 数据结构与算法
 tags: 
+- 动态规划
 ---
 
 ## 获取不同的翻译方法次数-题目描述

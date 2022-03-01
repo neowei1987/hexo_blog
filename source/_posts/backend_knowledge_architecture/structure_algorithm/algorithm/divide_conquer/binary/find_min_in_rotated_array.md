@@ -8,7 +8,9 @@ keywords:
 description: 
 mathjax: true
 categories:
+- 数据结构与算法
 tags: 
+- 二分
 ---
 
 把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。

@@ -4,11 +4,11 @@ date: 2021-01-05 15:20:03
 updated:
 mathjax: true
 categories:
-- [数据结构与算法]
-tags: 
-- 数组
-- 快速排序
+- 数据结构与算法
 - 剑指Offer
+tags: 
+- 双指针
+- 快速排序
 ---
 
 ## 奇偶重排-题目描述

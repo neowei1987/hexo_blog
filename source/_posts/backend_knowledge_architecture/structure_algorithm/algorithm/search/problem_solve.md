@@ -3,9 +3,8 @@ title: 计算机解决问题的通用套路
 date: 2021-01-07 13:01:03
 mathjax: true
 categories:
-- 算法基础
 tags: 
-- 
+- 回溯
 ---
 
 ## 什么是熵？(Entropy)

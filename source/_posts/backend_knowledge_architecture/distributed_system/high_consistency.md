@@ -2,6 +2,7 @@
 title: 分布式系统-一致性
 date: 2022-2-23
 tags:
+-分布式系统
 ---
 
 #### CAP VS BASE

@@ -5,7 +5,7 @@ mathjax: true
 categories:
 - 
 tags: 
-- 
+- 消息队列
 ---
 
 可能的一些作用：

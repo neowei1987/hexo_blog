@@ -6,6 +6,7 @@ mathjax: true
 categories:
 - [系统设计]
 tags: 
+- 位图
 ---
 
 问题：

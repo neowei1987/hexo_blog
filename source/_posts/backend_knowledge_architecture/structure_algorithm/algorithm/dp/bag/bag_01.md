@@ -6,7 +6,10 @@ copyright: true
 description: 
 mathjax: true
 categories:
+- 数据结构与算法
 tags: 
+- 背包问题
+- 动态规划
 ---
 
 |  01背包问题  |背包问题系列 |

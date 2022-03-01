@@ -8,7 +8,9 @@ keywords:
 description: 
 mathjax: true
 categories:
+- 数据结构与算法
 tags: 
+- 二分
 ---
 
 统计一个数字在排序数组中出现的次数。

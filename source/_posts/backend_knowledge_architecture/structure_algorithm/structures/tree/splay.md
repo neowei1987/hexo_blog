@@ -3,6 +3,7 @@ title:  Splay Tree
 date: 2022-03-01 13:44:03
 mathjax: true
 categories:
+- [数据结构与算法]
 tags: 
 ---
 

@@ -8,7 +8,9 @@ keywords: []
 description: 
 mathjax: true
 categories:
+- 数据结构与算法
 tags: 
+- 动态规划
 ---
 
 求解一个矩阵中找一条最长的递增路径？

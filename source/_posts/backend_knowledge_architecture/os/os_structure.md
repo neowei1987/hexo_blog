@@ -5,6 +5,8 @@ updated:
 mathjax: true
 categories:
 tags: 
+- 操作系统
+- 数据结构
 ---
 
 #### hash

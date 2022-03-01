@@ -3,7 +3,7 @@ title: 贪心算法-区间问题
 date: 2020-12-28 21:53:03
 mathjax: true
 categories:
-- 算法基础
+- 数据结构与算法
 tags: 
 - 贪心
 ---

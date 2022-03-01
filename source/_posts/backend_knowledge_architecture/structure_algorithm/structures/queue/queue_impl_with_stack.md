@@ -6,6 +6,7 @@ mathjax: true
 categories:
 - [数据结构与算法]
 tags: 
+- 队列
 ---
 
 请用栈实现一个队列，支持如下四种操作：

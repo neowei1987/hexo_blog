@@ -6,6 +6,8 @@ mathjax: true
 categories:
 - [数据结构与算法]
 tags: 
+- 单调队列
+- 队列
 ---
 
 ```cpp

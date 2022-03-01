@@ -5,7 +5,7 @@ mathjax: true
 categories:
 - 
 tags: 
-- 
+- 微服务
 ---
 
 集成：在服务提供端或者调用端，如何集成注册中心？应用内 OR 应用外

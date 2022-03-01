@@ -6,7 +6,9 @@ copyright: true
 description: 
 mathjax: true
 categories:
+- 数据结构与算法
 tags: 
+- 位运算
 ---
 
 位操作

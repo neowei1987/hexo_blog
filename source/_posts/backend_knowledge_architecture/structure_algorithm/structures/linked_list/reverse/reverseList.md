@@ -6,8 +6,7 @@ mathjax: true
 categories:
 - [数据结构与算法]
 tags: 
-- 链表
-- 剑指Offer
+- 链表反转
 ---
 
 ## 链表反转-题目描述

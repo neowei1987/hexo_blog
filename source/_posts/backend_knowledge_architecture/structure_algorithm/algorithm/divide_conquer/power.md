@@ -3,7 +3,10 @@ title: 幂次方
 date: 2020-12-27 23:34:03
 mathjax: true
 categories:
+- 数据结构与算法
+- 剑指Offer
 tags: 
+- 分治
 ---
 
 实现函数double Power(double base, int exponent)，求base的 exponent次方。

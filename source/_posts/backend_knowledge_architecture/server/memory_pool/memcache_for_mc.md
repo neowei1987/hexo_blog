@@ -1,5 +1,8 @@
 ---
 title: 内存池系列｜MC内存分配
+tags: 
+- 高性能服务器
+- 内存池
 ---
 
 slab allcator的机制

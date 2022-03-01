@@ -6,6 +6,7 @@ mathjax: true
 categories:
 - [数据结构与算法]
 tags: 
+- 队列
 ---
 
 关于队列一共有两类问题

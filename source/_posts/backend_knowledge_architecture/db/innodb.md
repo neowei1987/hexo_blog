@@ -5,6 +5,7 @@ updated:
 mathjax: true
 categories:
 tags: 
+-数据库
 ---
 
 我们通过几个问题来介绍InnoDB存储引擎

@@ -3,7 +3,9 @@ title: 选择问题-最少次数求最大与最小值
 date: 2021-1-2 15:47:03
 mathjax: true
 categories:
-tags:
+- 数据结构与算法
+tags: 
+- 线性选择
 ---
 
 Maximum and minimum of an array using minimum number of comparisons

@@ -3,7 +3,9 @@ title: 前缀和系列-不使用除法的特殊累乘
 date: 2020-12-27 23:34:03
 mathjax: true
 categories:
+- 数据结构与算法
 tags: 
+- 前缀和
 ---
 
 ## 题目描述

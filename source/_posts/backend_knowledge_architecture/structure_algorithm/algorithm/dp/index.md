@@ -6,7 +6,9 @@ copyright: true
 description: 
 mathjax: true
 categories:
+- 数据结构与算法
 tags: 
+- 动态规划
 ---
 ### DP概念
 

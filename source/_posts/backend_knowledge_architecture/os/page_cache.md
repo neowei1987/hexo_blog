@@ -5,6 +5,9 @@ updated:
 mathjax: true
 categories:
 tags: 
+- 数据结构
+- 缓存
+- 操作系统
 ---
 
 ![linux-io](https://img-blog.csdnimg.cn/img_convert/af14c365336b91762e0818c657b29b2f.png)

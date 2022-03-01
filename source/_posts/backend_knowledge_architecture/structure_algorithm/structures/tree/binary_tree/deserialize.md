@@ -8,7 +8,9 @@ keywords: []
 description: 
 mathjax: true
 categories:
+- [数据结构与算法]
 tags: 
+- 二叉树
 ---
 
 ## 二叉树的序列化与反序列化-题目描述

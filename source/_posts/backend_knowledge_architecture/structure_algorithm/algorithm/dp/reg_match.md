@@ -3,10 +3,10 @@ title: 字符串正则匹配
 date: 2020-12-27 23:22:03
 mathjax: true
 categories:
+- 数据结构与算法
 - 剑指Offer
 tags: 
-- DFS
-- 线性DP
+- 动态规划
 ---
 
 请实现一个函数用来匹配包括'.'和'*'的正则表达式。

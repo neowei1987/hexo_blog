@@ -8,7 +8,9 @@ keywords: []
 description: 
 mathjax: true
 categories:
+- [数据结构与算法]
 tags: 
+- 栈
 ---
 
 ## 检查合法Stack的弹出序列-题目描述

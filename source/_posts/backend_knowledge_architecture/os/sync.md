@@ -5,6 +5,7 @@ updated:
 mathjax: true
 categories:
 tags: 
+- 操作系统
 ---
 
 多线程问题的本质：有序性，可见性，原子性

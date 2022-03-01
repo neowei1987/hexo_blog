@@ -5,6 +5,7 @@ updated:
 mathjax: true
 categories:
 tags: 
+-数据库
 ---
 
 数据库中涉及到锁的一些经常考察的知识点

@@ -3,7 +3,9 @@ title: 贪心算法
 date: 2021-03-14 22:58:03
 mathjax: true
 categories:
+- 数据结构与算法
 tags: 
+- 贪心
 ---
 
 ### 贪心算法

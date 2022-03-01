@@ -4,10 +4,10 @@ date: 2021-01-05 14:30:03
 updated:
 mathjax: true
 categories:
-- [数据结构与算法]
+- 剑指Offer
+- 数据结构与算法
 tags: 
 - 二叉树
-- 剑指Offer
 ---
 
 ## 二叉树子结构-题目描述

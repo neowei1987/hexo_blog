@@ -3,7 +3,9 @@ title: 字符串匹配算法
 date: 2020-12-27 23:34:03
 mathjax: true
 categories:
+- 数据结构与算法
 tags: 
+- 字符串
 ---
 
 字符串匹配算法

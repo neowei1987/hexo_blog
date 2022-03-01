@@ -5,7 +5,7 @@ mathjax: true
 categories:
 - 
 tags: 
-- 
+- 计算机硬件
 ---
 
 TLB（Translation Lookaside Buffer）是一块高速缓存。

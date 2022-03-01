@@ -1,5 +1,10 @@
 ---
 title: 快速排序
+categories:
+- 数据结构与算法
+tags: 
+- 排序
+- 快速排序
 ---
 
 两个考察点：分治、双指针实现快速partition

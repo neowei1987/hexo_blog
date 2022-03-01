@@ -5,6 +5,7 @@ updated:
 mathjax: true
 categories:
 tags: 
+- 操作系统
 ---
 
 ![内存访问](https://pics3.baidu.com/feed/838ba61ea8d3fd1f0c5a12495ab0521794ca5f7c.jpeg?token=dd0db40934355dcfa5bc35bec53f8b4d)

@@ -8,7 +8,9 @@ keywords: [奇技淫巧]
 description: 
 mathjax: true
 categories:
+- [数据结构与算法]
 tags: 
+- 二叉树
 ---
 
 ## 题目描述

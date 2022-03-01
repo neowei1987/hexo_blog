@@ -1,5 +1,8 @@
 ---
 title: 内存池系列｜nginx内存分配
+tags: 
+- 高性能服务器
+- 内存池
 ---
 
 ![nginx内存池](https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.it610.com%2Fimage%2Finfo5%2F7488f6235cda4dabaa7beed536bac0ba.jpg&refer=http%3A%2F%2Fimg.it610.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg)

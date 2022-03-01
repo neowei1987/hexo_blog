@@ -1,9 +1,12 @@
 ---
-title: 第k大元素|一题多解
+title: 第k大元素
 date: 2021-1-2 15:47:03
 mathjax: true
 categories:
-tags:
+- 数据结构与算法
+tags: 
+- 线性选择
+- 一题多解
 ---
 
 输入n个整数，找出其中最小的k个数。

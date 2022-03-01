@@ -8,7 +8,10 @@ keywords: []
 description: 
 mathjax: true
 categories:
+- 剑指Offer
+- 数据结构与算法
 tags: 
+- 链表
 ---
 
 ## 复制复杂链表-题目描述

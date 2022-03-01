@@ -6,6 +6,8 @@ mathjax: true
 categories:
 - [系统设计]
 tags: 
+- 拓扑排序
+- 图论
 ---
 
 1. 用图来来表示源文件编译时的依赖顺序
