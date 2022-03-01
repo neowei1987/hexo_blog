@@ -3,8 +3,8 @@ title: 链表第一个公共节点
 date: 2020-12-29 23:34:03
 mathjax: true
 categories:
-- 剑指Offer
 - 数据结构与算法
+- 剑指Offer
 tags: 
 - 链表
 - 快慢指针

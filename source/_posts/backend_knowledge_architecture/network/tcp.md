@@ -1,11 +1,11 @@
 ---
 title: 计算机网络 - TCP协议
 date: 2022-02-16 23:20:03
-updated:
+updated: 
 mathjax: true
-categories:
+categories: 
 tags: 
--计算机网络
+- 计算机网络
 ---
 ## TCP状态迁移图
 

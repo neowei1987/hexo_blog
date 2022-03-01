@@ -1,11 +1,10 @@
 ---
 title: 数据库必知必会-锁篇
 date: 2022-02-16 23:20:03
-updated:
 mathjax: true
-categories:
+categories: 
 tags: 
--数据库
+- 数据库
 ---
 
 数据库中涉及到锁的一些经常考察的知识点

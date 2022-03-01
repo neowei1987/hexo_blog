@@ -1,11 +1,9 @@
 ---
 title: 数据库必知必会-存储引擎与数据库索引篇
 date: 2022-02-16 23:20:03
-updated:
 mathjax: true
-categories:
 tags: 
--数据库
+- 数据库
 ---
 
 数据库索引一些经常考察的知识点

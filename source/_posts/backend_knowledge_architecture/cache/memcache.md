@@ -5,7 +5,7 @@ updated:
 mathjax: true
 categories:
 tags: 
--缓存
+- 缓存
 ---
 
 memcached作为高速运行的分布式缓存服务器，具有以下的特点:

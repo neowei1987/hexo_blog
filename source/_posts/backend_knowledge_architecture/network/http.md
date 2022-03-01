@@ -1,11 +1,11 @@
 ---
 title: 计算机网络 - HTTP协议
 date: 2022-02-25 10:20:03
-updated:
+updated: 
 mathjax: true
-categories:
+categories: 
 tags: 
--计算机网络
+- 计算机网络
 ---
 
 ![HTTP对比](https://pic.rmb.bdstatic.com/bjh/news/6722dbdf63eabaa62b59486f2c51df6e.png)

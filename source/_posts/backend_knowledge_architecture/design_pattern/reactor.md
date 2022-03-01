@@ -2,10 +2,9 @@
 title: 设计模式-reactor模式
 date: 2022-02-18 10:01:03
 mathjax: true
-categories:
-- 
+categories: 
 tags: 
--设计模式
+- 设计模式
 ---
 
 Reactor 模式首先是事件驱动的，有一个或多个并发输入源，有一个Service Handler，有多个Request Handlers；这个Service Handler会同步的将输入的请求（Event）多路复用的分发给相应的Request Handler。如果用图表示的如下：

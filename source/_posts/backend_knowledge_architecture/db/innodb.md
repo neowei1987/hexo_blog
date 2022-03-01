@@ -1,11 +1,10 @@
 ---
 title: 数据库必知必会-InnoDB存储引擎
 date: 2022-02-16 23:20:03
-updated:
 mathjax: true
-categories:
+categories: 
 tags: 
--数据库
+- 数据库
 ---
 
 我们通过几个问题来介绍InnoDB存储引擎

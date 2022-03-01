@@ -2,10 +2,9 @@
 title: 设计模式-概览
 date: 2022-02-24 10:01:03
 mathjax: true
-categories:
-- 
+categories: 
 tags: 
--设计模式
+- 设计模式
 ---
 
 软件设计模式的几种分类

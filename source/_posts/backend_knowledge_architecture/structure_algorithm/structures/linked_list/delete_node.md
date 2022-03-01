@@ -2,8 +2,8 @@
 title: 链表系列-O(1)删除节点
 date: 2021-01-30 22:54:03
 categories:
-- 剑指Offer
 - 数据结构与算法
+- 剑指Offer
 tags: 
 - 链表
 ---
