@@ -15,3 +15,9 @@ title: 题目组织说明
 第三个维度，问题变种维度。
 
 有很多问题，可以衍生出很多的变种。对于这些问题，我们也会开一个专门的目录来对待。
+
+参考：
+
+按照pattern刷题 https://www.zhihu.com/question/36738189/answer/908664455
+
+https://www.educative.io/courses/grokking-the-coding-interview?aff=K7qB

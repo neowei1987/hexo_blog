@@ -1,16 +1,15 @@
 ---
-title: 算法技巧
-date: 2021-03-14 23:34:03
+title: 面试技巧
+date: 2022-03-01 16:34:03
 mathjax: true
 categories:
 tags: 
 ---
 
-纯算法技巧
-
-
 ### GM面试
-#### 此次面试的目的（总结一下GM比较关注的问题方向）
+#### 此次面试的目的
+
+总结一下GM比较关注的问题方向
 
 1）在这个岗位上可以发挥什么价值？
 2）稳定性怎么样？
@@ -105,10 +104,3 @@ b. 你觉得这个行业会如何发展？
 第二，你可以通过把自己从团队成员的对立面抽离，提升角色自信；
 
 第三，你可以通过收集外部积极正向的反馈，提升自我认同。
-
-https://www.zhihu.com/question/36738189/answer/908664455
-
-https://www.educative.io/courses/
-grokking-dynamic-programming-patterns-for-coding-interviews?aff=K7qB
-
-https://www.educative.io/courses/grokking-the-coding-interview?aff=K7qB

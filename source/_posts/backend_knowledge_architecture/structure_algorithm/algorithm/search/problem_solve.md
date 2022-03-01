@@ -102,6 +102,7 @@ H(x)= log（所有可能性）= log（n！） 而n—>00 则log（n！）近似�
 而上面，我们根本没提到具体算法，就算到了最优的时间复杂度。在实际生活中很多时候我们虽然不会想到具体的策略，但我们至少可以知道极限在哪里，可以知道还有没有提高余地。任何排序和猜数字的算法可以理解为通过获得信息量去消减原来的熵。（这句摘自eric的话）
 
 什么叫状态空间树？
+
 就是问题的解空间树，分为子集树和排列树
 
 当所给的问题是从n个元素的集合S中找到S满足某种性质的子集时，相应的解空间树称为子集树。
@@ -122,15 +123,12 @@ H(x)= log（所有可能性）= log（n！） 而n—>00 则log（n！）近似�
 
 让我们先思考下我们之前做过的算法题都有哪些种类？
 
-
-
 解空间树T
 
 回溯法以深度优先的方式搜索解空间树T，而分支限界法则以广度优先或以最小耗费优先的方式搜索解空间树T。它们在问题的解空间树T上搜索的方法不同，适合解决的问题也就不同。一般情况下，回溯法的求解目标是找出T中满足约束条件的所有解的方案，而分支限界法的求解目标则是找出满足约束条件的一个解，或是在满足约束条件的解中找出使某一目标函数值达到极大或极小的解，即在某种意义下的最优解。相对而言，分支限界算法的解空间比回溯法大得多，因此当内存容量有限时，回溯法成功的可能性更大。
 
 发现当考虑了所有的操作时，还要对操作所得状态进行判断，是否已出现过，来避免重复搜索。这道题我纠结了好久，就是因为我想通过限制操作来避免出现重复状态，而出现重复状态的情况有很多，很难考虑全面。其实判断状态是否重复我之前也都做过，就是在搜索迷宫的过程中，操作就是移动的方向，而状态就是位置，为了避免重复搜索就在地图上做标记，当时这样做的时候觉得顺理成章，不过在这题里，却并没有能直接这样做。
 总结下，在搜索整个解空间时，首先是考虑所有的 操作，然后通过保存已出现 状态，来防止重复搜索。如果很容易通过对操作进行限制来防止状态的重复出现，或是保存状态所需的内存空间过大的话，那就不宜保存状态。
-
 
  a computational problem is a problem that a computer might be able to solve or a question that a computer may be able to answer.
  A computational problem can be viewed as an infinite collection of instances together with a, possibly empty, set of solutions for every instance. For example, in the factoring problem, the instances are the integers n, and solutions are prime numbers p that describe nontrivial prime factors of n.

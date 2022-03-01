@@ -45,3 +45,8 @@ tags:
 | | [缺失的第一个正数](firstMissingPositive.html)  |[原地交换]()|
 | | [数组中重复的数据](duplicateInArray.html)  |[原地交换]()|
 | | [数组中重复的数据-无额外空间](duplicateInArrayNoSpace.html)  |[二分查找]()|
+
+## Pattern: Cyclic Sort 循环排序
+
+参考：
+https://blog.csdn.net/weixin_43989102/article/details/111397072
