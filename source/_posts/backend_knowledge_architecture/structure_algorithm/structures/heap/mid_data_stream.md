@@ -40,6 +40,7 @@ public:
     priority_queue<int, vector<int>, greater<int>> bh;//小根对，存最大的一半
     
     void insert(int num){
+        //总会向大的一半中新增一个。
         if (bh.empty() || num > bh.top()) {
             bh.push(num);
         }

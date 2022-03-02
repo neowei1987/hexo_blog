@@ -42,9 +42,9 @@ tags:
 
 |  题目分类 | 题目名称 |考察点   |其他说明|
 |  ----  | ---- |----  |----  |
-| | [缺失的第一个正数](firstMissingPositive.html)  |[原地交换]()|
-| | [数组中重复的数据](duplicateInArray.html)  |[原地交换]()|
-| | [数组中重复的数据-无额外空间](duplicateInArrayNoSpace.html)  |[二分查找]()|
+| | [缺失的第一个正数](firstMissingPositive.html)  |原地交换|
+| | [数组中重复的数据](duplicateInArray.html)  |原地交换)|
+| | [数组中重复的数据-无额外空间](duplicateInArrayNoSpace.html)  |二分查找|
 
 ## Pattern: Cyclic Sort 循环排序
 

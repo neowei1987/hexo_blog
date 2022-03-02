@@ -27,7 +27,7 @@ tags:
 
 ### code
 
-```
+```cpp
 int GetMaxDistance(TreeNode* root) {
     if (root == NULL) return 0;
     
