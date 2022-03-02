@@ -8,6 +8,8 @@ tags:
 - 回溯
 ---
 
+## N选K组合（无重复版）
+
 给定两个整数 n 和 k，返回 1 ... n 中所有可能的 k 个数的组合。
 
 ### N选K组合解题思路
@@ -50,6 +52,8 @@ void dfs(int u, int start_idx) {
 dfs(0, 0);
 ```
 
+## 和为n的K个数的组合
+
 找出所有相加之和为 n 的 k 个数的组合。组合中只允许含有 1 - 9 的正整数，并且每种组合中不存在重复的数字。
 
 ### N选K组合的和解题思路
@@ -85,6 +89,8 @@ void dfs(int u, int sum, int start) {
 
 dfs(0, n, 0);
 ```
+
+## 和为N的组合（无限选取版）
 
 给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。candidates 中的数字可以无限制重复被选取。
 
@@ -139,11 +145,13 @@ dfs(0, n, 0);
     }
 ```
 
+## 和为N的组合（有重复，仅用一次）
+
 给定一个数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
-candidates 中的每个数字在每个组合中只能使用一次。
+candidates 中的每个数字在每个组合中只能使用一次。 
+
 说明：
-所有数字（包括目标数）都是正整数。
-解集不能包含重复的组合。
+所有数字（包括目标数）都是正整数。解集不能包含重复的组合。
 
 //需要进行排序预处理，从大到小
 
@@ -167,9 +175,11 @@ void dfs(vector<int>& d, int u, int sum, int start_index) {
     }
 ```
 
-给定一个 没有重复 数字的序列，返回其所有可能的全排列。
+## 所有数字的排列（无重复版）
 
-//给坑选元素。
+给定一个 **没有重复** 数字的序列，返回其所有可能的全排列。
+
+### 解法1 给坑选元素。
 
 ```cpp
     void dfs(vector<int>& d, int u) {
@@ -189,10 +199,12 @@ void dfs(vector<int>& d, int u, int sum, int start_index) {
     }
 ```
 
-//给元素选坑，后面可以选择的坑原来越少了。
-//u代表哪一个元素。
+### 解法2: 给元素选坑
+
+//后面可以选择的坑原来越少了
 
 ```cpp
+    //u代表哪一个元素。
     void dfs(vector<int>& d, int u) {
         if (u == n) {
             res.push_back(d);
@@ -207,6 +219,8 @@ void dfs(vector<int>& d, int u, int sum, int start_index) {
     }
 
 ```
+
+## 所有数字的排列（数字重复）
 
 输入一组数字（可能包含重复数字），输出其所有的排列方式。
 
@@ -223,7 +237,7 @@ void dfs(vector<int>& d, int u, int sum, int start_index) {
         [3,2,1]
       ]
 
-下面这种方式是特定元素选择坑位
+### 特定元素选择坑位
 
 ```cpp
 class Solution {
@@ -258,9 +272,10 @@ public:
 };
 ```
 
-为坑选择合适的元素，排个序先。
+### 为坑选择合适的元素
 
 ```cpp
+    //sort first
     void dfs(int u) {
         if (u == nums.size()) {
             res.push_back(path);
@@ -279,6 +294,8 @@ public:
     }
 ```
 
+## 所有递增子序列
+
 给定一个整型数组, 你的任务是找到所有该数组的递增子序列，递增子序列的长度至少是2。
 
 示例:
@@ -291,10 +308,16 @@ public:
 数组中的整数范围是 [-100,100]。
 给定数组中可能包含重复数字，相等的数字应该被视为递增的一种情况。
 
+### 解题思路
+
+1. 因为找到是递增子序列，所以不能排序；也就不能通过排序来去重了
+2. 可以考虑用hash_map来做去重。
+
 ```cpp
  void dfs(int u, int start) {
         if (u >= 2) {
             res.push_back(path);
+            //这里是不可以return的
         }
 
         unordered_set<int> iset;

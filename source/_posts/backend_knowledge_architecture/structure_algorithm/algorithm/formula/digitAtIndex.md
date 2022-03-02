@@ -3,6 +3,7 @@ title: 找递增序列下标数字
 date: 2020-12-27 23:42:03
 mathjax: true
 categories:
+- 数据结构与算法
 - 剑指Offer
 tags: 
 ---
