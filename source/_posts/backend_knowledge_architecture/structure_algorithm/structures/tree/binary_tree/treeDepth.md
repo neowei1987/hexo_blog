@@ -8,8 +8,7 @@ keywords: []
 description: 
 mathjax: true
 categories:
-- 剑指Offer
-- [数据结构与算法]
+- [数据结构与算法,剑指Offer]
 tags: 
 - 二叉树
 ---

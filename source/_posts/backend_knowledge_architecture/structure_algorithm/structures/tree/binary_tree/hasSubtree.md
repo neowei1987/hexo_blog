@@ -59,8 +59,8 @@ base condition: nullptr判定
 
 ## 二叉树子结构-代码实现
 
-
 ```cpp
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -89,5 +89,4 @@ public:
         return hasSubtree(r1->left, r2) || hasSubtree(r1->right, r2);
      }
 };
-
 ```

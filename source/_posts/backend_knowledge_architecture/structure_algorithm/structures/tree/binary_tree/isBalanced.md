@@ -63,6 +63,7 @@ typedef pair<bool, int> PBI;
 class Solution {
 public:
     
+    //没有正确使用全局变量
     PBI dfs(TreeNode* root) {
         if (!root) return {true, 0};
 
@@ -78,6 +79,21 @@ public:
         else {
             return {true, 1 + max(lbi.second, rbi.second)};
         }
+    }
+
+    //学会使用全局变量， flag
+    int dfs(TreeNode* root) {
+        if (!root) return 0;
+
+        int lh = dfs(root->left);
+        int rh = dfs(root->right);
+
+        if (abs(lh - rh) > 1) {
+            g_flag = false;
+            return 0;
+        }
+
+        return 1 + max(lh, rh);
     }
 
     bool isBalanced(TreeNode* root) {
