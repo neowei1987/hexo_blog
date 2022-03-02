@@ -26,11 +26,13 @@ Slab Allocator的基本原理是按照预先规定的大小，将分配的内存
 
 ### memcache删除机制
 
-基于LRU(Least Recently Used)算法自动删除不使用的缓存
-
 Lazy Expiration
 
+基于LRU(Least Recently Used)算法自动删除不使用的缓存
+
 memcached内部不会监视记录是否过期，而是在get时查看记录的时间戳，检查记录是否过期。这种技术被称为lazy（惰性）expiration。因此，memcached不会在过期监视上耗费CPU时间。
+
+当容量存满时，会对缓存中的数据进行剔除，剔除时除了会对过期 key 进行清理，还会按 LRU 策略对数据进行剔除。
 
 ## 哈希算法
 

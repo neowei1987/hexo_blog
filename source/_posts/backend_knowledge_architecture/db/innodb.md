@@ -84,7 +84,7 @@ select xxx from xxx
 
 此问题最终是通过间隙锁（next-key lock)来解决的。
 
-#### InnoDB是如何解决事务的一致性问题
+#### InnoDB是如何解决事务的持久性问题
 
 Redo log是什么？ 通过它解决了什么问题？
 
