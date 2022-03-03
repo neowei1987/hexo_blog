@@ -321,39 +321,19 @@ public:
 
 |  题目分类 | 题目名称 |考察点   |其他说明|
 |  ----  | ---- |----  |----  |
-|二叉树遍历| [获取树的深度](../treeDepth.html)  ||
-|二叉树遍历 | [最低公共祖先](../lowest_ancestor.html)  ||
-|二叉树遍历| [二叉树镜像](../mirror.html)  ||
-|二叉树遍历 | [判断二叉树是否对称](../isSymmetric.html)  ||
-|二叉树遍历 | [判定是否平衡树](../isBalanced.html)  ||
-|二叉树遍历 | [二叉树子结构](../hasSubtree.html)  ||
-|二叉树遍历 | [二叉树的序列化与反序列化](../deserialize.html)  |二叉树遍历|
+|二叉树遍历| [获取树的深度](./treeDepth.html)  ||
+|二叉树遍历 | [最低公共祖先](./lowest_ancestor.html)  ||
+|二叉树遍历| [二叉树镜像](./mirror.html)  ||
+|二叉树遍历 | [判断二叉树是否对称](./isSymmetric.html)  ||
+|二叉树遍历 | [判定是否平衡树](./isBalanced.html)  ||
+|二叉树遍历 | [二叉树子结构](./hasSubtree.html)  ||
+|二叉树遍历 | [二叉树的序列化与反序列化](./deserialize.html)  |二叉树遍历|
 |二叉树构建 | [根据前序序列与中序序列重建二叉树](pre_in_build.html)  ||
-|二叉树层次遍历 | [从上往下打印出二叉树的每个结点](../printFromTopToBottom.html)  ||
-|二叉搜索树遍历| [二叉搜索树转有序双向链表](../tree2list.html)  ||
-|二叉搜索树遍历 | [获取第k个节点](../kthNode.html)  |全局变量技巧|
+|二叉树层次遍历 | [从上往下打印出二叉树的每个结点](./printFromTopToBottom.html)  ||
+|二叉搜索树遍历| [二叉搜索树转有序双向链表](./tree2list.html)  ||
+|二叉搜索树遍历 | [获取第k个节点](./kthNode.html)  |全局变量技巧|
 |二叉搜索树遍历 | [判断该数组是不是某二叉搜索树的后序遍历的结果](../verifySequenceOfBST.html)  ||
-|二叉搜索树遍历 | [中序遍历序列的下一个节点](../inorderSuccessor.html)  ||
-|二叉树遍历系列 | [二叉树中结点值的和为输入整数的所有路径](../findPathInTree.html)  ||
+|二叉搜索树遍历 | [中序遍历序列的下一个节点](./inorderSuccessor.html)  ||
+|二叉树遍历系列 | [二叉树中结点值的和为输入整数的所有路径](./findPathInTree.html)  ||
 |二叉树遍历系列 | [求二叉树中节点的最大距离](GetMaxDistance.html)  |全局变量技巧|
 |二叉树遍历系列 | [二叉树的路径打印](node_path.html)  ||
-
-
-
-7. Pattern: Tree Breadth First Search，树上的BFS
-经典题目：
-Binary Tree Level Order Traversal (easy)
-Reverse Level Order Traversal (easy)
-Zigzag Traversal (medium)
-Level Averages in a Binary Tree (easy)
-Minimum Depth of a Binary Tree (easy)
-Level Order Successor (easy)
-Connect Level Order Siblings (medium)
-
-8. Pattern: Tree Depth First Search，树上的DFS
-经典题目：
-Binary Tree Path Sum (easy)
-All Paths for a Sum (medium)
-Sum of Path Numbers (medium)
-Path With Given Sequence (medium)
-Count Paths for a Sum (medium)

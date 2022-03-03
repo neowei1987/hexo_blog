@@ -35,6 +35,14 @@ minStack.getMin();   --> Returns -1.
 
 空间换时间，用另外一个stack去储存最小值。
 
+另外，如果要求额外存储空间控制在$O(1)$呢？
+
+思路：
+
+1. 用一个数字来存储当前最小值
+2. 栈中存差值（newValueStored = newValue - oldMin、newValueStored = newMin），确保可以根据栈中存的值 与 最小值，能够还原出 原始值。
+3. 当发生pop时，能够计算得出新的最小值（oldMin = newValue - newValueStored = NewMin - top）
+
 ## 支持min操作的栈-代码实现
 
 ```cpp

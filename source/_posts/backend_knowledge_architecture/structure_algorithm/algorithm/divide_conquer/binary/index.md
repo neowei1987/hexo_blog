@@ -87,7 +87,7 @@ double bsearch_3(double l, double r)
 || [重复数字出现次数](moving_cnt.html)  ||
 || [旋转数组找最值](find_min_in_rotated_array.html)  ||
 || 求两个有序数组前K大的数|考虑A的中间元素m/2和B的中间元素n/2||
-|多路归并| 求m个有序数组前K大的数 | 维护一个大小为m的堆||
+|| 多路归并| 求m个有序数组前K大的数 | 维护一个大小为m的堆||
 
 参考：
 
