@@ -312,7 +312,7 @@ public:
                 
         for (int i = start; i < nums.size(); ++i) {
             if (!(state >> i & 1)) {
-                //这一步骤是关键，为第u号元素找可以选择的坑位
+                //这一步骤是关键，为第u号元素找可以选择的坑位[i]
                 path[i]= nums[u];
                 dfs(nums, u + 1, i + 1, state + (1 << i));
             }

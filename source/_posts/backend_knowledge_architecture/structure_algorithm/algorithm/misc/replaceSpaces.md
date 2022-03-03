@@ -16,6 +16,10 @@ tags:
 
 输出："We%20are%20happy."
 
+考察点： 从后往前遍历，逆向思维。
+
+与之类似的题目： memcpy实现。
+
 ```cpp
 class Solution {
 public:
