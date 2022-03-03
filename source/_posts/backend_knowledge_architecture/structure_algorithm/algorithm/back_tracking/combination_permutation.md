@@ -179,7 +179,7 @@ void dfs(vector<int>& d, int u, int sum, int start_index) {
 
 给定一个 **没有重复** 数字的序列，返回其所有可能的全排列。
 
-### 解法1 给坑选元素。
+### 解法1 给坑u找元素i
 
 ```cpp
     void dfs(vector<int>& d, int u) {
@@ -199,21 +199,53 @@ void dfs(vector<int>& d, int u, int sum, int start_index) {
     }
 ```
 
-### 解法2: 给元素选坑
+### 解法2: 特定元素(u)选择坑位（i)
 
-//后面可以选择的坑原来越少了
+//后面可以选择的坑原来越少了； u是第一个元素；
 
 ```cpp
-    //u代表哪一个元素。
+class Solution {
+public:
+    vector<vector<int>> res;
+    vector<int> path;
+    
+    void dfs(vector<int>& nums, int u, int state) {
+        if (u == int(nums.size())) {
+            res.push_back(path);
+            return;
+        }
+        
+        for (int i = start; i < nums.size(); ++i) {
+            if (!(state >> i & 1)) {
+                //这一步骤是关键，为第u号元素找可以选择的坑位
+                path[i]= nums[u];
+                dfs(nums, u + 1, state + (1 << i));
+            }
+        }
+    }
+    
+    vector<vector<int>> permutation(vector<int>& nums) {
+        path.resize(nums.size());
+        sort(nums.begin(), nums.end());
+        dfs(nums, 0, 0, 0);
+        return res;
+    }
+};
+
+注意到前面的state与path的配合使用，有两个目的：保存当前坑位存了哪些元素了，保存坑位的使用情况。
+有没有什么手段呢？ path可以d来替代；d的前半部分作为坑使用，后半部分保持原功能； 但是坑占用之前，需要保存其原值，一举两得。所以就有了下面这种解法。
+
+    //u代表元素。
     void dfs(vector<int>& d, int u) {
         if (u == n) {
             res.push_back(d);
             return;
         }
 
+        //这一步骤是关键，为第u号元素找可以选择的坑位
         for (int i = u; i < n; ++i ) {
-            swap(d[u], d[i]);
-            dfs(d, u + 1);
+            swap(d[u], d[i]);   //将u元素放入i号坑。
+            dfs(d, u + 1);  
             swap(d[u], d[i]);
         }
     }
@@ -237,7 +269,31 @@ void dfs(vector<int>& d, int u, int sum, int start_index) {
         [3,2,1]
       ]
 
-### 特定元素选择坑位
+
+
+### 为坑（u）选择合适的元素（i）
+
+```cpp
+    //sort first
+    void dfs(int u) {
+        if (u == nums.size()) {
+            res.push_back(path);
+            return;
+        }
+        for (int i = 0; i < nums.size(); i++) {
+            if (i > 0 &&  nums[i] == nums[i - 1] && !used[i - 1]) continue; //两次访问，第一次访问是used[i-1]=true,会加到path中; 第二次访问used[i-1]=false，会被跳过。
+            if (used[i]) continue;
+            used[i] = true;
+            //为新的坑，选择了一个新的元素
+            path.push_back(nums[i]);
+            dfs(u + 1);
+            path.pop_back();
+            used[i] = false;
+        }
+    }
+```
+
+### 特定元素(u)选择坑位（i)
 
 ```cpp
 class Solution {
@@ -270,28 +326,6 @@ public:
         return res;
     }
 };
-```
-
-### 为坑选择合适的元素
-
-```cpp
-    //sort first
-    void dfs(int u) {
-        if (u == nums.size()) {
-            res.push_back(path);
-            return;
-        }
-        for (int i = 0; i < nums.size(); i++) {
-            if (i > 0 &&  nums[i] == nums[i - 1] && !used[i - 1]) continue;
-            if (used[i]) continue;
-            used[i] = true;
-            //为新的坑，选择了一个新的元素
-            path.push_back(nums[i]);
-            dfs(u + 1);
-            path.pop_back();
-            used[i] = false;
-        }
-    }
 ```
 
 ## 所有递增子序列

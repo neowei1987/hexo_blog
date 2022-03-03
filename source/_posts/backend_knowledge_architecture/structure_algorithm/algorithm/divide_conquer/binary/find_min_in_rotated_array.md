@@ -52,4 +52,5 @@ public:
         return nums[r];
     }
 };
+
 ```
