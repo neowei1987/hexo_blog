@@ -10,5 +10,6 @@
     "picgo.picBed.qiniu.bucket": "b5mang",
     "picgo.picBed.qiniu.url": "http://cdn.b5mang.com",
     "picgo.picBed.current": "qiniu",
-    "picgo.picBed.uploader": "qiniu"
+    "picgo.picBed.uploader": "qiniu",
+    "workbench.colorTheme": "Visual Studio Light"
 }
