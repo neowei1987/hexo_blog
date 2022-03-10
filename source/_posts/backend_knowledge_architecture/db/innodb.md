@@ -100,6 +100,7 @@ Redo Log与binlog的两阶段提交
 - 写入binlog（状态为已提交）--- TX_ID
 - commit阶段，写入redo log（状态为已提交）
 
+
 #### InnoDB的几个关键特性
 
 insert buffer、double write、自适应hash索引、异步写等

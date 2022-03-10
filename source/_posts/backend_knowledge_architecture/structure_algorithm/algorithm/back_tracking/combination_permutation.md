@@ -181,6 +181,7 @@ void dfs(vector<int>& d, int u, int sum, int start_index) {
 
 ### 解法1 给坑u找元素i
 
+
 ```cpp
     void dfs(vector<int>& d, int u) {
         if (u == n) {
@@ -191,6 +192,7 @@ void dfs(vector<int>& d, int u, int sum, int start_index) {
         for (int i = 0; i < n; ++i ) {
             if (used[i]) continue;
             path.push_back(d[i]);
+            //path[u] = nums[i]; 这样子其实也可以，这样子反而不需要还原现场；因为u的设置顺序是从大到小
             used[i] = true;
             dfs(d, u + 1);
             used[i] =false;
@@ -268,8 +270,6 @@ public:
         [3,1,2],
         [3,2,1]
       ]
-
-
 
 ### 为坑（u）选择合适的元素（i）
 

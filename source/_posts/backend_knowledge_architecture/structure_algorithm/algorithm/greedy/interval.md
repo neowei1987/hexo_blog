@@ -91,13 +91,12 @@ int main(){
 top()返回最小的最大值，既然最小的都有交集，更大的就更不用说啦。
 
 1. 按照左边排序
-2. 枚举区间，能否将该区间加入到当前分组中
+2. 枚举区间，能否将该区间加入到当前分组中（L[i] > Max_r）
    1. 如果不存在这样子的组，则开新组
    2. 加入到当前组中，更新max_r
 
-![20201229213954](http://cdn.b5mang.com/20201229213954.png)
-
 ```cpp
+
 bool cmd(const PII& a, const PII& b) {
     return a.first < b.first;
 }
@@ -128,7 +127,6 @@ return q.size();
 1. 左端点从小到大排序
 2. 从前往后依次枚举每个区间，在所有能覆盖start的区间中，选择右端点最大的区间，然后将start更新为右端点的最大值。
 
-![20201229215735](http://cdn.b5mang.com/20201229215735.png)
 
 ```cpp
 #include <iostream>

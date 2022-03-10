@@ -19,3 +19,35 @@ tags:
 如果此时添加445ms后执行的任务，则第一层表示的时间跨度不够，第二层表示的时间跨度也不够，第三层表示的时间跨度足够，该任务应该放到第三层轮子第二格子中，该轮子指针指到第二格子中时，计算离任务启动时间还有多长时间，慢慢将该任务移动到底层轮子上，最终任务到期执行。
 
 HashedWheelTimer时间轮是一个高性能，低消耗的数据结构，它适合用非准实时，延迟的短平快任务，例如心跳检测。
+
+```cpp
+
+class TimeWheel {
+    void push() {
+         //利用当前时间与currentTs，计算目标offset。
+         //把事件插入到offset对应的ticks链表中
+    }
+
+    void pop() {
+        //利用当前时间与currentTs，计算目标offset。
+        //确认需要往前移动多少格
+
+        //把过期事件，trigger掉；
+
+        //然后移动currIdx与currentTs;
+    }
+
+    void background_thread() {
+        //每秒钟一次运行，exTicks中1s中后就要运行的item移动到ticks[(currentIdx - 1) % N]。
+        //此处考虑并发
+        //对currentIdx的读访问要考虑并发，可以考虑用原子变量
+        //对链表的访问可以用互斥锁（理论上：并不是有实际冲突，因为这个tick还有接近1分钟才会被访问到。）
+    }
+
+    map<ts, Item> exTicks; //超过1分钟的事件；
+    vector<List> ticks;  //假设60个格子，只能承载最近60s的事件。
+    currentIdx;
+    currentTs;
+};
+
+```
