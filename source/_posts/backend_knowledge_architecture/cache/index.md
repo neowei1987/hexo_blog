@@ -38,6 +38,7 @@ redis\memcache\tair
 
 具体有哪些：
 浏览器cookie；浏览器本地缓存；flash本地存储；html5的本地存储；native app 本地缓存
+
 缓存系统对比与选型
 
 ---
