@@ -4,8 +4,47 @@ tags:
 - 高性能服务器
 ---
 
+### 核心参数
 
-拒绝策略
+1、corePoolSize:线程池中的常驻核心线程数
+
+2、maximumPoolSize：线程池能容纳同时执行的最大线程数，此值必须>=1
+
+3、keepAliveTime：多余的空闲线程的存活时间
+
+当前线程池数量超过corePoolSize时，当空闲的时间达到keepAliveTime值时，多余的空闲线程会被直接销毁直到只剩下corePoolSize个线程为止
+
+4、timeUtile：keepAliveTime的单位
+
+5、workQueue:任务队列，被提交但未被执行的任务
+
+6、threadFactory：表示生成线程池中工作线程的线程工厂，用于创建线程一般用默认的即可。
+
+7、handler：拒绝策略，表示当队列满了并且工作线程大于等于线程池的最大线程数
+
+
+### 工作流程
+
+线程池内部是通过队列+线程实现的，当我们利⽤线程池执⾏任务时：
+1. 如果此时线程池中的线程数量⼩于corePoolSize，即使线程池中的线程都处于空闲状态，也要创建
+新的线程来处理被添加的任务。
+2. 如果此时线程池中的线程数量等于corePoolSize，但是缓冲队列workQueue未满，那么任务被放⼊
+缓冲队列。
+3. 如果此时线程池中的线程数量⼤于等于corePoolSize，缓冲队列workQueue满，并且线程池中的数
+量⼩于maximumPoolSize，建新的线程来处理被添加的任务。
+4. 如果此时线程池中的线程数量⼤于corePoolSize，缓冲队列workQueue满，并且线程池中的数量等
+于maximumPoolSize，那么通过 handler所指定的策略来处理此任务。
+5. 当线程池中的线程数量⼤于 corePoolSize时，如果某线程空闲时间超过keepAliveTime，线程将被
+终⽌。这样，线程池可以动态的调整池中的线程数
+
+
+### 合理线程数
+
+CPU密集型：CPU核数+1个线程的线程池
+
+IO密集型：a)CPU核数*2；b)CPU核数/1-阻塞系数。（阻塞系数：0.8～0.9）
+
+### 拒绝策略
 
 第一种拒绝策略是 AbortPolicy，这种拒绝策略在拒绝任务时，会直接抛出异常 RejectedExecutionException （属于RuntimeException），让你感知到任务被拒绝了，于是你便可以根据业务逻辑选择重试或者放弃提交等策略。
 

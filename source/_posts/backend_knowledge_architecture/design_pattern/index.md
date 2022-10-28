@@ -25,7 +25,7 @@ tags:
 
 ##### 单例模式
 
-全剧资源管理，简化访问。
+全局资源管理，简化访问。
 
 ##### 生成器模式
 
@@ -137,7 +137,5 @@ STL::iterator
 访问者模式
 
 参考：
-
-https://baijiahao.baidu.com/s?id=1689289447950480472&wfr=spider&for=pc
 
 https://blog.csdn.net/sinat_34166518/article/details/89206059

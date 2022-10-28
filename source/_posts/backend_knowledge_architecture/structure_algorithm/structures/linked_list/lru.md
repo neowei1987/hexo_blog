@@ -26,4 +26,72 @@ struct ListNode {
 
 unsorted_map<int, ListNode*> hash;
 
+class LRUCache {
+private:
+    unsorted_map<int, ListNode*> hash;
+    ListNode* head;
+    ListNode* tail;
+    int n;
+
+    LRUCache(int nn) {
+        n = nn;
+        head = new ListNode();
+        tail = new ListNode();
+    } 
+
+    void put(int k, int v) {
+        ListNode* r = get2(k);
+        if (r != NULL) return;
+
+        ListNode* node = NULL;
+        if (hash.size() > n) {
+            //链表上移除
+            auto node = tail->pre;
+            node->next->pre = node->pre;
+            node->pre->next = node->next;  
+            //hash移除 
+            hash.erase(node->k);
+        }
+        else {
+            node = new ListNode();
+        }
+
+        node.val = v;
+        //将node放在头部
+        node->next = head->next;
+        node->pre = head;
+   
+        head->next->pre = node;
+        head->next = node;
+
+        hash[k] = node;
+
+    }
+
+    ListNode* get2(int k) {
+        auto it = hash.find(k);
+        if it == hash.end() {
+            return NULL;
+        }
+
+        auto node = *it;
+        
+        //移除
+        node->next->pre = node;
+        node->pre->next = node->next;
+
+        node->next = head->next;
+        node->pre = head;
+   
+        head->next->pre = node;
+        head->next = node;
+    }
+
+    int get(int k) {
+        ListNode* r = get2(k);
+        if (r == NULL) return -1;
+        else r->val;
+    }
+};
+
 ```

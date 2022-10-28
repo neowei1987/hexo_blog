@@ -26,6 +26,7 @@ tags:
 
 ```cpp
 
+// u 没有实际作用，可以通过path来替代；
 vector<int> path;
 void dfs(int u, int start_idx) {
     if (u == k) {

@@ -80,3 +80,23 @@ hash统计次数，然后单机排序、或者多机器归并排序
 思路：
 
 hashmap
+
+### 数据结构实现
+
+Hashmap是用hash算法实现的，我们通过put一个key和value进行存储，用get（key）来获取，在传入key时，hashmap会根据key.hashCode（）计算出hash值存储到bucket里面，当发生hash值相同，也就是hash冲突时，会使用链表+红黑树存储相同的hash值的value，如果冲突少，就用链表，冲突多，就用红黑树
+
+Hashmap扩容：
+
+·HashMap 初始化大小是 16 ，扩容因子默认0.75（可以指定初始化大小，和扩容因子）
+·存的对象*负载因子*0.75（默认）大于总量就要扩容，扩容是键值重新排布，重新对底层数组容量取余分布
+·JDK1.8之前是数组+链表结构、JDK1.8及之后是数组+链表+红黑树
+·HashMap集合可以存储null键和null值
+
+### java数据结构对比
+
+hashMap 数组 + 链表 （冲突链表过长时，转为红黑树）线程不安全 允许null\null  不可以有序遍历
+
+hashTable 线程安全，通过synchronized 不允许null\null  不可以有序遍历
+
+treeMap 红黑树 线程不安全 可以有序遍历
+

@@ -40,8 +40,11 @@ minStack.getMin();   --> Returns -1.
 思路：
 
 1. 用一个数字来存储当前最小值
-2. 栈中存差值（newValueStored = newValue - oldMin、newValueStored = newMin），确保可以根据栈中存的值 与 最小值，能够还原出 原始值。
-3. 当发生pop时，能够计算得出新的最小值（oldMin = newValue - newValueStored = NewMin - top）
+2. 栈中存差值，确保可以根据栈中存的值 与 最小值，能够还原出 原始值。
+
+如果新来的元素NewCome，比之前的最小值oldMin更小；oldMin存的就是当前元素了； 现在的问题变成“当当前元素被pop出之后，如何计算出新的最小值）？” 新存入的diff = newMin - oldMin; oldMin = newMin - diff ; 因为diff小于0，所以oldMin更大； 
+
+3. 当发生pop时，能够计算得出新的最小值
 
 ## 支持min操作的栈-代码实现
 
@@ -74,6 +77,47 @@ public:
     int getMin() {
         return hs.top();
     }
+
+    //O(1)额外空间的解法
+
+    stack<int> diffs;
+    int m = MAX_INT;
+
+    void push(int x) {
+
+        if (x < m) {
+            m = x;
+        }
+
+        diffs.push(x - m);
+    }
+    
+    void pop() {
+         int s = diffs.top();
+        if  (s < 0) {
+            int r = m;
+            m = m - s;
+            return r;
+        } else {
+            return m + s;
+        }
+        diffs.pop();
+    }
+    
+    int top() {
+        int s = diffs.top();
+        if  (s < 0) {
+            return m;
+        } else {
+
+        }
+        return diffs.top() + m;
+    }
+    
+    int getMin() {
+        return m;
+    }
+
 };
 
 /**

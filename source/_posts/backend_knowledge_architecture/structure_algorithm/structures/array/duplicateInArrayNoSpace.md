@@ -31,7 +31,7 @@ public:
         while (l < r) {
             int mid = (l + r) >> 1;  //[l, mid], [mid + 1, r]
             int s = 0;
-            /注意这里是遍历了所有的元素
+            //注意这里是遍历了所有的元素
             for (int i = 0; i < nums.size(); ++i) s += (nums[i] >= l && nums[i] <= mid);
             if (s > (mid - l + 1)) r = mid;
             else l = mid + 1; //数量不够，说明这个区间内的某个数肯定被替换掉了，所以肯定在另外一边。
