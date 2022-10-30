@@ -65,5 +65,8 @@ struct mm_struct {
 }
 ```
 
-mmap是双向链表；
+mmap是双向链表；按照地址大小来顺序管理所有的area
+
 mm_rb是红黑树的根节点
+
+红黑树的Key-Value: 虚拟地址 => 对应的area.

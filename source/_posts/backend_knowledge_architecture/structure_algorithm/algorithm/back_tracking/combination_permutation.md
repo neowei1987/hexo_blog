@@ -149,7 +149,7 @@ dfs(0, n, 0);
 ## 和为N的组合（有重复，仅用一次）
 
 给定一个数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
-candidates 中的每个数字在每个组合中只能使用一次。 
+candidates 中的每个数字在每个组合中只能使用一次。
 
 说明：
 所有数字（包括目标数）都是正整数。解集不能包含重复的组合。
@@ -181,7 +181,6 @@ void dfs(vector<int>& d, int u, int sum, int start_index) {
 给定一个 **没有重复** 数字的序列，返回其所有可能的全排列。
 
 ### 解法1 给坑u找元素i
-
 
 ```cpp
     void dfs(vector<int>& d, int u) {

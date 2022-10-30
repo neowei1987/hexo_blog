@@ -10,7 +10,7 @@ tags:
 
 #### 判断使用同步或异步
 
-计算qps * latency(in seconds)，如果和cpu核数是同一数量级，就用同步，否则用异步。
+计算qps * latency(in seconds)【最大并发】，如果和cpu核数是同一数量级，就用同步，否则用异步。
 
 eg. qps = 2000，latency = 10ms，计算结果 = 2000 \* 0.01s = 20
 和常见的32核在同一个数量级，用同步。

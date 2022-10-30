@@ -78,7 +78,7 @@ public:
         return hs.top();
     }
 
-    //O(1)额外空间的解法
+    //O(1)额外空间的解法【注意：下面的代码有错误！调试未通过！】
 
     stack<int> diffs;
     int m = MAX_INT;

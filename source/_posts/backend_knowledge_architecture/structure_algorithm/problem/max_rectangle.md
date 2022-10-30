@@ -109,18 +109,18 @@ int largestRectangleArea(vector<int>& heights) {
 时间复杂度：$O(n^3)$ => $O(n^2)$
 空间复杂度：$O(1)$
 
-## 接雨水问题-进一步思考
+## 柱状图中最大的矩形-进一步思考
 
 还有一种解法，一种**更有智慧**的解法，不像前面的暴力解法那么粗暴，让我们先考虑下哪些肯定不会成为答案。
 如果一个格子往两边延伸，一直延伸到有比它更低的格子为止。
-![接雨水问题-分治法](http://cdn.b5mang.com/202115224849.png)
+![柱状图中最大的矩形-分治法](http://cdn.b5mang.com/202115224849.png)
 如果备选答案覆盖了矩形A，那么备选答案的宽度一定会延伸到绿色矩形这里。
 
 假设有N个像上面的这种备选答案，那么最终答案一定是出自这N个备选答案。
 
 为什么我们这么考虑呢？ 因为这样子考虑的话，有利于我们分解子问题。
 
-## 接雨水问题-空间换时间版
+## 柱状图中最大的矩形-空间换时间版
 
 ```cpp
 int dfs(vector<int>& height, int l, int r) {
@@ -139,37 +139,4 @@ int largestRectangleArea(vector<int>& height) {
 
 递推公式：$T(n) = 2*T(n/2) + O(n)$
 时间复杂度：$O(nlgn)$
-空间复杂度：$O(1)$
-
-## 接雨水问题-能不能把空间复杂度优化掉？
-
-其实，上面的时间复杂度已经是最优了，有没有可能把空间也优化掉呢？我们注意到lmax[i]仅跟lmin[i-1]有关系，这个对于我们做空间压缩是很好的；
-剩下的就是，我们能不能把lmax,rmax立即用上，而不需要存起来呢？答案是可以的。我们可以把上面的循环写在一起，用i、j两个指针分别指向左右两个端点，在遍历的过程中，直接把前面出的lmax, rmax立即用上。
-
-## 接雨水问题-双指针优化版
-
-```cpp
-int trap(vector<int>& height) {
-    int n = height.size();
-    int res = 0;
-    int lmax, rmax;
-    int i = 1, j = n - 2;
-
-    while (i < j) {
-        lmax = max(lmax, height[i - 1]);
-        rmax = max(rmax, height[j + 1]);
-        if (lmax < rmax) {
-            res += lmax - height[i];
-            i++;
-        }
-        else {
-            res += rmax - height[j];
-            j--;
-        }
-    }
-    return res;
-}
-```
-
-时间复杂度：$O(n)$
 空间复杂度：$O(1)$
