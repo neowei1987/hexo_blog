@@ -42,7 +42,7 @@ memcached内部不会监视记录是否过期，而是在get时查看记录的�
 
 1.5以后：
 
-维护子LRU（HOT\WARM\COLD),有点类似多级对列。
+维护子LRU（HOT\WARM\COLD),有点类似多级队列。
 
 ## 哈希算法
 

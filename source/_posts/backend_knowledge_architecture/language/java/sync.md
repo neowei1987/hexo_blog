@@ -1,3 +1,5 @@
+### volatile
+
 volatile 的三点：
 （1）保证可见性（ 主内存 VS JAVA内存）
 （2）禁止指令重排
@@ -27,13 +29,17 @@ DCL（Double Check Lock双端检索机制）
 
  这种问题可以使用synchronized 或者使用原子变量 来解决。原子变量通过调用unsafe类的cas方法实现了原子操作，由于CAS是一种系统原语,原语属于操作系统用于范畴,是由若干条指令组成,用于完成某个功能的一个过程,并且原语的执行必须是连续的,在执行过程中不允许中断,也即是说CAS是一条原子指令,不会造成所谓的数据不一致的问题。
 
-synchronized 的锁升级过程：无锁-》偏向锁-》轻量级CAS自旋锁-》重量级锁
+
+### synchronized 的锁升级过程
+
+无锁-》偏向锁-》轻量级CAS自旋锁-》重量级锁
 https://blog.csdn.net/weixin_45606067/article/details/126766885
 
 
+### synchronized 与 lock的区别
+
 区别如下：
  
-
 1.Lock是显示锁（手动开启和关闭锁）, synchronized时隐式锁，出来作用域自动释放
  
 2.Lock只有代码块锁，synchronized有代码块锁和方法锁

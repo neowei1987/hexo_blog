@@ -25,5 +25,3 @@ void quick_sort(int q[], int l, int r)
     quick_sort(q, l, j), quick_sort(q, j + 1, r);
 }
 
-
-```

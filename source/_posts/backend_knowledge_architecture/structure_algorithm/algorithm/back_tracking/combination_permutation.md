@@ -217,7 +217,7 @@ public:
             return;
         }
         
-        for (int i = start; i < nums.size(); ++i) {
+        for (int i = 0; i < nums.size(); ++i) {
             if (!(state >> i & 1)) {
                 //这一步骤是关键，为第u号元素找可以选择的坑位
                 path[i]= nums[u];

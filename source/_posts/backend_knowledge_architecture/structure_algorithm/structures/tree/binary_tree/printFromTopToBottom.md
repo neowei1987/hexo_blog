@@ -256,5 +256,31 @@ public:
 解答思路：
 
 1. 依旧是通过层次打印
-2. 放入队列的不只是tree node， 还需要放入当前的横向坐标
+2. 放入队列的不仅是tree node， 还需要放入当前的横向坐标
 3. root坐标为0， 左节点减1， 右节点加1
+
+```cpp
+typedef std::pair<int, TreeNode*> PIT;
+
+class Solution {
+public:
+    vector<vector<int>> printV(TreeNode* root) {
+        unsorted_map<int, vector<int>&> m;
+        queue<PIT> q;
+
+        q.push_back(make_pair(0, root));
+        while (!q.empty()) {
+            int n = q.size();
+            for (int i = 0; i < n; i++) {
+                PIT p = q.top(); q.pop();
+                m[p.first].push_back(p.second.val);
+                if (p.second->left)
+                    q.push_back(make_pair(p.first - 1, p.second->left));
+                if (p.second->right)
+                    q.push_back(make_pair(p.first - 1, p.second->right));
+            }
+        }
+    }
+
+};
+```
