@@ -60,6 +60,8 @@ tags:
 
 #### 第五，B站BBR限流
 
+底层原理：并发 = qps * latency
+
 自适应限流能动态调整服务的最大并发，在保证服务不过载的前提下，让服务尽可能多的处理请求。
 
 具体逻辑：如果cpu > 800 && inflight >  rt * max_qps，则启用限流
@@ -76,6 +78,7 @@ tags:
 - max_cocurrent  = max_qps \* ((2+alpha) \* min_latency - latency)
 
 服务的noload_latency并非是一成不变的，自适应限流必须能够正确的探测noload_latency的变化。当noload_latency下降时，是很容感知到的，因为这个时候latency也会下降。难点在于当latency上涨时，需要能够正确的辨别到底是服务过载了，还是noload_latency上涨了。
+
 
 参考：
 
