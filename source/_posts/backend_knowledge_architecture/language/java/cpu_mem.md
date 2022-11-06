@@ -51,7 +51,6 @@ shutdown：关闭 Arthas 服务端，所有 Arthas 客户端全部退出
 
 memory 各种查看
 
-
 ---
 
 netstat 查看timewait closewait, 查看数据包长什么样，是否符合预期等
