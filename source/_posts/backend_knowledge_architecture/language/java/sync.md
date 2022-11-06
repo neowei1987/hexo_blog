@@ -53,14 +53,14 @@ https://blog.csdn.net/weixin_45606067/article/details/126766885
  
 6.是否响应中断 
     lock等待锁过程中可以用interrupt来中断等待，而synchronized只能等待锁的释放，不能响应中断；
- 
+
 7.是否知道获取锁 
     Lock可以通过trylock来知道有没有获取锁，而synchronized不能；
- 
+
 8.Lock可以提高多个线程进行读操作的效率。（可以通过readwritelock实现读写分离）
- 
+
 9.在性能上来说，如果竞争资源不激烈，两者的性能是差不多的，而当竞争资源非常激烈时（即有大量线程同时竞争），此时Lock的性能要远远优于synchronized。所以说，在具体使用时要根据适当情况选择。
- 
+
 10.synchronized使用Object对象本身的wait 、notify、notifyAll调度机制，而Lock可以使用Condition进行线程之间的调度
 
 AQS
