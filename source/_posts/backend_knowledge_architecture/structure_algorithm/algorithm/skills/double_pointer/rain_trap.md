@@ -118,5 +118,29 @@ int trap(vector<int>& height) {
 }
 ```
 
+```cpp
+
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int lmax = 0, rmax = 0;
+        int l = 0, r = height.size() - 1;
+        int sum = 0;
+
+        while (l <= r) {
+            for (; l <= r && (lmax = max(height[l], lmax)) <= rmax; ++l) {
+                sum += lmax - height[l];
+            }
+            for (; r >= l && (rmax = max(height[r], rmax)) <= lmax; r--) {
+                sum += rmax - height[r];
+            }
+        } 
+
+        return sum;
+    }
+};
+
+```
+
 时间复杂度：$O(n)$
 空间复杂度：$O(1)$

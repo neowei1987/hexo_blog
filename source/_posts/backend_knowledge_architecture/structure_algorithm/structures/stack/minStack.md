@@ -118,6 +118,42 @@ public:
         return m;
     }
 
+     //O(1)额外空间的解法【注意：下面的代码可能有错误！调试未通过！】
+
+    stack<int> diffs;
+    int m = MAX_INT;
+
+    void push(int x) {
+
+        if (diffs.empty()) {
+            m = x;
+            diffs.push(0);
+            return;
+        }
+
+        diffs.push(m - x);
+        if (x > m) {
+            m = x;
+        }
+    }
+    
+    void pop() { 
+        int s = diffs.top();
+        if  (s < 0) {
+           m = m + s; //更新max
+        } 
+        diffs.pop();
+    }
+    
+    int top() {
+        int s = diffs.top();
+        return m - s;
+    }
+    
+    int getMax() {
+        return m;
+    }
+
 };
 
 /**
