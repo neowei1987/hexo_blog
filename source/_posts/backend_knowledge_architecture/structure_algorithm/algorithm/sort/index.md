@@ -6,6 +6,13 @@ tags:
 - 排序
 ---
 
+![总](https://img-blog.csdnimg.cn/20210316213527859.png)
+
+outplace的都是稳定的；
+outplace的需要一定的memory， inplace中的qsort由于是递归的，所有需要lgn的mem，其他的都不要额外的内存
+
+inplace大多数都不稳定，除了冒泡排序、插入排序
+
 |算法|思想|衍生问题|
 |----|----|----|
 |quick sort|分治思想，借助双指针在$O(n)$时间内完成partition|线性第k大，线性求中位数|
@@ -17,3 +24,7 @@ tags:
 |shell sort|分块思想，缩小增量排序，一种特殊的插入排序；递减序列的选择很重要|适用于基本有序序列|
 |insertion sort|减治思想，扑克牌|适用于基本有序序列
 |Bubble sort|稳定|
+
+
+
+
