@@ -11,5 +11,11 @@
     "picgo.picBed.qiniu.url": "http://cdn.b5mang.com",
     "picgo.picBed.current": "qiniu",
     "picgo.picBed.uploader": "qiniu",
-    "workbench.colorTheme": "Visual Studio Light"
+    "workbench.colorTheme": "Visual Studio Light",
+    "files.associations": {
+        "*.php": "php",
+        "iosfwd": "cpp",
+        "sstream": "cpp",
+        "iostream": "cpp"
+    }
 }

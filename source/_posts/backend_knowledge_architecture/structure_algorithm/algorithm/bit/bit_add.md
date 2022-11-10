@@ -66,5 +66,57 @@ public:
         }
         return num1;
     }
+
+    int sub(int num1, int num2) {
+        //a - b = a + (-b)
+        return add(num1, add(~num2, 1)))
+    }
+
+    
+    int mul(int a, int b) {
+        //最笨的方法是for循环--b次； 有没有更好的办法呢？ 
+        //都转为正数先
+        int a1 = a >= 0 ? a : add(~a, 1);
+        int b1 = b >= 0 ? b : add(~b, 1);
+        int sum = 0;
+        //整个过程跟手动乘法类似
+        while (b1) {
+            if (b1 & 0x01) {
+                sum = add(sum, a1);
+            }
+            a1 <<= 1;
+            b1 >>= 1;
+        }
+
+        //异号，相反数
+        if (a ^ b < 0) {
+            sum = add(-sum, 1);
+        }
+
+        return sum;
+    }
+
+    int div(int a, int b, int& reminder) {
+        int r = 0;
+        //都转为正数先
+        int a1 = a >= 0 ? a : add(~a, 1);
+        int b1 = b >= 0 ? b : add(~b, 1);
+        for (int i = 31; i >= 0; i--) {
+            if ((a1 >> i) >= b1) { // a >= (b << i)
+                r = add(r, 1 << i);
+                a1 = sub(a1, b1 << i);
+            }
+        }
+
+         //异号，相反数
+        if (a ^ b < 0) {
+            r = add(~r, 1);
+        }
+
+        reminder = a1;
+        return r;
+    }
 };
+
+
 ```

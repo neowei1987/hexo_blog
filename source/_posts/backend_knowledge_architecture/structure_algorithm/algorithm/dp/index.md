@@ -124,3 +124,13 @@ f(n)=f(n−1)+f(n−2)(n≥3)
 | | [股票买卖系列](stock_common.html)  ||
 | | [子数组最大和](sub_array_sum_max.html)  |子数组最大和问题|
 
+https://zhuanlan.zhihu.com/p/410411231
+
+划分数组为两个相等的子集
+
+乘积最大连续子数组
+
+等差递减区间的个数【转斐波那契】
+
+最长回文子串
+dp[i][j]=(s[i]=s[j]&dp[i+1][j-1])
