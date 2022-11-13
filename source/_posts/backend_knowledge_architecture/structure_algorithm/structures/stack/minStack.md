@@ -79,43 +79,45 @@ public:
     }
 
     //O(1)额外空间的解法【注意：下面的代码有错误！调试未通过！】
+  stack<int> diff;
+    int minE;
 
-    stack<int> diffs;
-    int m = MAX_INT;
-
-    void push(int x) {
-
-        if (x < m) {
-            m = x;
+    void push(int value) {
+        if (diff.empty()) {
+            minE = value;
+            diff.push(0);
+            return;
         }
 
-        diffs.push(x - m);
+        if (minE <= value) {
+            diff.push(value - minE);
+            return;
+        }
+        else { //进入了一个更小的元素
+            diff.push(value - minE); 
+            minE = value;
+        }
     }
-    
+
     void pop() {
-         int s = diffs.top();
-        if  (s < 0) {
-            int r = m;
-            m = m - s;
-            return r;
-        } else {
-            return m + s;
+        int t = diff.top();
+        diff.pop();
+        if (t < 0) { //更新最小值
+            minE = minE - t;
         }
-        diffs.pop();
     }
-    
-    int top() {
-        int s = diffs.top();
-        if  (s < 0) {
-            return m;
-        } else {
 
-        }
-        return diffs.top() + m;
+    int top() {
+        int t = diff.top();
+         if (t >= 0) {
+             return t + minE;
+         } else {
+             return minE;
+         }
     }
-    
-    int getMin() {
-        return m;
+
+    int min() {
+        return minE;
     }
 
      //O(1)额外空间的解法【注意：下面的代码可能有错误！调试未通过！】

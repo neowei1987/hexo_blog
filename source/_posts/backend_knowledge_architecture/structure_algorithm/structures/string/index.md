@@ -49,4 +49,40 @@ ULL get(int l, int r)
 
 1. 翻手定则
 
+```cpp
+class Solution {
+public:
+    void reverse(string& s, int i, int j) {
+        while (i < j) {
+            swap(s[i++], s[j--]);
+        }
+    }
+
+    string trans(string s, int n) {
+        int begin = 0;
+        for (int i = 0; i < s.length();) {
+            if (s[i] == ' ') {
+                reverse(s, begin, i - 1);
+                i++;
+                begin = i;
+            }
+            else {
+                i++;
+            }
+        }
+        reverse(s, begin, s.length() - 1);
+
+        reverse(s, 0, s.length() - 1);
+
+         for (int i = 0; i < s.length(); ++i) {
+             if (s[i] >= 'a' && s[i] <= 'z') {
+                 s[i] = 'A' + (s[i] - 'a');
+             } else if (s[i] >= 'A' && s[i] <= 'Z') {
+                 s[i] = 'a' + (s[i] - 'A');
+             }  
+         }
+        return s;
+    }
+};
+```
 ### 字符串匹配算法

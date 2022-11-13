@@ -69,6 +69,9 @@ public:
     
     
     //1, 2, 4, 5, 6, null, null, null
+    // 注意此处是引用类型
+    // 如果不用下标，直接用字符串char*呢？ 他应该是char*& ,而不可以是char* 
+    // char* 是指针，但是确是值传递！！对于值传递，当递归到内部时，外层无法感知到内部变化；
     TreeNode* dfs_us(int& u) {
         if (u >= s.size()) {
             return NULL;

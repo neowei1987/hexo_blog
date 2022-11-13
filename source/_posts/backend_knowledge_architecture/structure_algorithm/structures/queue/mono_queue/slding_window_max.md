@@ -31,15 +31,14 @@ tags:
 3. 队列中存放数组元素下标
 
 ## 代码
-
 ```cpp
 class Solution {
-public:
+  public:
     vector<int> maxInWindows(vector<int>& nums, int k) {
         deque<int> dq; //双端队列
         vector<int> res;
         for (int i = 0; i < nums.size(); ++i) {
-            while (dq.size() && i - dq.front() >= k) dq.pop_front();
+            while (dq.size() && dq.back() - dq.front() >= k - 1) dq.pop_front();
             while (dq.size() && nums[i] >= nums[dq.back()]) dq.pop_back();
             dq.push_back(i);
             if (i >= k - 1) {

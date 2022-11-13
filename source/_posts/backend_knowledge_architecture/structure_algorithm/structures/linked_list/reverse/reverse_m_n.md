@@ -26,20 +26,37 @@ tags:
  */
 class Solution {
 public:
-    ListNode* t;
+    ListNode* successor;
+
+    //非递归实现
+    ListNode* reverseN(ListNode* head, int n) {
+        ListNode* pre = NULL;
+        auto cur = head;
+        while (cur && n > 0) {
+            auto next = cur->next; //记录下一个cur
+            cur->next = pre; //核心步骤---操作cur的next指针，让其指向pre；
+            pre = cur;  //记录前一个
+            cur = next; //给下一个cur赋值
+            n--;
+        }
+
+        head->next = cur;
+        return pre;
+    }
 
     ListNode* reverseN(ListNode* head, int n) {
         if (!head) return head;
         //base 
         if (n == 1) {
-            t = head->next;
+            successor = head->next; //这一步特别关键，记录当前元素的后继节点，则外面会使用。
             return head;
         }
 
         //子问题-下一个节点
         auto x = reverseN(head->next, n - 1);
-        head->next->next = head;
-        head->next = t;
+        //head->next 是递归之前的头，也就是递归之后的尾巴
+        (head->next)->next = head;
+        head->next = successor;
         return x;
     }
 
