@@ -9,6 +9,12 @@ tags:
 
 两个考察点：分治、双指针实现快速partition
 
+时间复杂度：
+
+平均 lgn;
+最坏：n^2
+最好：
+
 ```cpp
 //快速排序算法模板
 void quick_sort(int q[], int l, int r)

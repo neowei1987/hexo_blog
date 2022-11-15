@@ -87,17 +87,27 @@ public:
     int maxDiff(vector<int>& nums) {
         int min_price = INT_MAX;
         int max_profit = 0;
-        for (int i = 1; i < nums.size(); ++i) {
+        for (int i = 0; i < nums.size(); ++i) {
             //调整迭代顺序后，如果把i当作定值，那么下面的这层循环是在寻找num[j]的最小值
             //i每增加1,内层循环会增加一个元素，增加一个元素后，只需比较新的元素与之前的最小值；
             //便可以得到新的最小值，而不需要循环查找
             //nums[i]是每次的新元素
-            min_price = min(min_price, nums[i]); 
             /*
+            写法1
+            寻找哪一天买入【调整顺序】
             for (int j = 0; j < i - 1; ++j>) {
                 max_profit = max(max_profit, nums[i] - nums[j]);
             }
             */
+            
+            //写法2
+            for (int j = 0; j < i - 1; ++j>) {
+                min_price = max(min_price, nums[j]);
+            }
+            max_profit = max(max_profit, nums[i] - min_price);
+
+            //写法3
+            min_price = min(min_price, nums[i]); 
             max_profit = max(max_profit, nums[i] - min_price);
         }
         return max_profit;

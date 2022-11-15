@@ -153,4 +153,33 @@ public:
 
 ```cpp
 
+class Solution {
+public:
+    /**
+     * max water
+     * @param arr int整型vector the array
+     * @return long长整型
+     */
+    long long maxWater(vector<int>& arr) {
+        stack<int> s;
+        s.push(-1);
+        int res = 0;
+        for (int i = 0; i < arr.size(); ++i) {
+            while (s.top() != -1 && arr[s.top()] < arr[i]) {
+                int cur = s.top(); //当前计算的格子
+                s.pop();
+                int left = s.top();
+                if (left >= 0) {
+                    res += (min(arr[left], arr[i]) - arr[cur]) * (i - left - 1);
+                    //cout << "i:" << i << ", cur:"  << cur << ", res: " << res << endl;
+                }
+            }
+
+            s.push(i);
+        }
+
+        return res;
+    }
+};
+
 ```
