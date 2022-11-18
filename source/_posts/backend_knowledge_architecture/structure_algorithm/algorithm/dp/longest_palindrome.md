@@ -1,5 +1,5 @@
 ---
-title: 动态规划系列-最长回文字串
+title: 动态规划系列-最长回文子序列
 date: 2022-10-28 11:34:03
 mathjax: true
 categories:
@@ -7,6 +7,8 @@ categories:
 tags: 
 - 动态规划
 ---
+
+设dp[i][j]为从i到j的字符串，回文子序列的最大长度
 
 IF d[i] == d[j];
     dp[i][j] = dp[i + 1][j - 1] + 2 
