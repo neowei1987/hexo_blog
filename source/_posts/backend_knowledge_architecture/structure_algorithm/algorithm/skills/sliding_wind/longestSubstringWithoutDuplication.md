@@ -62,3 +62,25 @@ while (i < n) {
        }
     }
 ```
+
+```cpp
+class Solution {
+public:
+    int maxLength(vector<int>& arr) {
+        unordered_map<int, int> counter;
+
+        int i = 0, j = 0, res = 0;
+        while (j < arr.size()) {
+            counter[arr[j]]++;
+            while (counter[arr[j]] > 1) {
+                counter[arr[i++]]--;
+            }
+
+            res = max(j - i + 1, res);
+            j++;
+        }
+
+        return res;
+    }
+};
+```
