@@ -16,6 +16,15 @@
         "*.php": "php",
         "iosfwd": "cpp",
         "sstream": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "string": "cpp",
+        "ostream": "cpp",
+        "chrono": "cpp",
+        "limits": "cpp",
+        "algorithm": "cpp",
+        "__split_buffer": "cpp",
+        "vector": "cpp",
+        "locale": "cpp",
+        "variant": "cpp"
     }
 }
