@@ -1,3 +1,11 @@
+---
+title: 领域驱动设计
+date: 2021-01-03 19:47:03
+updated:
+copyright: true
+password:
+mathjax: true
+---
 ### 领域驱动设计目的
 
 DDD帮助我们拆解需求，并建立一个***灵活性高、可扩展***的业务系统
