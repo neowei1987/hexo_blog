@@ -5,11 +5,11 @@
     "pasteImageToQiniu.domain": "http://cdn.b5mang.com",
     "pasteImageToQiniu.localPath": "/Users/neowei/Pictures/paste",
     "pasteImageToQiniu.remotePath": "${dateTime}",
-    "picgo.picBed.qiniu.accessKey": "brVVSCdzrMqmShxpw_lZgZD9TEOaKzcsxRH8lzbB",
-    "picgo.picBed.qiniu.secretKey": "iC8vqbQAt5vwp4_95IPtPm0CoDFXtOnM-qIusU4o",
-    "picgo.picBed.qiniu.bucket": "b5mang",
-    "picgo.picBed.qiniu.url": "http://cdn.b5mang.com",
-    "picgo.picBed.current": "qiniu",
+    "picgo.picBed.qiniu.accessKey": "",
+    "picgo.picBed.qiniu.secretKey": "",
+    "picgo.picBed.qiniu.bucket": "",
+    "picgo.picBed.qiniu.url": "",
+    "picgo.picBed.current": "weibo",
     "picgo.picBed.uploader": "qiniu",
     "workbench.colorTheme": "Visual Studio Light",
     "files.associations": {
@@ -26,5 +26,12 @@
         "vector": "cpp",
         "locale": "cpp",
         "variant": "cpp"
-    }
+    },
+    "picgo.picBed.github.branch": "",
+    "picgo.picBed.github.path": "",
+    "picgo.picBed.github.repo": "",
+    "picgo.picBed.github.token": "",
+    "picgo.picBed.github.customUrl": "",
+    "picgo.picBed.weibo.chooseCookie": true,
+    "picgo.picBed.weibo.cookie": "PC_TOKEN=265e6669e3; ALF=1672452601; SUB=_2A25OjHypDeRhGeNH7FYT9ivLzzmIHXVtjwThrDV8PUJbkNAfLVihkW1NSp63-Rj49YQYMUNZxVED4zdOSOCRSDLI; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9W5B5u6fAV4r-rnmQ.KPPh1X5JpX5oz75NHD95Qf1KMXeoqfS0BfWs4DqcjZqJLrMcyaMrBp15tt; XSRF-TOKEN=tmWIhUOsPLFxs-QLOOVsnDSP; WBPSESS=PUz9RQ9rJ7CsLvX5sHEoaWrgQJk7JbfRo7AvhNbOVaNTQlqgoXwrfoLWq8m6V9YgyCfuZ5fxjH_nmR21lCaEieKqWcUpuMMJCuUMKGhW4BKVRV_Jtc8McdIJTicww4GZrvVHtAChGayloWYUDwtNDQ=="
 }

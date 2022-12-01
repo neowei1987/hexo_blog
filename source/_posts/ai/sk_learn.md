@@ -1,3 +1,8 @@
+---
+title: sk learn介绍
+tags:
+mathjax: true
+---
 
 sk learn的六大功能：
 
