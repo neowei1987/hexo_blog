@@ -1,3 +1,12 @@
+---
+title: 操作系统之文件系统介绍
+date: 2021-01-03 19:47:03
+updated:
+copyright: true
+password:
+mathjax: true
+---
+
 ![fd-inode](https://img-blog.csdnimg.cn/img_convert/b7691ff4fedc7a7abf5c35ba1869e550.png)
 
 linux内核会为每一个进程创建一个task_truct结构体来维护进程信息，称之为 进程描述符，该结构体中 指针

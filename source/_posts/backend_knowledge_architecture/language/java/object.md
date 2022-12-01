@@ -1,3 +1,16 @@
+---
+title: java语言-object
+date: 2021-01-03 19:47:03
+updated:
+copyright: true
+password:
+mathjax: true
+categories:
+- 编程语言
+tags: 
+- java
+---
+
 equals VS  == 
 
 （1）对象类型不同(一个是object的成员方法，一个是操作符)

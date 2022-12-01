@@ -1,4 +1,18 @@
+---
+title: Paxos协议介绍
+date: 2021-01-03 19:47:03
+updated:
+copyright: true
+password:
+mathjax: true
+categories:
+tags: 
+- 一致性协议
+---
+
 Basic-Paxos解决的问题：在一个分布式系统中，如何就一个提案达成一致。
+
+<!-- more -->
 
 需要借助两阶段提交实现：
 

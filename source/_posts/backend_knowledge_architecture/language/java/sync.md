@@ -1,3 +1,15 @@
+---
+title: java语言-线程同步
+date: 2021-01-03 19:47:03
+updated:
+copyright: true
+password:
+mathjax: true
+categories:
+- 编程语言
+tags: 
+- java
+---
 ### volatile
 
 volatile 的三点：

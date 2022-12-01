@@ -1,3 +1,12 @@
+---
+title: 网络-traceroute
+date: 2021-01-03 19:47:03
+updated:
+copyright: true
+password:
+mathjax: true
+---
+
 traceroute
 
 ICMP  ttl递减 

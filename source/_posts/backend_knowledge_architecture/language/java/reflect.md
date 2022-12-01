@@ -1,3 +1,16 @@
+---
+title: java语言-reflect
+date: 2021-01-03 19:47:03
+updated:
+copyright: true
+password:
+mathjax: true
+categories:
+- 编程语言
+tags: 
+- java
+---
+
 https://cloud.tencent.com/developer/article/1856972
 
 优点：

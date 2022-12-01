@@ -1,7 +1,20 @@
+---
+title: RAFT协议介绍
+date: 2021-01-03 19:47:03
+updated:
+copyright: true
+password:
+mathjax: true
+categories:
+tags: 
+- 一致性协议
+---
+
 https://blog.csdn.net/yangmengjiao_/article/details/120191314
 
 raft将共识问题分解成两个相对独立的问题，leader election，log replication。
 
+<!-- more -->
 ### leader选举
 
 election timeout

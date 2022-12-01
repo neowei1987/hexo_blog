@@ -1,3 +1,11 @@
+---
+title: 操作系统之信号机制
+date: 2021-01-03 19:47:03
+updated:
+copyright: true
+password:
+mathjax: true
+---
 信号是一种异步通信机制，它是在软件层面上对中断机制的一种模拟，
 
 阻塞信号

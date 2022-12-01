@@ -1,6 +1,16 @@
-# Tair
+---
+title: Tair介绍
+date: 2022-12-01 13:03:03
+updated:
+description: 
+mathjax: true
+categories:
+tags: [存储]
+---
 
 在高吞吐、大连接数、热点请求、异常流量、复杂计算逻辑、弹性伸缩这些真实场景下保持稳定的低延时，是 Tair 能够在低延时场景被选择的关键因素。
+
+<!-- more -->
 
 ## 低延时
 

@@ -1,5 +1,6 @@
 ---
 title: 线性回归-linear regression
+date: 2022-12-01 12:44:59
 tags:
 mathjax: true
 ---

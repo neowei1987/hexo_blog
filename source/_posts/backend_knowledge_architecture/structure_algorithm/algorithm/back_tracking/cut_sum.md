@@ -1,3 +1,11 @@
+---
+title: 回溯-序列切分
+date: 2021-01-03 19:47:03
+updated:
+copyright: true
+password:
+mathjax: true
+---
 
 给定数字N和M，你需要从数字1到N的序列中添加+或-，使得序列的和等于M。
 

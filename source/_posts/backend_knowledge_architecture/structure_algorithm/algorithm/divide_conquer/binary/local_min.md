@@ -1,3 +1,12 @@
+---
+title: 二分-局部最小
+date: 2021-01-03 19:47:03
+updated:
+copyright: true
+password:
+mathjax: true
+---
+
 寻找数组局部最小值
 
 解答思路：

@@ -1,3 +1,16 @@
+---
+title: java语言-gc
+date: 2021-01-03 19:47:03
+updated:
+copyright: true
+password:
+mathjax: true
+categories:
+- 编程语言
+tags: 
+- java
+---
+
 在Java语言中，可作为GC Roots的对象包含以下几种：
 
 虚拟机栈(栈帧中的本地变量表)中引用的对象。(可以理解为:引用栈帧中的本地变量表的所有对象)

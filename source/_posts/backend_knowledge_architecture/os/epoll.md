@@ -1,3 +1,11 @@
+---
+title: 操作系统之epoll
+date: 2021-01-03 19:47:03
+updated:
+copyright: true
+password:
+mathjax: true
+---
 
  epoll 的 edge-trigger 和 level-trigger 模式处理逻辑差异极小，性能测试结果表明常规应用场景 中二者性能差异可以忽略。
 ? 使用 edge-trigger 的 user app 比使用 level-trigger 的逻辑复杂，出错概率更高。
