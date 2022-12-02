@@ -170,6 +170,59 @@ $F_X(x) = P(X \le x) $
 卡方分布
 正态分布随机变量Xi的平方和服从卡方分布，有一个自由度参数$\lambda$
 
+beta分布
+
+可以看作一个概率的概率分布， 当你不知道一个东西的具体概率是多少时， 它可以给出了所有概率出现的可能性大小
+
+$\alpha$ 跟 $\beta$ 分别为先验的成功次数与失败次数；概率密度函数的输入是X(是一个概率值)， 输出也是一个概率，表示的是该事件成功率 = X的概率。
+
+---
+
+
+核函数
+
+为什么：
+
+如果我的数据有足够多的可利用的信息，那么我可以直接做我喜欢的事了，但是现在如果没有那么多的信息，我可不可以在数学上进行一些投机呢？
+
+低维（比如我只知道一个人的年龄，性别，那我能对她多了解吗？）
+高维（比如我知道他从出生开始，做过哪些事，赚过哪些钱等）
+
+如果我们对数据更好的了解（是机器去了解他们，我们不需要认识啦）得到的结果不也会更好嘛。
+ 
+低维度 =》 高维度
+
+低维不可分
+
+![image](https://cdn.staticaly.com/gh/neowei1987/blog_assets@main/image.3d1u3wbplqu0.webp)
+
+linear 核函数
+
+特征已经比较丰富了，样本数据量巨大， 需要进行实时得出结果的问题。
+
+一种计算向量内积的数学技巧
+
+多项式核函数
+![image](https://cdn.staticaly.com/gh/neowei1987/blog_assets@main/image.55un8ls0oc00.webp)
+
+![image](https://cdn.staticaly.com/gh/neowei1987/blog_assets@main/image.3wcw6an7gi20.webp)
+
+高斯核函数
+
+一维高斯核函数（正态分布）、二维高斯核函数
+
+![image](https://cdn.staticaly.com/gh/neowei1987/blog_assets@main/image.1zn6kly1z8kg.webp)
+
+---
+
+信息熵
+
+![image](https://cdn.staticaly.com/gh/neowei1987/blog_assets@main/image.3iaoumor3r60.webp)
+
+log的作用是把一个很小的概率p变为一个绝对值很大的数！
+
+对于分类任务，结果的熵越下，说明效果越好。
+
 ## 1. 是什么，XXX的本质
 
 ## 2. 为什么：XXX的价值
