@@ -40,6 +40,13 @@ The question is: What strategy should you adopt to minimize the number egg drops
 
 ## 4. 普遍情况，如果有k个鸡蛋，有N层楼？
 
+F[n,k]表示k个鸡蛋，扔n次能够reach的最大层数
+
+D[n,k]表示k个鸡蛋，n层楼，需要扔的次数；
+
+正难则反，对于D来说，可以通过动态规划来实现，但是要想求他的解析解比较困难。
+
+但是对于F来说，我们可以借助一个G(n,k) = F() - F()来进行直接求解。
 
 参考：
 https://brilliant.org/wiki/egg-dropping/#a-better-approach
