@@ -7,7 +7,7 @@ password:
 mathjax: true
 ---
 
- epoll 的 edge-trigger 和 level-trigger 模式处理逻辑差异极小，性能测试结果表明常规应用场景 中二者性能差异可以忽略。
+epoll 的 edge-trigger 和 level-trigger 模式处理逻辑差异极小，性能测试结果表明常规应用场景 中二者性能差异可以忽略。
 ? 使用 edge-trigger 的 user app 比使用 level-trigger 的逻辑复杂，出错概率更高。
 ? edge-trigger 和 level-trigger 的性能差异主要在于 epoll_wait 系统调用的处理速度，是否是 user app 的性能瓶颈需要视应用场景而定，不可一概而论。
 
