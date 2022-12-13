@@ -25,3 +25,7 @@ try catch
 void *operator new (size_t size,void *pbuffer)
 
 可以做某一个类的静态成员函数
+
+
+参考：
+https://www.toutiao.com/article/6956573052414984712/?wid=1670850368129

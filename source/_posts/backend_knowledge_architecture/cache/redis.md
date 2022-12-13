@@ -1,6 +1,6 @@
 ---
 title: Redis缓存必知必会
-date: 2022-02-16 23:20:03
+date: 2022-12-13 23:20:03
 updated:
 mathjax: true
 categories:
@@ -40,9 +40,19 @@ tags:
 
 **ZIPLIST** (压缩列表，连续内存，内存利用率高，增删改查效率低下；当hash、zset、list元素少且内容不大时使用该编码),
 
+压缩列表是一块连续的内存空间，元素之间紧挨着存储，没有任何冗余空隙。每次有写操作的时候，会**重新分配内存**，例如insert, remove等操作。
+
 **QUICK_LIST**（list元素较多时使用）
 
+double list of ziplist
+
 **INTSET**(整数集合，当set元素较少且都为整数时，使用该编码,从小到大的顺序存储，方便做交、并、差集运算。
+
+intset是一个由整数组成的有序集合，从而便于在上面进行二分查找，用于快速地判断一个元素是否属于这个集合
+
+ziplist可以存储任意二进制串，而intset只能存储整数。
+ziplist是无序的，而intset是从小到大有序的。因此，在ziplist上查找只能遍历，而在intset上可以进行二分查找，性能更高。
+ziplist可以对每个数据项进行不同的变长编码（每个数据项前面都有数据长度字段len），而intset只能整体使用一个统一的编码（encoding）。
 
 **HASH**（hash元素较多时使用） 渐进式扩容缩容策略
 
@@ -54,11 +64,42 @@ tags:
 |  ----  | ----  | ---- |
 |  string | INT(仅限long类型的string), EMBSTR(字符串比较短，44以内) |RAW（普通字符串）|
 |  hash | ZIPLIST（元素较少，成员较小）|HASH|
-|  zset | ZIPLIST（元素较少，成员较小）|SKIPLIST|
+|  zset | ZIPLIST（元素较少，成员较小）|SKIPLIST + Dict|
 |  set | INTSET（集合元素不多, 且元素可以表示为int）|HASH|
 |  list | ZIPLIST（元素较少，成员较小）|QUICK_LIST|
 
 ![在这里插入图片描述](https://images.gitbook.cn/0bc2bef0-a343-11ea-a506-f32f5295a5a9)
+
+实际上，Redis中sorted set的实现是这样的：
+
+当数据较少时，sorted set是由一个ziplist来实现的。
+当数据多的时候，sorted set是由一个dict + 一个skiplist来实现的。简单来讲，dict用来查询数据到分数的对应关系，而skiplist用来根据分数查询数据（可能是范围查找）。
+
+### Redis中的skiplist是什么样子的
+
+score字段是数据对应的分数。
+
+backward字段是指向链表前一个节点的指针（前向指针）。节点只有1个前向指针，所以只有第1层链表是一个双向链表。
+
+level[]存放指向各层链表后一个节点的指针（后向指针）。每层对应1个后向指针，用forward字段表示。另外，每个后向指针还对应了一个**span**值，它表示当前的指针跨越了多少个节点。span用于计算元素排名(rank)，这正是前面我们提到的Redis对于skiplist所做的一个扩展。需要注意的是，level[]是一个柔性数组（flexible array member），因此它占用的内存不在zskiplistNode结构里面，而需要插入节点的时候单独为它分配。也正因为如此，skiplist的每个节点所包含的指针数目才是不固定的，我们前面分析过的结论——skiplist每个节点包含的指针数目平均为1/(1-p)——才能有意义。
+
+假设我们在这个skiplist中查找score=89.0的元素（即Bob的成绩数据），在查找路径中，我们会跨域图中标红的指针，这些指针上面的span值累加起来，就得到了Bob的排名(2+2+1)-1=4（减1是因为rank值以0起始）。需要注意这里算的是从小到大的排名，而如果要算从大到小的排名，只需要用skiplist长度减去查找路径上的span累加值，即6-(2+2+1)=1。
+
+可见，在查找skiplist的过程中，通过累加span值的方式，我们就能很容易算出排名。相反，如果指定排名来查找数据（类似zrange和zrevrange那样），也可以不断累加span并时刻保持累加值不超过指定的排名，通过这种方式就能得到一条O(log n)的查找路径。
+
+#### skiplist与平衡树、哈希表的比较
+
+skiplist和各种平衡树（如AVL、红黑树等）的元素是有序排列的，而哈希表不是有序的。因此，在哈希表上只能做单个key的查找，不适宜做范围查找。所谓范围查找，指的是查找那些大小在指定的两个值之间的所有节点。
+
+在做范围查找的时候，平衡树比skiplist操作要复杂。在平衡树上，我们找到指定范围的小值之后，还需要以中序遍历的顺序继续寻找其它不超过大值的节点。如果不对平衡树进行一定的改造，这里的中序遍历并不容易实现。而在skiplist上进行范围查找就非常简单，只需要在找到小值之后，对第1层链表进行若干步的遍历就可以实现。
+
+平衡树的插入和删除操作可能引发子树的调整，逻辑复杂，而skiplist的插入和删除只需要修改相邻节点的指针，操作简单又快速。
+
+从内存占用上来说，skiplist比平衡树更灵活一些。一般来说，平衡树每个节点包含2个指针（分别指向左右子树），而skiplist每个节点包含的指针数目平均为1/(1-p)，具体取决于参数p的大小。如果像Redis里的实现一样，取p=1/4，那么平均每个节点包含1.33个指针，比平衡树更有优势。
+
+查找单个key，skiplist和平衡树的时间复杂度都为O(log n)，大体相当；而哈希表在保持较低的哈希值冲突概率的前提下，查找时间复杂度接近O(1)，性能更高一些。所以我们平常使用的各种Map或dictionary结构，大都是基于哈希表实现的。
+
+从算法实现难度上来比较，skiplist比平衡树要简单得多。
 
 #### Redis的可靠存储
 
@@ -72,12 +113,31 @@ AOF，定期（通常是s级别）append 写操作命令到文件中，只是简
 
 AOF缓冲数据的写入策略：NO（依赖操作系统的flush盘机制）、always（性能最差，安全性最好）、everySecond（最多丢失1～2秒数据）
 
-AOF重写，AOF 重写缓冲区
+AOF重写【BGREWRITEAOF】，AOF 重写缓冲区
+
+把主线程的内存拷贝一份给fork出来的 bgrewriteaof 子进程，这里面包含了Redis中最新的数据。
+
+![image](https://cdn.staticaly.com/gh/neowei1987/blog_assets@main/image.6804bfkyyxo0.webp)
+
+下表是完整的AOF后台重写过程：
+
+时间    服务器进程（父进程）    子进程
+
+T1    执行命令 SET K1 V1
+T2    执行命令 SET K1 V1
+T3    执行命令 SET K1 V1
+T4    创建子进程，执行AOF文件重写    开始AOF重写
+T5    执行命令 SET K2 V2    执行重写
+T6    执行命令 SET K3 V3    执行重写
+T7    执行命令 SET K4 V4    完成AOF重写，向父进程发送信号
+T8    接收到信号，将T5 T6 T7 服务器的写命令追加到新的AOF文件末尾
+T9    用新的AOF替换旧的AOF
+
+T8 T9执行的任务会阻塞服务器处理命令。
 
 https://www.51cto.com/article/694868.html
 
 Redis 3.0 基于checkpoint思想的新持久化方式
-
 
 #### Redis的高可用性
 
@@ -137,6 +197,16 @@ redis tw代理模式与cluster集群模式分别是如何工作的？ 哪一种�
 - allkeys-lfu:  Least Frequently Used 最近最不常用的
 - allkeys-random: 回收随机的键使得新添加的数据有空间存放。
 
+### 事务
+
+事务，但 Redis 提供的不是严格的事务，Redis 只保证串行执行命令，并且能保证全部执行，但是执行命令失败时并不会回滚，而是会继续执行下去。
+
+1. 命令入队报错，全部回滚，没有任何影响
+2. 命令执行时报错，不会回滚，而是会继续执行余下的命令
+
+#### watch机制
+
+watch 一个变量， multi exec 根据中间有没有其他线程更改watched的变量来决定，是commit事务还是rollback事务，有点像CAS操作，只是Redis的watch机制并没有ABA问题
 
 ### 高级用法
 
@@ -162,5 +232,6 @@ Redis 支持提交 Lua 脚本来执行一系列的功能。
 
 我在前电商老东家的时候，秒杀场景经常使用这个东西，讲道理有点香，利用他的原子性。
 
-事务：
-最后一个功能是事务，但 Redis 提供的不是严格的事务，Redis 只保证串行执行命令，并且能保证全部执行，但是执行命令失败时并不会回滚，而是会继续执行下去。
+
+
+参考：http://zhangtielei.com/posts/blog-redis-ziplist.html

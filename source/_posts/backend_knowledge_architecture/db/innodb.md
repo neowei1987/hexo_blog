@@ -86,6 +86,16 @@ select xxx from xxx
 
 #### InnoDB是如何解决事务的持久性问题
 
+![image](https://cdn.staticaly.com/gh/neowei1987/blog_assets@main/image.55syz9b6quo0.webp)
+
+redo log buffer (内存中)是由首尾相连的四个文件组成的，它们分别是：ib_logfile_1、ib_logfile_2、ib_logfile_3、ib_logfile_4。
+
+- write pos 是当前记录的位置，一边写一边后移，写到第 3 号文件末尾后就回到 0 号文件开头。
+- checkpoint 是当前要擦除的位置，也是往后推移并且循环的，擦除记录前要把记录更新到数据文件。
+- write pos 和 checkpoint 之间的是“粉板”上还空着的部分，可以用来记录新的操作。
+- 如果 write pos 追上 checkpoint，表示“粉板”满了，这时候不能再执行新的更新，得停下来先擦掉一些记录，把 checkpoint 推进一下。
+- 有了 redo log，当数据库发生宕机重启后，可通过 redo log将未落盘的数据（check point之后的数据）恢复，保证已经提交的事务记录不会丢失，这种能力称为crash-safe。
+
 Redo log是什么？ 通过它解决了什么问题？
 
 redo log是InnoDB存储引擎为了解决事务持久性而引入的WAL技术。借助redo log，InnoDB存储引擎将事务的commit提交简化为一次内存操作与一次磁盘写入操作。如果磁盘页中的数据发生了丢失，也就是在崩溃恢复过程中，存储引擎会通过重做redo log中的操作来进行数据恢复。
@@ -94,12 +104,23 @@ binlog又是什么？他是干什么用的？ 了解主从同步原理。
 
 binlog是Mysql server层为了解决主从数据同步而引入的一套日志系统。binlog中记录的是一个数据行发生了什么操作。
 
+![image](https://cdn.staticaly.com/gh/neowei1987/blog_assets@main/image.6y92ucy02380.webp)
+
 Redo Log与binlog的两阶段提交
 
 - prepare阶段，先写入rede log（状态为准备中）
 - 写入binlog（状态为已提交）--- TX_ID
 - commit阶段，写入redo log（状态为已提交）
 
+而两阶段提交就是让这两个状态保持逻辑上的一致。redolog 用于恢复主机故障时的未更新的物理数据，binlog 用于备份操作。两者本身就是两个独立的个体，要想保持一致，就必须使用分布式事务的解决方案来处理。
+
+为什么需要两阶段提交呢?
+
+如果不用两阶段提交的话，可能会出现这样情况
+先写 redo log，crash 后 bin log 备份恢复时少了一次更新，与当前数据不一致。
+先写 bin log，crash 后，由于 redo log 没写入，事务无效，所以后续 bin log 备份恢复时，数据不一致。
+两阶段提交就是为了保证 redo log 和 binlog 数据的安全一致性。只有在这两个日志文件逻辑上高度一致了才能放心的使用。
+在恢复数据时，redolog 状态为 commit 则说明 binlog 也成功，直接恢复数据；如果 redolog 是 prepare，则需要查询对应的 binlog事务是否成功，决定是回滚还是执行。
 
 #### InnoDB的几个关键特性
 
@@ -133,3 +154,6 @@ Row 格式的日志内容会非常清楚地记录下每一行数据修改的细�
 在 Mixed 模式下，系统会自动判断 该 用 Statement 还是 Row：一般的语句修改使用 Statement 格式保存 binlog；对于一些 Statement 无法准确完成主从复制的操作，则采用 Row 格式保存 binlog。
 
 Mixed 模式中，MySQL 会根据执行的每一条具体的 SQL 语句来区别对待记录的日志格式，也就是在 Statement 和 Row 之间选择一种。
+
+参考：
+https://blog.csdn.net/hahazz233/article/details/125372412
