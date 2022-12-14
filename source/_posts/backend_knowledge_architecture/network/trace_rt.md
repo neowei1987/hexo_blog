@@ -9,7 +9,7 @@ mathjax: true
 
 traceroute
 
-ICMP  ttl递减 
+ICMP  ttl递减
 
 给目标主机的不可达端口（30000+）发送UDP数据包，并且设置TTL
 

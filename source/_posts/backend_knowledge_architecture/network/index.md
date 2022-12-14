@@ -8,6 +8,31 @@ tags:
 - 计算机网络
 ---
 
+
+-------User-----
+
+application    write(fd,buf.len)
+
+-------Kernel-----
+
+File        Validate file descriptor.
+Sockets     Copy/append buf to **socket buffer**.
+TCP         Create TCP segment according to TCP state, Compute checksum.
+IP          Add IP header,perform IP routing. Compute checksum.
+Ethernet    Add Ethernet header,perform ARP.
+Driver      Tell NIC to send the packet.
+
+-------Device-----
+NIC        Fetch the packet from host memory and send it. Interrupt the host when send is done.
+
+缓冲区被塞满
+
+如图所示，物理介质上的数据帧到达后首先由NIC（网络适配器）读取，写入设备内部缓冲区Ring Buffer中，再由中断处理程序触发Softirq从中消费，Ring Buffer的大小因网卡设备而异。当网络数据包到达（生产）的速率快于内核处理（消费）的速率时，Ring Buffer很快会被填满，新来的数据包将被丢弃；
+
+报文mac地址丢包
+
+一般计算机网卡都工作在非混杂模式下，此时网卡只接受来自网络端口的目的地址指向自己的数据，如果报文的目的mac地址不是对端的接口的mac地址，一般都会丢包，一般这种情况很有可能是源端设置静态arp表项或者动态学习的arp表项没有及时更新，但目的端mac地址已发生变化（换了网卡），没有更新通知到源端（比如更新报文被丢失，中间交换机异常等情况）；
+
 ## 长链接 VS 短链接
 
 长连接：
