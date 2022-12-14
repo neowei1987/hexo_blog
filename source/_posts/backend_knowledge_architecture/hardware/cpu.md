@@ -27,6 +27,7 @@ tags:
 - EBP：基址指针寄存器(extended base pointer)，其内存放着一个指针，该指针永远指向系统栈最上面一个栈帧的底部。
 
 对于64位CPU，EAX ---> RAX
+
 ### CPU指令的执行
 
 一个基本的CPU执行计算的过程如下：
@@ -128,13 +129,14 @@ Intel与AMD共同采用x86架构，都采用CICS指令集，一般用于桌面�
 ## co 实现
 
 ```cpp
-co_ctx{
+
+struct co_ctx{
 void* regs[14]; //用于保存或者设定特定寄存器
 size_t ss_size; //栈帧区域大小
 char* ss_sp; // 协程栈帧内存区域，这个区域一般在堆上分配
 }
 
-co_make (co_ctx* co, func* p, p1, p2)
+co_make (co_ctx* co, func* p, p1, p2) {
     使用p, p1, p2把co填充起来
     co.ss_sp都是分配在堆上
     co的EIP与ESP需要被单独赋值
