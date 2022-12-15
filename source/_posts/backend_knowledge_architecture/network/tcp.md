@@ -11,9 +11,40 @@ tags:
 
 ![TCP状态迁移图](https://img-blog.csdn.net/20171214152607931?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGliYWluZXUyMDA0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
+![image](https://cdn.staticaly.com/gh/neowei1987/blog_assets@main/image.3b988wbfquw.webp)
+
+![image](https://cdn.staticaly.com/gh/neowei1987/blog_assets@main/image.40pqw0597va0.webp)
+
+FIN 段是可以携带数据的，比如客户端可以在它发送的最后一块数据块中“捎带” FIN 段。当然也可以单独发送FIN。不管 FIN 段是否携带数据，都需要消耗一个序列号。
+
 TCP三次握手的缺陷：Sync Flood攻击
 
+## 确认机制与超时重传
+
+TCP通过确认机制 ( acknowledge ) 保证了信息的成功发送。
+
+发送的数据编号被称为序列号(Sequence Number - SN)
+
+确认的数据编号被称为确认序列号(Ackonwledge Sequence Number - ASN)
+
+TCP协议正是通过序列号保证了传输顺序
+
+ASN = 填写要接收的下一个字节的数据(本次收到的数据的最后一个字节的下一个)
+
+TCP是有发送缓冲区的，用于暂时保存已发送，未应答的数据，为什么要进行保存，因为TCP为了保证数据确切地被对方接收到，需要对方发送的ASN，如果对方没有应答，就需要重发，如果不对数据进行保存，就没有办法重发了，所以发送缓冲区主要也是为了保证可靠性而存在的
+
+TCP有接收缓冲区，这与UDP协议一致，因为接收到的信息，不一定马上就能被应用层取走使用
+
+TCP规定，SYN报文段不能携带数据，但要消耗一个序号；ACK报文段可以携带数据，但如果不携带数据则不消耗序号
+
+客户端在收到第三次挥手的FIN 报文之后，再次收到服务端的数据包会怎么处理
+
+客户端如果收到乱序的 FIN 报文，会将FIN包加入到「乱序队列」，并不会进入到 TIME_WAIT 状态。等收到前面被网络延迟的数据包时，重组报文得到完整顺序的数据包之后，发现有 FIN 标志，这时才会进入 TIME_WAIT 状态。
+
+
 ### 关于TIME_WAIT存在的必要性
+
+MSL 是 Maximum Segment Lifetime，报文最大生存时间，它是任何报文在网络上存在的最长时间，超过这个时间报文将被丢弃。
 
 1）为实现TCP全双工连接的可靠释放
 
@@ -32,6 +63,13 @@ lost duplicate加上incarnation connection，则会对我们的传输造成致�
 通过一个2MSL TIME_WAIT状态，确保所有的lost duplicate都会消失掉，避免对新连接造成错误。
 
 ## TCP拥塞控制
+
+流量控制(狭义)：根据对方的接收能力来调节发送流量
+拥塞控制：根据网络的承载能力来调节发送流量
+
+接收窗口大致 = 接收缓冲区大小 - 已用大小(接收的数据，暂时没被应用层读走)
+
+发送窗口 = min(接收窗口, 拥塞窗口)
 
 核心：拥塞窗口 cwnd
 

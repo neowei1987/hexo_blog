@@ -148,3 +148,6 @@ page关键属性：是否空闲
 
 1. 节省内存，按需分配
 2. 查询性能也还不错，等价于树高度
+
+参考：
+https://www.cnblogs.com/wangshaowei/p/14287125.html

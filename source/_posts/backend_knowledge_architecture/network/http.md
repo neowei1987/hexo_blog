@@ -15,6 +15,12 @@ tags:
 301: 永久重定向
 302: 临时重定向
 
+！默认关闭！
+在HTTP 1.0中，服务器始终在发送响应后关闭连接， 除非客户端发送了Connection: keep-alive请求标头，并且服务器发送了一个Connection: keep-alive响应标头。 如果不存在这样的响应报头，则客户端在收到响应后必须关闭连接的结束。  
+
+！默认打开！
+在HTTP 1.1中，服务器在发送响应之后不关闭连接， 除非客户端发送了Connection: close请求标头，或者服务器发送了Connection: close响应标头。 如果存在这样的响应头，则客户端在收到响应后必须关闭连接的结束。
+
 ### HTTPS
 
 可以参考：https://blog.csdn.net/xiaoming100001/article/details/81109617
