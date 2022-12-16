@@ -78,7 +78,7 @@ private:
         auto node = *it;
         
         //移除
-        node->next->pre = node;
+        node->next->pre = node->pre;
         node->pre->next = node->next;
 
         node->next = head->next;
