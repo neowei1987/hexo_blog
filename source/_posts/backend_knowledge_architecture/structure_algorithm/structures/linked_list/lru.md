@@ -24,11 +24,10 @@ struct ListNode {
     ListNode* pre;
 }
 
-unsorted_map<int, ListNode*> hash;
 
 class LRUCache {
 private:
-    unsorted_map<int, ListNode*> hash;
+    unordered_map<int, ListNode*> hash;
     ListNode* head;
     ListNode* tail;
     int n;
@@ -37,6 +36,8 @@ private:
         n = nn;
         head = new ListNode();
         tail = new ListNode();
+        head->next = tail;
+        tail->pre = head;
     } 
 
     void put(int k, int v) {
