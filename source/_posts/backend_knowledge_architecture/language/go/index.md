@@ -296,7 +296,11 @@ func main() {
 逃逸分析目的是决定内分配地址是栈还是堆
 逃逸分析在编译阶段完成
 
-### goroutine泄漏
+### goroutine
+
+协程是用户态轻量级线程，它是线程调度的基本单位。通常在函数前加上go关键字就能实现并发。一个Goroutine会以一个很小的栈启动2KB或4KB，当遇到栈空间不足时，栈会**自动伸缩**， 因此可以轻易实现成千上万个goroutine同时启动。
+
+#### goroutine泄漏
 
 泄露原因
 
@@ -351,3 +355,9 @@ func main() {
     }
 }
 ```
+
+
+golang gc 简明过程
+
+参考：
+https://zhuanlan.zhihu.com/p/92210761

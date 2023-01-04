@@ -45,3 +45,6 @@ tags:
 |一致性协议 | 仅复制，非强一致  |raft|zab，一种类paxos协议|
 
 ![20201222213947](http://cdn.b5mang.com/20201222213947.png)
+
+参考：
+http://www.360doc.com/content/21/0221/16/73848659_963189895.shtml

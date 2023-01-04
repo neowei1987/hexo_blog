@@ -428,7 +428,7 @@ public static Path walkFileTree(Path start,Set options,
 int maxDepth,FileVisitor< super Path> visitor) ，这一方法中回调了visitor的方法。
 方法实现上：访问者对每一个被访问者都有一个实现方法。每一个被访问者都有一个通用方法，输入参数为访问者，此方法用于调用访问者的方法。
 
-##### 责任链 
+##### 责任链
 
 webserver的filter
 
@@ -437,6 +437,3 @@ webserver的filter
 参考：
 
 https://blog.csdn.net/sinat_34166518/article/details/89206059
-
-
-

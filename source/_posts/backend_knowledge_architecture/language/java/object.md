@@ -11,7 +11,7 @@ tags:
 - java
 ---
 
-equals VS  == 
+equals VS  ==
 
 （1）对象类型不同(一个是object的成员方法，一个是操作符)
 

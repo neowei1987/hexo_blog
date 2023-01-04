@@ -81,8 +81,8 @@ lost duplicate加上incarnation connection，则会对我们的传输造成致�
 
 快重传配合使用的还有**快恢复**算法，有以下两个要点:
 
-①当发送方连续收到三个重复确认时，就执行“乘法减小”算法，把ssthresh门限减半。但是接下去并不执行慢开始算法。
+①当发送方连续收到三个重复确认时，就执行“**乘法减小**”算法，把ssthresh门限减半。但是接下去并不执行慢开始算法。
 
-②考虑到如果网络出现拥塞的话就不会收到好几个重复的确认，所以发送方现在认为网络可能没有出现拥塞。所以此时不执行慢开始算法，而是将cwnd设置为ssthresh的大小，然后执行拥塞避免算法。
+②考虑到如果网络真的出现拥塞的话，就不会收到好几个重复的确认，所以发送方现在认为网络可能没有出现拥塞（这是由于某种原因数据包丢失了，例如某个路由器BUG把发送的包给弄丢了）。所以此时不执行慢开始算法，而是将cwnd设置为ssthresh的大小，然后执行拥塞避免算法。
 
 ![快恢复](https://img-blog.csdn.net/20130801220615250?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2ljb2ZpZWxk/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)

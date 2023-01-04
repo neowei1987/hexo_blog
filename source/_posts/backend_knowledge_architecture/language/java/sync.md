@@ -41,32 +41,33 @@ DCL（Double Check Lock双端检索机制）
 
  这种问题可以使用synchronized 或者使用原子变量 来解决。原子变量通过调用unsafe类的cas方法实现了原子操作，由于CAS是一种系统原语,原语属于操作系统用于范畴,是由若干条指令组成,用于完成某个功能的一个过程,并且原语的执行必须是连续的,在执行过程中不允许中断,也即是说CAS是一条原子指令,不会造成所谓的数据不一致的问题。
 
-
 ### synchronized 的锁升级过程
 
 无锁-》偏向锁-》轻量级CAS自旋锁-》重量级锁
-https://blog.csdn.net/weixin_45606067/article/details/126766885
 
+总体原理就是通过存储最新访问变量的Thread-id来做判定，如果是同一个则无锁；通过简单的CAS自旋锁来判断是否需要block访问；只有需要block访问才启动重量级锁。
+
+https://blog.csdn.net/weixin_45606067/article/details/126766885
 
 ### synchronized 与 lock的区别
 
 区别如下：
- 
+
 1.Lock是显示锁（手动开启和关闭锁）, synchronized时隐式锁，出来作用域自动释放
- 
+
 2.Lock只有代码块锁，synchronized有代码块锁和方法锁
- 
+
 3.使用Lock锁，JVM将花费较少的时间来调度线程，性能更好。并且具有更好的扩展性（提供了更多子类）
- 
+
 4.lock是一个接口，而synchronized是java的一个关键字，synchronized是内置的语言实现；
- 
-5.异常是否释放锁： 
+
+5.异常是否释放锁：
     synchronized在发生异常时候会自动释放占有的锁，因此不会出现死锁；而lock发生异常时候，不会主动释放占有的锁，必须手动unlock来释放锁，可能引起死锁的发生。（所以最好将同步代码块用try catch包起来，finally中写入unlock，避免死锁的发生。）
- 
-6.是否响应中断 
+
+6.是否响应中断
     lock等待锁过程中可以用interrupt来中断等待，而synchronized只能等待锁的释放，不能响应中断；
 
-7.是否知道获取锁 
+7.是否知道获取锁
     Lock可以通过trylock来知道有没有获取锁，而synchronized不能；
 
 8.Lock可以提高多个线程进行读操作的效率。（可以通过readwritelock实现读写分离）
