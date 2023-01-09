@@ -239,6 +239,6 @@ P(B) 人们酒驾的概率（管中窥豹，利用样本数据来合理估计总
 
 ### 《刘嘉概率论22讲》下载地址
 
-![头像](http://cdn.b5mang.com/img_first.png)
+![头像](https://cdn.staticaly.com/gh/neowei1987/blog_assets@main/image.29ucrvenk9lw.jpg)
 
 扫码关注公众号，回复“概率论”获取下载地址。

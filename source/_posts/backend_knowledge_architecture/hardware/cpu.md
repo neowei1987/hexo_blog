@@ -180,7 +180,7 @@ Intel 与 AMD是两个公司，amd 与 arm 又是同一个公司（AMD）的两�
 
 Intel与AMD共同采用x86架构，都采用CICS指令集，一般用于桌面应用；
 
-而arm 采用 ARM架构，采用RICS指令集，例如家用游戏机、平板、手机等会采用arm CPU
+而arm 采用 ARM架构，采用RICS指令集，例如家用游戏机、平板、手机等会采用arm CPU；另外苹果公司的**M1、M2芯片也是采用ARM架构**。
 
 可以说，AMD CPU是 AMD公司为对抗Intel公司的Intel CPU推出的第一代产品；
 
