@@ -49,6 +49,8 @@ NAT
 
 ### 云计算
 
+Faas 函数即服务 Function as a Service
+
 在IaaS篇中，我们主要是重于基础设施类的云服务，尤其是虚拟机、云磁盘、云网络等
 服务。它们的特点是，和传统T基础设施往往有一个对应关系，所以被称为基础设施即服
 (Infrastructure-as-a-Service)
@@ -245,4 +247,3 @@ RDS (Relational Database Service) VS 传统数据库
 云上容器
 
 docker容器、k8s
-

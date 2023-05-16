@@ -194,3 +194,9 @@ https://www.zhihu.com/question/355605125
 线性规划 + 几何概率， 1/4
 
 如果在高速公路上30分钟内到一辆车开过的几率是0.95，那么在10分钟内看到一辆车开过的几率是多
+
+### 泊松分布模拟故障
+
+https://preshing.com/20111007/how-to-generate-random-timings-for-a-poisson-process/
+
+https://preshing.com/20111118/locks-arent-slow-lock-contention-is/
