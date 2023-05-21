@@ -27,18 +27,15 @@ Training 切成N份（例如10）
 选前9份，进行交叉验证，对结果进行平均（准确率一般平均）。
 Validation 验证数据
 
-
 Testing 比较宝贵
-
 
 confusion matrix 混淆矩阵，relative with 召回率，准确率
 
 TruePostive     FalsePostive
-FalseNegative   TrueNegative    
+FalseNegative   TrueNegative
 
-True 做到了； 
+True 做到了
 Postive 正类
-
 
 评价指标有几个：
 
@@ -59,4 +56,3 @@ predict = score > thresholds : True : False
 ROC curves (ROC曲线)
 
 AUC 测量曲线下面积（综合评估），最好是1，最差是0.5
-

@@ -138,11 +138,13 @@ FreeList来管理“取整”之后的定长记录
 
 CentralCache通过page以及span来管理内存，当需要分配内存时，会通过spinlock来加锁保护。
 
-span关键属性：是否空闲、startPageId, pageNum
-
-page关键属性：是否空闲
+从大到下：
+span， 一段连续的内存块；span关键属性：是否空闲、startPageId, pageNum
+page, page关键属性：是否空闲
 
 通过Buddy系统来管理所有空闲的page, 而分配出去的Page通过RadixTree来管理起来。
+
+    在 TCMalloc 中，Radix tree 的 key 是 span 的起始地址，value 是 span 本身。每个 span 都有一个起始地址和一个大小，Radix tree 将 span 的起始地址作为 key，将 span 本身作为 value 存储在节点中。
 
 通过RadixTree管理有两个好处：
 

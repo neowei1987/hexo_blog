@@ -33,6 +33,15 @@ select低效的另一个原因在于程序不知道哪些socket收到数据，�
 
 ![image](https://cdn.staticaly.com/gh/neowei1987/blog_assets@main/image.4lmelvefxg80.webp)
 
+当一个FD就绪后，需要做的事
+
+红黑树在epoll中就保存在linux内核中的一块cache，然后通过在这个cache来进行文件描述符的插入删除等操作，由于红黑树的插入删除速度比较良好，查找效率也比较优秀，所以epoll性能提升的很大一个原因就在于此。红黑树只是数据的一个载体：当我们需要平凡的对数据进行插入删除而且还需要保证查找效率的时候，就应该想到使用红黑树。
+
+rdllist
+答案：epoll 实例中包含就绪事件的 fd 组成的链表。
+
+rbn
+答案：epoll 实例所关心的fd。
 ---
 
 使用场景：

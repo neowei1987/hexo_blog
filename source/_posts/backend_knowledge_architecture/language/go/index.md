@@ -356,7 +356,6 @@ func main() {
 }
 ```
 
-
 golang gc 简明过程
 
 参考：

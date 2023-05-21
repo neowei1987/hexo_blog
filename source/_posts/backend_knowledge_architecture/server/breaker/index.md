@@ -44,8 +44,8 @@ drop_ratio = $max(0, （requests - K * accepts） / (requests + 1))$
 
 两个小技巧：
 
-1. 利用EMA（移动平均值）策略计算接口的平均响应时间
-2. 利用双时间窗口统计来平衡短期抖动与长期错误率过高；
+1. 利用EMA（移动平均值）策略计算接口的平均响应时间;
+2. 利用双时间窗口统计来平衡短期抖动与长期错误率过高;
 
 具体见：
 [CircuitBreaker](https://github.com/apache/incubator-brpc/blob/master/docs/cn/circuit_breaker.md)
